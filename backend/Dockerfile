@@ -6,7 +6,6 @@ COPY . .
 
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt --no-cache-dir
-RUN python manage.py collectstatic --noinput
 RUN python manage.py migrate
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "config.wsgi"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
