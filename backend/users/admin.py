@@ -8,11 +8,11 @@ class UserAdmin(admin.ModelAdmin):
     """Отображение модели User в админке."""
 
     list_display = (
-        "id",
-        "username",
-        "first_name",
-        "last_name",
-        "patronymic",
-        "email",
-        "phone_number",
+        'id',
+        'username',
+        'first_name',
+        'last_name',
+        'patronymic',
+        'email',
+        'phone_number',
     )
