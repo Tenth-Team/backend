@@ -1,5 +1,5 @@
 from django.db import models
-from choices import GENDER_CHOICES, STATUS_CHOICES, CLOTHING_SIZES_CHOICES
+from .choices import GENDER_CHOICES, STATUS_CHOICES, CLOTHING_SIZES_CHOICES
 
 
 class TrainingProgram(models.Model):
@@ -32,6 +32,7 @@ class Ambassador(models.Model):
     ya_edu = models.ForeignKey(
         TrainingProgram,
         on_delete=models.SET_NULL,
+        null=True,
         verbose_name='Программа обучения',
     )
     country = models.CharField(max_length=100, verbose_name='Страна')
