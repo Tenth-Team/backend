@@ -6,7 +6,7 @@ volumes:
 services:
   backend:
     image: tenthteam/backend
-    command: sh -c "python manage.py collectstatic && daphne -b 0.0.0.0 -p 8000 config.asgi:application"
+    command: daphne -b 0.0.0.0 -p 8000 config.asgi:application
     env_file: ./.env
     volumes:
       - backend_static:/app/static
