@@ -17,3 +17,9 @@ CLOTHING_SIZES_CHOICES = [
     ('L', 'L'),
     ('XL', 'XL'),
 ]
+
+CONTENT_STATUS_CHOICES = [
+    ('new', 'Новая публикация'),
+    ('approved', 'Одобрена'),
+    ('rejected', 'Не одобрена'),
+]

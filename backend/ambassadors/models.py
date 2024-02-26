@@ -1,5 +1,11 @@
 from django.db import models
-from .choices import GENDER_CHOICES, STATUS_CHOICES, CLOTHING_SIZES_CHOICES
+
+from .choices import (
+    GENDER_CHOICES,
+    STATUS_CHOICES,
+    CLOTHING_SIZES_CHOICES,
+    CONTENT_STATUS_CHOICES,
+)
 
 
 class TrainingProgram(models.Model):
@@ -41,8 +47,7 @@ class Ambassador(models.Model):
     postal_code = models.CharField(max_length=20, verbose_name='Индекс')
     email = models.CharField(max_length=255, verbose_name='Адрес проживания')
     phone_number = models.CharField(
-        max_length=20,
-        verbose_name='Номер телефона'
+        max_length=20, verbose_name='Номер телефона'
     )
     telegram = models.CharField(max_length=100, verbose_name='Ник в телеграме')
     edu = models.TextField(max_length=1000, verbose_name='Образование')
@@ -56,10 +61,7 @@ class Ambassador(models.Model):
         verbose_name='Цель амбассадорства',
     )
     blog_url = models.CharField(
-        max_length=255,
-        verbose_name='Ссылка на блоги',
-        blank=True,
-        null=True
+        max_length=255, verbose_name='Ссылка на блоги', blank=True, null=True
     )
     clothing_size = models.CharField(
         max_length=3,
@@ -80,6 +82,28 @@ class Ambassador(models.Model):
         verbose_name='Статус амбассадора',
     )
     reg_date = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name='Дата регистрации'
+        auto_now_add=True, verbose_name='Дата регистрации'
+    )
+
+
+class Content(models.Model):
+    """
+    Модель контента.
+    """
+
+    full_name = models.CharField(max_length=255, verbose_name='Имя и Фамилия')
+    telegram = models.CharField(max_length=100, verbose_name='Ник в телеграме')
+    link = models.CharField(max_length=200, verbose_name='Ссылка на контент')
+    guide = models.BooleanField(verbose_name='В рамках Гайда?')
+    status = models.CharField(
+        max_length=50,
+        default='new',
+        choices=CONTENT_STATUS_CHOICES,
+        verbose_name='Статус контента',
+    )
+    ambassador = models.ForeignKey(
+        Ambassador, on_delete=models.SET_NULL, null=True
+    )
+    created_date = models.DateField(
+        auto_now_add=True, verbose_name='Дата создания'
     )
