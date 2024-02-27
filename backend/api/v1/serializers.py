@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from ambassadors.models import Ambassador, TrainingProgram, AmbassadorGoal
 
+
 class TrainingProgramSerializer(serializers.ModelSerializer):
     class Meta:
         model = TrainingProgram
@@ -26,7 +27,8 @@ class AmbassadorSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         representation['ya_edu'] = instance.ya_edu.name
-        representation['amb_goal'] = [goal.name for goal in instance.amb_goal.all()]
+        representation['amb_goal'] = [goal.name for goal in
+                                      instance.amb_goal.all()]
         return representation
 
     def to_internal_value(self, data):

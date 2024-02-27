@@ -16,6 +16,7 @@ class TrainingProgram(models.Model):
         verbose_name = 'Программа обучения'
         verbose_name_plural = 'Программы обучения'
 
+
 class AmbassadorGoal(models.Model):
     """
     Модель названий целей амбассадорства.
