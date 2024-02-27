@@ -1,3 +1,13 @@
 from django.contrib import admin
+from .models import Ambassador, TrainingProgram, AmbassadorGoal
+@admin.register(Ambassador)
+class AmbassadorAdmin(admin.ModelAdmin):
+    pass
 
-# Register your models here.
+@admin.register(TrainingProgram)
+class AmbassadorAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(AmbassadorGoal)
+class AmbassadorAdmin(admin.ModelAdmin):
+    pass
