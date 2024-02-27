@@ -10,6 +10,7 @@ DEBUG = os.environ.get('DEBUG', default='True').lower() == 'true'
 
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", '*').split()
+CSRF_TRUSTED_ORIGINS = ['https://crm.ragimov700.ru']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
