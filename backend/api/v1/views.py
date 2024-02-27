@@ -1,6 +1,6 @@
+from ambassadors.models import Ambassador
 from rest_framework import viewsets
 
-from ambassadors.models import Ambassador
 from .serializers import AmbassadorSerializer
 
 

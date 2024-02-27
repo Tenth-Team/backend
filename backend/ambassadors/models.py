@@ -1,5 +1,6 @@
 from django.db import models
-from .choices import GENDER_CHOICES, STATUS_CHOICES, CLOTHING_SIZES_CHOICES
+
+from .choices import CLOTHING_SIZES_CHOICES, GENDER_CHOICES, STATUS_CHOICES
 
 
 class TrainingProgram(models.Model):
@@ -15,6 +16,7 @@ class TrainingProgram(models.Model):
     class Meta:
         verbose_name = 'Программа обучения'
         verbose_name_plural = 'Программы обучения'
+
 
 class AmbassadorGoal(models.Model):
     """
