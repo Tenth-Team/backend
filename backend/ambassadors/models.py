@@ -1,5 +1,6 @@
 from django.db import models
-from .choices import GENDER_CHOICES, STATUS_CHOICES, CLOTHING_SIZES_CHOICES
+
+from .choices import CLOTHING_SIZES_CHOICES, GENDER_CHOICES, STATUS_CHOICES
 
 
 class TrainingProgram(models.Model):
