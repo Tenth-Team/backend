@@ -1,4 +1,9 @@
-from ambassadors.models import Ambassador, AmbassadorGoal, TrainingProgram
+from ambassadors.models import (
+    Ambassador,
+    AmbassadorGoal,
+    TrainingProgram,
+    Content,
+)
 from rest_framework import serializers
 
 
@@ -7,10 +12,12 @@ class TrainingProgramSerializer(serializers.ModelSerializer):
         model = TrainingProgram
         fields = ('id', 'name')
 
+
 class ContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Content
         fields = '__all__'
+
 
 class AmbassadorSerializer(serializers.ModelSerializer):
     ya_edu = serializers.CharField()
@@ -19,7 +26,6 @@ class AmbassadorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ambassador
         fields = '__all__'
-
 
     def create(self, validated_data):
         ya_edu = validated_data.pop('ya_edu')
