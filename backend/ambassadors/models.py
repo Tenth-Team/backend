@@ -15,6 +15,13 @@ class TrainingProgram(models.Model):
 
     name = models.CharField(max_length=255, verbose_name='Название программы')
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Программа обучения'
+        verbose_name_plural = 'Программы обучения'
+
 
 class AmbassadorGoal(models.Model):
     """
@@ -22,6 +29,13 @@ class AmbassadorGoal(models.Model):
     """
 
     name = models.CharField(max_length=255, verbose_name='Название цели')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Цель амбассадорства'
+        verbose_name_plural = 'Цели амбассадорства'
 
 
 class Ambassador(models.Model):
@@ -107,3 +121,10 @@ class Content(models.Model):
     created_date = models.DateField(
         auto_now_add=True, verbose_name='Дата создания'
     )
+
+    def __str__(self):
+        return self.full_name
+
+    class Meta:
+        verbose_name = 'Амбассадор'
+        verbose_name_plural = 'Амбассадоры'
