@@ -1,10 +1,11 @@
+from rest_framework import serializers
+
 from ambassadors.models import (
     Ambassador,
     AmbassadorGoal,
     TrainingProgram,
     Content,
 )
-from rest_framework import serializers
 
 
 class TrainingProgramSerializer(serializers.ModelSerializer):
