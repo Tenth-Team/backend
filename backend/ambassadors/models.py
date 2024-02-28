@@ -130,4 +130,3 @@ class Content(models.Model):
 
     class Meta:
         verbose_name = 'Контент'
-
