@@ -3,7 +3,6 @@ from rest_framework.routers import DefaultRouter
 
 from .views import AmbassadorViewSet, ContentViewSet
 
-
 router = DefaultRouter()
 router.register(r'ambassadors', AmbassadorViewSet)
 router.register(r'content', ContentViewSet)
