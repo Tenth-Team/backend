@@ -95,6 +95,13 @@ class Ambassador(models.Model):
         auto_now_add=True, verbose_name='Дата регистрации'
     )
 
+    def __str__(self):
+        return self.full_name
+
+    class Meta:
+        verbose_name = 'Амбассадор'
+        verbose_name_plural = 'Амбассадоры'
+
 
 class Content(models.Model):
     """
@@ -122,5 +129,5 @@ class Content(models.Model):
         return self.full_name
 
     class Meta:
-        verbose_name = 'Амбассадор'
-        verbose_name_plural = 'Амбассадоры'
+        verbose_name = 'Контент'
+
