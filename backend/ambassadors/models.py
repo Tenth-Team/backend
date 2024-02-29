@@ -55,7 +55,7 @@ class Ambassador(models.Model):
     city = models.CharField(max_length=100, verbose_name='Город')
     address = models.CharField(max_length=255, verbose_name='Адрес проживания')
     postal_code = models.CharField(max_length=20, verbose_name='Индекс')
-    email = models.CharField(max_length=255, verbose_name='Адрес проживания')
+    email = models.CharField(max_length=255, verbose_name='Почта')
     phone_number = models.CharField(
         max_length=20, verbose_name='Номер телефона'
     )
@@ -130,3 +130,4 @@ class Content(models.Model):
 
     class Meta:
         verbose_name = 'Контент'
+        verbose_name_plural = 'Контент'

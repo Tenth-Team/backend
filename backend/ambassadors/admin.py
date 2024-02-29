@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Ambassador, AmbassadorGoal, TrainingProgram
+from .models import Ambassador, AmbassadorGoal, TrainingProgram, Content
 
 
 @admin.register(TrainingProgram)
@@ -20,3 +20,6 @@ class AmbassadorAdmin(admin.ModelAdmin):
     list_filter = ('gender', 'country', 'city', 'status', 'reg_date')
     search_fields = ('full_name', 'country', 'city', 'email', 'phone_number')
     filter_horizontal = ('amb_goal',)
+
+
+admin.site.register(Content)

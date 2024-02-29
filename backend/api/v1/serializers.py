@@ -10,9 +10,30 @@ class TrainingProgramSerializer(serializers.ModelSerializer):
 
 
 class ContentSerializer(serializers.ModelSerializer):
+    status = serializers.CharField(source='get_status_display', read_only=True)
+
     class Meta:
         model = Content
         fields = '__all__'
+
+    def create(self, validated_data):
+        ambassador = Ambassador.objects.filter(
+            telegram=validated_data['telegram']
+        ).first()
+        if ambassador:
+            validated_data['ambassador'] = ambassador
+            validated_data['full_name'] = ambassador.full_name
+        content = Content.objects.create(**validated_data)
+        return content
+
+    def to_internal_value(self, instance):
+        guide = instance.get('guide')
+        if guide is not None and not guide:
+            instance['guide'] = 0
+        else:
+            instance['guide'] = 1
+        instance = super().to_internal_value(instance)
+        return instance
 
 
 class AmbassadorSerializer(serializers.ModelSerializer):
