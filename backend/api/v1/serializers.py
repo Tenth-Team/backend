@@ -2,6 +2,8 @@ from ambassadors.models import (Ambassador, AmbassadorGoal, Content,
                                 TrainingProgram)
 from rest_framework import serializers
 
+from .utils import format_telegram_username
+
 
 class TrainingProgramSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,6 +36,9 @@ class ContentSerializer(serializers.ModelSerializer):
             instance['guide'] = 1
         instance = super().to_internal_value(instance)
         return instance
+
+    def validate_telegram(self, value):
+        return format_telegram_username(value)
 
 
 class AmbassadorSerializer(serializers.ModelSerializer):
