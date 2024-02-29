@@ -1,7 +1,11 @@
 from django.db import models
 
-from .choices import (CLOTHING_SIZES_CHOICES, CONTENT_STATUS_CHOICES,
-                      GENDER_CHOICES, STATUS_CHOICES)
+from .choices import (
+    CLOTHING_SIZES_CHOICES,
+    CONTENT_STATUS_CHOICES,
+    GENDER_CHOICES,
+    STATUS_CHOICES,
+)
 
 
 class TrainingProgram(models.Model):
