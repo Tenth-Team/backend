@@ -1,4 +1,5 @@
-from ambassadors.models import Ambassador, AmbassadorGoal, TrainingProgram
+from ambassadors.models import (Ambassador, AmbassadorGoal, Content,
+                                TrainingProgram)
 from rest_framework import serializers
 
 
@@ -6,6 +7,12 @@ class TrainingProgramSerializer(serializers.ModelSerializer):
     class Meta:
         model = TrainingProgram
         fields = ('id', 'name')
+
+
+class ContentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Content
+        fields = '__all__'
 
 
 class AmbassadorSerializer(serializers.ModelSerializer):
