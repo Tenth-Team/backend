@@ -1,14 +1,16 @@
-from ambassadors.choices import CONTENT_STATUS_CHOICES
-from ambassadors.models import Content
 from django_filters import FilterSet
 from django_filters.filters import CharFilter
 from rest_framework.exceptions import ValidationError
+
+from ambassadors.choices import CONTENT_STATUS_CHOICES
+from ambassadors.models import Content
 
 
 class UniversalChoiceFilter(CharFilter):
     """
     Универсальный класс для фильтрации по Choice полю.
     """
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -38,8 +40,9 @@ class BaseChoiceFilter(FilterSet):
         abstract = True
 
 
-class ContentFilter(BaseChoiceFilter):
+class ContentStatusFilter(BaseChoiceFilter):
     """Класс для фильтрации Контента по полю status."""
+
     class Meta(BaseChoiceFilter.Meta):
         model = Content
         fields = ['status']
