@@ -19,4 +19,4 @@ class AmbassadorAdmin(admin.ModelAdmin):
                     'city', 'status', 'reg_date')
     list_filter = ('gender', 'country', 'city', 'status', 'reg_date')
     search_fields = ('full_name', 'country', 'city', 'email', 'phone_number')
-    filter_horizontal = ('amb_goal',)
+    filter_horizontal = ('amb_goals',)

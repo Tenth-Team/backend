@@ -1,7 +1,11 @@
 from django.db import models
 
-from .choices import (CLOTHING_SIZES_CHOICES, CONTENT_STATUS_CHOICES,
-                      GENDER_CHOICES, STATUS_CHOICES)
+from .choices import (
+    CLOTHING_SIZES_CHOICES,
+    CONTENT_STATUS_CHOICES,
+    GENDER_CHOICES,
+    STATUS_CHOICES,
+)
 
 
 class TrainingProgram(models.Model):
@@ -65,7 +69,7 @@ class Ambassador(models.Model):
     study_goal = models.TextField(
         max_length=1000, verbose_name='Цель обучения'
     )
-    amb_goal = models.ManyToManyField(
+    amb_goals = models.ManyToManyField(
         AmbassadorGoal,
         related_name='ambassadors',
         verbose_name='Цель амбассадорства',
