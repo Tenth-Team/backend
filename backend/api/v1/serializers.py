@@ -1,7 +1,10 @@
+from rest_framework import serializers
+
 from ambassadors.models import (Ambassador, AmbassadorGoal, Content,
                                 TrainingProgram)
-from rest_framework import serializers
+
 from .utlis import format_telegram_username
+
 
 class TrainingProgramSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,7 +37,7 @@ class AmbassadorSerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
         representation['ya_edu'] = instance.ya_edu.name
         representation['amb_goals'] = [goal.name for goal in
-                                      instance.amb_goals.all()]
+                                       instance.amb_goals.all()]
         return representation
 
     def to_internal_value(self, data):
