@@ -1,8 +1,10 @@
-from ambassadors.models import (Ambassador, AmbassadorGoal, Content,
-                                TrainingProgram)
 from rest_framework import serializers
 
+from ambassadors.models import (Ambassador, AmbassadorGoal, Content,
+                                TrainingProgram)
+
 from .utils import format_telegram_username
+from ambassadors.choices import CONTENT_STATUS_CHOICES
 
 
 class TrainingProgramSerializer(serializers.ModelSerializer):
@@ -11,8 +13,25 @@ class TrainingProgramSerializer(serializers.ModelSerializer):
         fields = ('id', 'name')
 
 
+class ChoiceField(serializers.ChoiceField):
+
+    def to_representation(self, obj):
+        if obj == '' and self.allow_blank:
+            return obj
+        return self._choices[obj]
+
+    def to_internal_value(self, data):
+        if data == '' and self.allow_blank:
+            return ''
+
+        for key, val in self._choices.items():
+            if val == data:
+                return key
+        self.fail('invalid_choice', input=data)
+
+
 class ContentSerializer(serializers.ModelSerializer):
-    status = serializers.CharField(source='get_status_display', read_only=True)
+    status = ChoiceField(choices=CONTENT_STATUS_CHOICES, required=False)
 
     class Meta:
         model = Content
@@ -30,10 +49,11 @@ class ContentSerializer(serializers.ModelSerializer):
 
     def to_internal_value(self, instance):
         guide = instance.get('guide')
-        if guide is not None and not guide:
-            instance['guide'] = 0
-        else:
-            instance['guide'] = 1
+        if guide is not None:
+            if not guide:
+                instance['guide'] = 0
+            else:
+                instance['guide'] = 1
         instance = super().to_internal_value(instance)
         return instance
 
