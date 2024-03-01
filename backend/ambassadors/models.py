@@ -5,6 +5,8 @@ from .choices import (
     CONTENT_STATUS_CHOICES,
     GENDER_CHOICES,
     STATUS_CHOICES,
+    MERCH_CHOICES,
+    STATUS_SEND_CHOICES,
 )
 
 
@@ -134,3 +136,60 @@ class Content(models.Model):
 
     class Meta:
         verbose_name = 'Контент'
+
+
+class Merchandise(models.Model):
+    '''
+    Модель мерча
+    '''
+
+    name = models.CharField(
+        max_length=20,
+        choices=MERCH_CHOICES,
+        verbose_name='Название мерча'
+    )
+    price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        verbose_name='Стоимость мерча',
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Мерч'
+
+
+class Sending_a_merch(models.Model):
+    '''
+    Заявка на отправку мерча
+    '''
+
+    name_merch = models.ForeignKey(
+        Merchandise,
+        on_delete=models.CASCADE,
+        verbose_name='Название мерча',
+    )
+    ambassador = models.ForeignKey(
+        Ambassador,
+        on_delete=models.CASCADE,
+        verbose_name='Амбассадор'
+    )
+    status_send = models.CharField(
+        max_length=20,
+        default='new',
+        choices=STATUS_SEND_CHOICES,
+        verbose_name='Статус отправки',
+    )
+    created_date = models.DateField(
+        auto_now_add=True,
+        verbose_name='Дата создания',
+    )
+    comment = models.TextField(
+        max_length=200,
+        verbose_name='Комментарий менеджера'
+    )
+
+    class Meta:
+        verbose_name = 'Заявка на отправку мерча'
