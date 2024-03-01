@@ -1,6 +1,11 @@
-from ambassadors.models import (Ambassador, AmbassadorGoal, Content,
-                                TrainingProgram)
 from rest_framework import serializers
+
+from ambassadors.models import (
+    Ambassador,
+    AmbassadorGoal,
+    Content,
+    TrainingProgram,
+)
 
 from .utlis import format_telegram_username
 
