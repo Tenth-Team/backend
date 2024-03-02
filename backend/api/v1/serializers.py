@@ -1,3 +1,5 @@
+import re
+
 from rest_framework import serializers
 
 from ambassadors.choices import (
@@ -151,10 +153,9 @@ class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
         telegram = data.get('telegram')
 
         goals = []
-        for goal in amb_goals.split(', '):
+        for goal in re.split(r', (?=[А-Я])', amb_goals):
             goal, created = AmbassadorGoal.objects.get_or_create(
-                name=goal
-            )
+                name=goal.strip())
             goals.append(goal)
 
         training_program, created = TrainingProgram.objects.get_or_create(
