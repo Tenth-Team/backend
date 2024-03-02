@@ -25,3 +25,4 @@ class AmbassadorAdmin(admin.ModelAdmin):
 @admin.register(Content)
 class ContentAdmin(admin.ModelAdmin):
     list_display = ('id', 'full_name', 'telegram', 'link', 'guide', 'status',)
+    filter_horizontal = ('amb_goals',)
