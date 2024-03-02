@@ -1,5 +1,11 @@
 from rest_framework import serializers
 
+from ambassadors.choices import CONTENT_STATUS_CHOICES
+from ambassadors.models import (Ambassador, AmbassadorGoal, Content,
+                                TrainingProgram)
+
+from .utils import format_telegram_username
+
 from ambassadors.models import (
     Ambassador,
     AmbassadorGoal,
@@ -30,10 +36,77 @@ class AmbassadorGoalSerializer(serializers.ModelSerializer):
         fields = ('id', 'name')
 
 
+class ChoiceField(serializers.ChoiceField):
+    """
+    Поле для обработки выборочных данных,
+    позволяющее представление и ввод в человекочитаемом формате.
+    """
+
+    def to_representation(self, obj):
+        """
+        Преобразует значение поля в его человекочитаемый формат для вывода.
+        """
+        if obj == '' and self.allow_blank:
+            return obj
+        return self._choices[obj]
+
+    def to_internal_value(self, data):
+        """
+        Преобразует человекочитаемое значение
+        обратно во внутреннее представление.
+        """
+        if data == '' and self.allow_blank:
+            return ''
+
+        for key, val in self._choices.items():
+            if val == data:
+                return key
+        self.fail('invalid_choice', input=data)
+
+
 class ContentSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для модели Контента.
+    """
+
+    status = ChoiceField(choices=CONTENT_STATUS_CHOICES, required=False)
+
     class Meta:
+        """
+        Класс Meta указывает на модель и поля,
+        которые будут использоваться сериализатором.
+        """
         model = Content
         fields = '__all__'
+
+    def create(self, validated_data):
+        """
+        Создаёт новый экземпляр контента на основе проверенных данных.
+        """
+        ambassador = Ambassador.objects.filter(
+            telegram=validated_data['telegram']
+        ).first()
+        if ambassador:
+            validated_data['ambassador'] = ambassador
+            validated_data['full_name'] = ambassador.full_name
+        content = Content.objects.create(**validated_data)
+        return content
+
+    def to_internal_value(self, instance):
+        """
+        Преобразует данные перед сохранением,
+        обрабатывает логическое поле 'guide'.
+        """
+        guide = instance.get('guide')
+        if guide is not None:
+            instance['guide'] = bool(guide)
+        return super().to_internal_value(instance)
+
+    def validate_telegram(self, value):
+        """
+        Проверяет и форматирует имя пользователя в Telegram перед сохранением.
+        """
+        return format_telegram_username(value)
 
 
 class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
