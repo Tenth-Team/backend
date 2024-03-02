@@ -2,14 +2,14 @@ from rest_framework import serializers
 
 from ambassadors.choices import (
     CONTENT_STATUS_CHOICES,
-    PROMO_CODE_STATUS_CHOICES
+    PROMO_CODE_STATUS_CHOICES,
 )
 from ambassadors.models import (
     Ambassador,
     AmbassadorGoal,
     Content,
+    PromoCode,
     TrainingProgram,
-    PromoCode
 )
 
 from .utils import format_telegram_username

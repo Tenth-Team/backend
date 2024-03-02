@@ -9,8 +9,8 @@ from .serializers import (
     AmbassadorCreateSerializer,
     AmbassadorReadSerializer,
     ContentSerializer,
+    PromoCodeSerializer,
     YandexFormAmbassadorCreateSerializer,
-    PromoCodeSerializer
 )
 
 
@@ -24,6 +24,7 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
         if self.action == 'list' or self.action == 'retrieve':
             return AmbassadorReadSerializer
         return super().get_serializer_class()
+
 
 class PromoCodeViewSet(viewsets.ModelViewSet):
     queryset = PromoCode.objects.all()

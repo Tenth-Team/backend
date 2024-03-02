@@ -7,4 +7,4 @@ class AmbassadorsConfig(AppConfig):
     verbose_name = 'Управление амбассадорами'
 
     def ready(self):
-        import ambassadors.signals
+        import ambassadors.signals  # noqa
