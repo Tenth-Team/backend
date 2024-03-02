@@ -10,6 +10,11 @@ STATUS_CHOICES = [
     ('pending', 'Уточняется'),
 ]
 
+PROMO_CODE_STATUS_CHOICES = [
+    ('active', 'Активный'),
+    ('inactive', 'Неактивный')
+]
+
 CLOTHING_SIZES_CHOICES = [
     ('XS', 'XS'),
     ('S', 'S'),
