@@ -14,7 +14,6 @@ class TrainingProgram(models.Model):
     """
     Модель названий программ обучения Яндекса.
     """
-
     name = models.CharField(max_length=255, verbose_name='Название программы')
 
     def __str__(self):
@@ -29,7 +28,6 @@ class AmbassadorGoal(models.Model):
     """
     Модель названий целей амбассадорства.
     """
-
     name = models.CharField(max_length=255, verbose_name='Название цели')
 
     def __str__(self):
@@ -44,7 +42,6 @@ class Ambassador(models.Model):
     """
     Модель амбассадора.
     """
-
     full_name = models.CharField(max_length=255, verbose_name='Полное имя')
     gender = models.CharField(
         max_length=1,
@@ -113,7 +110,6 @@ class Content(models.Model):
     """
     Модель контента.
     """
-
     full_name = models.CharField(max_length=255, verbose_name='Имя и Фамилия')
     telegram = models.CharField(max_length=100, verbose_name='Ник в телеграме')
     link = models.CharField(max_length=200, verbose_name='Ссылка на контент')
@@ -140,12 +136,11 @@ class Content(models.Model):
 
 
 class Merchandise(models.Model):
-    '''
-    Модель мерча
-    '''
-
+    """
+    Модель мерча.
+    """
     name = models.CharField(
-        max_length=20,
+        max_length=25,
         choices=MERCH_CHOICES,
         verbose_name='Название мерча'
     )
@@ -162,11 +157,10 @@ class Merchandise(models.Model):
         verbose_name = 'Мерч'
 
 
-class Sending_a_merch(models.Model):
-    '''
-    Заявка на отправку мерча
-    '''
-
+class MerchandiseShippingRequest(models.Model):
+    """
+    Модель заявки на отправку мерча.
+    """
     name_merch = models.ForeignKey(
         Merchandise,
         on_delete=models.CASCADE,
@@ -178,7 +172,7 @@ class Sending_a_merch(models.Model):
         verbose_name='Амбассадор'
     )
     status_send = models.CharField(
-        max_length=20,
+        max_length=25,
         default='new',
         choices=STATUS_SEND_CHOICES,
         verbose_name='Статус отправки',
@@ -192,5 +186,9 @@ class Sending_a_merch(models.Model):
         verbose_name='Комментарий менеджера'
     )
 
+    def __str__(self):
+        return f'{self.name_merch} - {self.ambassador}'
+
     class Meta:
         verbose_name = 'Заявка на отправку мерча'
+        verbose_name_plural = 'Заявки на отправку мерча'
