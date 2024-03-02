@@ -2,7 +2,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, viewsets
 from rest_framework.pagination import LimitOffsetPagination
 
-from ambassadors.models import Ambassador, Content
+from ambassadors.models import Ambassador, Content, PromoCode
 
 from .filters import ContentStatusFilter
 from .serializers import (
@@ -10,6 +10,7 @@ from .serializers import (
     AmbassadorReadSerializer,
     ContentSerializer,
     YandexFormAmbassadorCreateSerializer,
+    PromoCodeSerializer
 )
 
 
@@ -23,6 +24,10 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
         if self.action == 'list' or self.action == 'retrieve':
             return AmbassadorReadSerializer
         return super().get_serializer_class()
+
+class PromoCodeViewSet(viewsets.ModelViewSet):
+    queryset = PromoCode.objects.all()
+    serializer_class = PromoCodeSerializer
 
 
 class ContentViewSet(viewsets.ModelViewSet):

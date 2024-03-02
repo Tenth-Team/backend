@@ -7,6 +7,7 @@ from .choices import (
     MERCH_CHOICES,
     STATUS_CHOICES,
     STATUS_SEND_CHOICES,
+    PROMO_CODE_STATUS_CHOICES,
 )
 
 
@@ -104,6 +105,33 @@ class Ambassador(models.Model):
     class Meta:
         verbose_name = 'Амбассадор'
         verbose_name_plural = 'Амбассадоры'
+
+
+class PromoCode(models.Model):
+    ambassador = models.ForeignKey(
+        Ambassador,
+        on_delete=models.CASCADE,
+        related_name='promo_code',
+        verbose_name='Амбассадор',
+    )
+    name = models.CharField(
+        max_length=255,
+        unique=True,
+        verbose_name='Промокод'
+    )
+    status = models.CharField(
+        max_length=10,
+        choices=PROMO_CODE_STATUS_CHOICES,
+        verbose_name='Статус промокода',
+        default='active'
+    )
+
+    class Meta:
+        verbose_name = 'Промокод'
+        verbose_name_plural = 'Промокоды'
+
+    def __str__(self):
+        return self.name
 
 
 class Content(models.Model):
