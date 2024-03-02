@@ -3,14 +3,13 @@ from rest_framework import filters, viewsets
 from rest_framework.pagination import LimitOffsetPagination
 
 from ambassadors.models import Ambassador, Content
-
+from .filters import ContentStatusFilter
 from .serializers import (
     AmbassadorCreateSerializer,
     AmbassadorReadSerializer,
     ContentSerializer,
     YandexFormAmbassadorCreateSerializer,
 )
-from .filters import ContentStatusFilter
 
 
 class AmbassadorViewSet(viewsets.ModelViewSet):

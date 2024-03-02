@@ -1,11 +1,6 @@
 from rest_framework import serializers
 
 from ambassadors.choices import CONTENT_STATUS_CHOICES
-from ambassadors.models import (Ambassador, AmbassadorGoal, Content,
-                                TrainingProgram)
-
-from .utils import format_telegram_username
-
 from ambassadors.models import (
     Ambassador,
     AmbassadorGoal,
@@ -13,7 +8,7 @@ from ambassadors.models import (
     TrainingProgram,
 )
 
-from .utlis import format_telegram_username
+from .utils import format_telegram_username
 
 
 class TrainingProgramSerializer(serializers.ModelSerializer):
