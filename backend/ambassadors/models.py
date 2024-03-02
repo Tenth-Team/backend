@@ -136,6 +136,7 @@ class Content(models.Model):
 
     class Meta:
         verbose_name = 'Контент'
+        verbose_name_plural = 'Контент'
 
 
 class Merchandise(models.Model):

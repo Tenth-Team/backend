@@ -15,10 +15,3 @@ class User(AbstractUser):
     phone_number = models.CharField(
         validators=[phone_regex], max_length=16, unique=True
     )
-
-    AbstractUser.REQUIRED_FIELDS += (
-        'patronymic',
-        'phone_number',
-        'first_name',
-        'last_name',
-    )
