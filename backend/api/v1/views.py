@@ -3,7 +3,7 @@ from drf_spectacular.utils import extend_schema_view
 from rest_framework import filters, viewsets
 from rest_framework.pagination import LimitOffsetPagination
 
-from ambassadors.models import Ambassador, Content
+from ambassadors.models import Ambassador, Content, PromoCode
 
 from .filters import ContentStatusFilter
 from .schemas import content_schema
@@ -11,6 +11,7 @@ from .serializers import (
     AmbassadorCreateSerializer,
     AmbassadorReadSerializer,
     ContentSerializer,
+    PromoCodeSerializer,
     YandexFormAmbassadorCreateSerializer,
 )
 
@@ -27,7 +28,12 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
         return super().get_serializer_class()
 
 
-@extend_schema_view(**content_schema)
+class PromoCodeViewSet(viewsets.ModelViewSet):
+    queryset = PromoCode.objects.all()
+    serializer_class = PromoCodeSerializer
+
+
+    @extend_schema_view(**content_schema)
 class ContentViewSet(viewsets.ModelViewSet):
     """
     Viewset для модели Контента

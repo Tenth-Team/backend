@@ -1,10 +1,16 @@
+import re
+
 from rest_framework import serializers
 
-from ambassadors.choices import CONTENT_STATUS_CHOICES
+from ambassadors.choices import (
+    CONTENT_STATUS_CHOICES,
+    PROMO_CODE_STATUS_CHOICES,
+)
 from ambassadors.models import (
     Ambassador,
     AmbassadorGoal,
     Content,
+    PromoCode,
     TrainingProgram,
 )
 
@@ -57,6 +63,17 @@ class ChoiceField(serializers.ChoiceField):
             if val == data:
                 return key
         self.fail('invalid_choice', input=data)
+
+
+class PromoCodeSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для модели промокода.
+    """
+    status = ChoiceField(choices=PROMO_CODE_STATUS_CHOICES)
+
+    class Meta:
+        model = PromoCode
+        fields = '__all__'
 
 
 class ContentSerializer(serializers.ModelSerializer):
@@ -148,8 +165,9 @@ class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
         telegram = data.get('telegram')
 
         goals = []
-        for goal in amb_goals.split(', '):
-            goal, created = AmbassadorGoal.objects.get_or_create(name=goal)
+        for goal in re.split(r', (?=[А-Я])', amb_goals):
+            goal, created = AmbassadorGoal.objects.get_or_create(
+                name=goal.strip())
             goals.append(goal)
 
         training_program, created = TrainingProgram.objects.get_or_create(
@@ -179,7 +197,14 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
 
     ya_edu = TrainingProgramSerializer()
     amb_goals = AmbassadorGoalSerializer(many=True)
+    promo_code = serializers.SerializerMethodField()
 
     class Meta:
         model = Ambassador
         fields = '__all__'
+
+    def get_promo_code(self, obj):
+        promo_code = obj.promo_code.first()
+        if promo_code is not None:
+            return promo_code.name
+        return None
