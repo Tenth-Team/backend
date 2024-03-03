@@ -81,15 +81,25 @@ class ContentSerializer(serializers.ModelSerializer):
     Сериализатор для модели Контента.
     """
 
-    status = ChoiceField(choices=CONTENT_STATUS_CHOICES, required=False)
+    status = ChoiceField(
+        choices=CONTENT_STATUS_CHOICES,
+        required=False,
+        help_text='Статус контента. Возможные значения: '
+        'Новая публикация, Одобрена, Не одобрена.',
+    )
 
     class Meta:
         """
         Класс Meta указывает на модель и поля,
         которые будут использоваться сериализатором.
         """
+
         model = Content
         fields = '__all__'
+        extra_kwargs = {
+            'ambassador': {'required': False},
+            'status': {'required': False},
+        }
 
     def create(self, validated_data):
         """
@@ -125,6 +135,7 @@ class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
     """
     Сериализатор для создания амбассадоров из Яндекс форм.
     """
+
     ya_edu = serializers.CharField()
     amb_goals = serializers.CharField()
 
@@ -142,8 +153,9 @@ class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         representation['ya_edu'] = instance.ya_edu.name
-        representation['amb_goals'] = [goal.name for goal in
-                                       instance.amb_goals.all()]
+        representation['amb_goals'] = [
+            goal.name for goal in instance.amb_goals.all()
+        ]
         return representation
 
     def to_internal_value(self, data):
@@ -182,6 +194,7 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
     """
     Сериализатор для чтения амбассадоров.
     """
+
     ya_edu = TrainingProgramSerializer()
     amb_goals = AmbassadorGoalSerializer(many=True)
     promo_code = serializers.SerializerMethodField()

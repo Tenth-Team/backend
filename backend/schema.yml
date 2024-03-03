@@ -18,7 +18,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Ambassador'
+                  $ref: '#/components/schemas/AmbassadorRead'
           description: ''
     post:
       operationId: api_v1_ambassadors_create
@@ -28,13 +28,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Ambassador'
+              $ref: '#/components/schemas/AmbassadorCreate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Ambassador'
+              $ref: '#/components/schemas/AmbassadorCreate'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Ambassador'
+              $ref: '#/components/schemas/AmbassadorCreate'
         required: true
       security:
       - tokenAuth: []
@@ -44,7 +44,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ambassador'
+                $ref: '#/components/schemas/AmbassadorCreate'
           description: ''
   /api/v1/ambassadors/{id}/:
     get:
@@ -66,7 +66,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ambassador'
+                $ref: '#/components/schemas/AmbassadorRead'
           description: ''
     put:
       operationId: api_v1_ambassadors_update
@@ -83,13 +83,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Ambassador'
+              $ref: '#/components/schemas/AmbassadorCreate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Ambassador'
+              $ref: '#/components/schemas/AmbassadorCreate'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Ambassador'
+              $ref: '#/components/schemas/AmbassadorCreate'
         required: true
       security:
       - tokenAuth: []
@@ -99,7 +99,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ambassador'
+                $ref: '#/components/schemas/AmbassadorCreate'
           description: ''
     patch:
       operationId: api_v1_ambassadors_partial_update
@@ -116,13 +116,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedAmbassador'
+              $ref: '#/components/schemas/PatchedAmbassadorCreate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedAmbassador'
+              $ref: '#/components/schemas/PatchedAmbassadorCreate'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedAmbassador'
+              $ref: '#/components/schemas/PatchedAmbassadorCreate'
       security:
       - tokenAuth: []
       - {}
@@ -131,7 +131,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Ambassador'
+                $ref: '#/components/schemas/AmbassadorCreate'
           description: ''
     delete:
       operationId: api_v1_ambassadors_destroy
@@ -150,6 +150,150 @@ paths:
       responses:
         '204':
           description: No response body
+  /api/v1/api/schema/:
+    get:
+      operationId: api_v1_api_schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
   /api/v1/auth/token/login/:
     post:
       operationId: api_v1_auth_token_login_create
@@ -191,6 +335,39 @@ paths:
   /api/v1/content/:
     get:
       operationId: api_v1_content_list
+      description: Возвращает пагинированный список объектов контента с возможностью
+        фильтрации по статусу и поиска по имени.
+      summary: Получение списка контента
+      parameters:
+      - in: query
+        name: limit
+        schema:
+          type: integer
+        description: Лимит объектов на странице
+      - in: query
+        name: offset
+        schema:
+          type: integer
+        description: Смещение от начала списка
+      - in: query
+        name: search
+        schema:
+          type: string
+        description: Поиск по имени и фамилии
+      - in: query
+        name: status
+        schema:
+          type: string
+        description: Статус контента для фильтрации
+        examples:
+          НоваяПубликация:
+            value: new
+            summary: Новая публикация
+          Одобрена:
+            value: approved
+          НеОдобрена:
+            value: rejected
+            summary: Не одобрена
       tags:
       - api
       security:
@@ -201,12 +378,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Content'
+                $ref: '#/components/schemas/PaginatedContentList'
           description: ''
     post:
       operationId: api_v1_content_create
+      description: Создает новый объект контента с данными, предоставленными в запросе.
+      summary: Создание нового объекта контента
       tags:
       - api
       requestBody:
@@ -214,6 +391,14 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Content'
+            examples:
+              ПримерСозданияКонтента:
+                value:
+                  full_name: Иван Иванов
+                  telegram: '@ivanivanov'
+                  link: http://example.com/content
+                  guide: true
+                summary: Пример запроса на создание контента
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/Content'
@@ -230,10 +415,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Content'
+              examples:
+                ПримерОтветаНаСозданиеКонтента:
+                  value:
+                    id: 1
+                    full_name: Иван Иванов
+                    telegram: '@ivanivanov'
+                    link: http://example.com/content
+                    guide: true
+                    status: Новая публикация
+                    created_date: '2024-03-03'
+                    ambassador: 1
+                  summary: Пример ответа на создание контента
           description: ''
   /api/v1/content/{id}/:
     get:
       operationId: api_v1_content_retrieve
+      description: |-
+        Viewset для модели Контента
+        Позволяет фильтровать выборку по полям status и full_name.
       parameters:
       - in: path
         name: id
@@ -243,39 +443,6 @@ paths:
         required: true
       tags:
       - api
-      security:
-      - tokenAuth: []
-      - {}
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Content'
-          description: ''
-    put:
-      operationId: api_v1_content_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Контент.
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Content'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Content'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Content'
-        required: true
       security:
       - tokenAuth: []
       - {}
@@ -288,6 +455,9 @@ paths:
           description: ''
     patch:
       operationId: api_v1_content_partial_update
+      description: Обновляет часть данных объекта контента с указанным ID. Использовать
+        для обновления статуса
+      summary: Частичное обновление объекта контента
       parameters:
       - in: path
         name: id
@@ -302,6 +472,11 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PatchedContent'
+            examples:
+              ПримерОбновленияСтатусаКонтента:
+                value:
+                  status: Не одобрено
+                summary: Пример запроса на создание контента
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PatchedContent'
@@ -317,36 +492,28 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Content'
+              examples:
+                ПримерОбновленияСтатусаКонтента:
+                  value:
+                    id: 1
+                    full_name: Иван Иванов
+                    telegram: '@ivanivanov'
+                    link: http://example.com/content
+                    guide: true
+                    status: Не одобрено
+                    created_date: '2024-03-03'
+                    ambassador: 1
+                  summary: Пример ответа на обновления статуса контента
           description: ''
-    delete:
-      operationId: api_v1_content_destroy
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        description: A unique integer value identifying this Контент.
-        required: true
-      tags:
-      - api
-      security:
-      - tokenAuth: []
-      - {}
-      responses:
-        '204':
-          description: No response body
 components:
   schemas:
-    Ambassador:
+    AmbassadorCreate:
       type: object
+      description: Сериализатор для создания амбассадоров.
       properties:
         id:
           type: integer
           readOnly: true
-        ya_edu:
-          type: string
-        amb_goals:
-          type: string
         full_name:
           type: string
           title: Полное имя
@@ -415,7 +582,137 @@ components:
           maxLength: 2000
         status:
           allOf:
-          - $ref: '#/components/schemas/AmbassadorStatusEnum'
+          - $ref: '#/components/schemas/Status096Enum'
+          title: Статус амбассадора
+        reg_date:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата регистрации
+        ya_edu:
+          type: integer
+          nullable: true
+          title: Программа обучения
+        amb_goals:
+          type: array
+          items:
+            type: integer
+            title: Цель амбассадорства
+          title: Цель амбассадорства
+      required:
+      - address
+      - amb_goals
+      - city
+      - clothing_size
+      - country
+      - edu
+      - email
+      - full_name
+      - gender
+      - id
+      - phone_number
+      - postal_code
+      - reg_date
+      - shoe_size
+      - study_goal
+      - telegram
+      - work
+    AmbassadorGoal:
+      type: object
+      description: Сериализатор для целей амбассадорства.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Название цели
+          maxLength: 255
+      required:
+      - id
+      - name
+    AmbassadorRead:
+      type: object
+      description: Сериализатор для чтения амбассадоров.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        ya_edu:
+          $ref: '#/components/schemas/TrainingProgram'
+        amb_goals:
+          type: array
+          items:
+            $ref: '#/components/schemas/AmbassadorGoal'
+        full_name:
+          type: string
+          title: Полное имя
+          maxLength: 255
+        gender:
+          allOf:
+          - $ref: '#/components/schemas/GenderEnum'
+          title: Пол
+        country:
+          type: string
+          title: Страна
+          maxLength: 100
+        city:
+          type: string
+          title: Город
+          maxLength: 100
+        address:
+          type: string
+          title: Адрес проживания
+          maxLength: 255
+        postal_code:
+          type: string
+          title: Индекс
+          maxLength: 20
+        email:
+          type: string
+          title: Адрес проживания
+          maxLength: 255
+        phone_number:
+          type: string
+          title: Номер телефона
+          maxLength: 20
+        telegram:
+          type: string
+          title: Ник в телеграме
+          maxLength: 100
+        edu:
+          type: string
+          title: Образование
+          maxLength: 1000
+        work:
+          type: string
+          title: Место работы
+          maxLength: 1000
+        study_goal:
+          type: string
+          title: Цель обучения
+          maxLength: 1000
+        blog_url:
+          type: string
+          nullable: true
+          title: Ссылка на блоги
+          maxLength: 255
+        clothing_size:
+          allOf:
+          - $ref: '#/components/schemas/ClothingSizeEnum'
+          title: Размер одежды
+        shoe_size:
+          type: string
+          title: Размер обуви
+          maxLength: 50
+        additional_comments:
+          type: string
+          nullable: true
+          title: Дополнительная информация
+          maxLength: 2000
+        status:
+          allOf:
+          - $ref: '#/components/schemas/Status096Enum'
           title: Статус амбассадора
         reg_date:
           type: string
@@ -441,18 +738,6 @@ components:
       - telegram
       - work
       - ya_edu
-    AmbassadorStatusEnum:
-      enum:
-      - active
-      - paused
-      - not_ambassador
-      - pending
-      type: string
-      description: |-
-        * `active` - Активный
-        * `paused` - На паузе
-        * `not_ambassador` - Не амбассадор
-        * `pending` - Уточняется
     ClothingSizeEnum:
       enum:
       - XS
@@ -469,10 +754,20 @@ components:
         * `XL` - XL
     Content:
       type: object
+      description: Сериализатор для модели Контента.
       properties:
         id:
           type: integer
           readOnly: true
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ContentStatusEnum'
+          description: |-
+            Статус контента. Возможные значения: Новая публикация, Одобрена, Не одобрена.
+
+            * `new` - Новая публикация
+            * `approved` - Одобрена
+            * `rejected` - Не одобрена
         full_name:
           type: string
           title: Имя и Фамилия
@@ -488,10 +783,6 @@ components:
         guide:
           type: boolean
           title: В рамках Гайда?
-        status:
-          allOf:
-          - $ref: '#/components/schemas/ContentStatusEnum'
-          title: Статус контента
         created_date:
           type: string
           format: date
@@ -525,16 +816,33 @@ components:
       description: |-
         * `М` - Мужской
         * `Ж` - Женский
-    PatchedAmbassador:
+    PaginatedContentList:
       type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Content'
+    PatchedAmbassadorCreate:
+      type: object
+      description: Сериализатор для создания амбассадоров.
       properties:
         id:
           type: integer
           readOnly: true
-        ya_edu:
-          type: string
-        amb_goals:
-          type: string
         full_name:
           type: string
           title: Полное имя
@@ -603,19 +911,39 @@ components:
           maxLength: 2000
         status:
           allOf:
-          - $ref: '#/components/schemas/AmbassadorStatusEnum'
+          - $ref: '#/components/schemas/Status096Enum'
           title: Статус амбассадора
         reg_date:
           type: string
           format: date-time
           readOnly: true
           title: Дата регистрации
+        ya_edu:
+          type: integer
+          nullable: true
+          title: Программа обучения
+        amb_goals:
+          type: array
+          items:
+            type: integer
+            title: Цель амбассадорства
+          title: Цель амбассадорства
     PatchedContent:
       type: object
+      description: Сериализатор для модели Контента.
       properties:
         id:
           type: integer
           readOnly: true
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ContentStatusEnum'
+          description: |-
+            Статус контента. Возможные значения: Новая публикация, Одобрена, Не одобрена.
+
+            * `new` - Новая публикация
+            * `approved` - Одобрена
+            * `rejected` - Не одобрена
         full_name:
           type: string
           title: Имя и Фамилия
@@ -631,10 +959,6 @@ components:
         guide:
           type: boolean
           title: В рамках Гайда?
-        status:
-          allOf:
-          - $ref: '#/components/schemas/ContentStatusEnum'
-          title: Статус контента
         created_date:
           type: string
           format: date
@@ -643,6 +967,18 @@ components:
         ambassador:
           type: integer
           nullable: true
+    Status096Enum:
+      enum:
+      - active
+      - paused
+      - not_ambassador
+      - pending
+      type: string
+      description: |-
+        * `active` - Активный
+        * `paused` - На паузе
+        * `not_ambassador` - Не амбассадор
+        * `pending` - Уточняется
     TokenCreate:
       type: object
       properties:
@@ -650,6 +986,20 @@ components:
           type: string
         username:
           type: string
+    TrainingProgram:
+      type: object
+      description: Сериализатор для программ обучения.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Название программы
+          maxLength: 255
+      required:
+      - id
+      - name
   securitySchemes:
     tokenAuth:
       type: apiKey
