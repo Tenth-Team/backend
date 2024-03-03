@@ -1,6 +1,13 @@
 from django.contrib import admin
 
-from .models import Ambassador, AmbassadorGoal, Content, TrainingProgram
+from .models import (
+    Ambassador,
+    AmbassadorGoal,
+    Content,
+    Merchandise,
+    MerchandiseShippingRequest,
+    TrainingProgram,
+)
 
 
 @admin.register(TrainingProgram)
@@ -25,3 +32,14 @@ class AmbassadorAdmin(admin.ModelAdmin):
 @admin.register(Content)
 class ContentAdmin(admin.ModelAdmin):
     list_display = ('id', 'full_name', 'telegram', 'link', 'guide', 'status',)
+
+
+@admin.register(Merchandise)
+class MerchandiseAdmin(admin.ModelAdmin):
+    list_display = ('name', 'price',)
+
+
+@admin.register(MerchandiseShippingRequest)
+class MerchandiseShippingRequestAdmin(admin.ModelAdmin):
+    list_display = ('name_merch', 'ambassador', 'status_send',
+                    'created_date', 'comment',)

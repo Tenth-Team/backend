@@ -5,11 +5,14 @@ from rest_framework import serializers
 from ambassadors.choices import (
     CONTENT_STATUS_CHOICES,
     PROMO_CODE_STATUS_CHOICES,
+    STATUS_SEND_CHOICES,
 )
 from ambassadors.models import (
     Ambassador,
     AmbassadorGoal,
     Content,
+    Merchandise,
+    MerchandiseShippingRequest,
     PromoCode,
     TrainingProgram,
 )
@@ -208,3 +211,25 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
         if promo_code is not None:
             return promo_code.name
         return None
+
+
+class MerchandiseSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для мерча.
+    """
+
+    class Meta:
+        model = Merchandise
+        fields = ('id', 'name')
+
+
+class MerchandiseShippingRequestSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор модели заявки на отправку мерча.
+    """
+
+    status_send = ChoiceField(choices=STATUS_SEND_CHOICES)
+
+    class Meta:
+        model = MerchandiseShippingRequest
+        fields = '__all__'
