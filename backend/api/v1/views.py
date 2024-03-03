@@ -1,10 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from drf_spectacular.utils import (
-    OpenApiParameter,
-    extend_schema,
-    extend_schema_view,
-)
-from rest_framework import filters, viewsets
+from drf_spectacular.utils import extend_schema_view
+from rest_framework import filters, permissions, viewsets
 from rest_framework.pagination import LimitOffsetPagination
 
 from ambassadors.models import (
@@ -16,7 +12,7 @@ from ambassadors.models import (
 
 from .filters import ContentStatusFilter
 from .permissions import IsAuthenticatedOrYandexForms
-from .schemas import content_schema
+from .schemas import content_schema, merch_schema
 from .serializers import (
     AmbassadorCreateSerializer,
     AmbassadorReadSerializer,
@@ -65,41 +61,11 @@ class ContentViewSet(viewsets.ModelViewSet):
     )
 
 
-@extend_schema_view(
-    list=extend_schema(
-        summary='Получение списка заявок',
-        methods=['GET'],
-        parameters=[
-            OpenApiParameter(
-                name='id',
-                required=False,
-                type=int
-            ),
-        ],
-    ),
-    partial_update=extend_schema(
-        summary='Обновление статуса заявки',
-        methods=['PATCH'],
-        request=MerchandiseShippingRequestSerializer,
-        responses={200: MerchandiseShippingRequestSerializer},
-        parameters=[
-            OpenApiParameter(
-                name='status_send',
-                required=False,
-                type=str,
-            ),
-        ],
-    ),
-    create=extend_schema(
-        summary='Создание новой заявки',
-        methods=['POST'],
-        request=MerchandiseShippingRequestSerializer,
-        responses={200: MerchandiseShippingRequestSerializer},
-    ),
-)
+@extend_schema_view(**merch_schema)
 class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
     queryset = MerchandiseShippingRequest.objects.all()
     serializer_class = MerchandiseShippingRequestSerializer
+    permission_classes = (permissions.IsAuthenticated, )
     http_method_names = (
         'get',
         'post',
