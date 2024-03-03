@@ -33,7 +33,7 @@ class PromoCodeViewSet(viewsets.ModelViewSet):
     serializer_class = PromoCodeSerializer
 
 
-    @extend_schema_view(**content_schema)
+@extend_schema_view(**content_schema)
 class ContentViewSet(viewsets.ModelViewSet):
     """
     Viewset для модели Контента
