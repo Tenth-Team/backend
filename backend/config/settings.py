@@ -102,3 +102,5 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
+
+YANDEX_KEY = os.getenv('YANDEX_KEY', 'insecure-yandex-key')

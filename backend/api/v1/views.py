@@ -4,8 +4,8 @@ from rest_framework import filters, viewsets
 from rest_framework.pagination import LimitOffsetPagination
 
 from ambassadors.models import Ambassador, Content, PromoCode
-
 from .filters import ContentStatusFilter
+from .permissions import IsAuthenticatedOrYandexForms
 from .schemas import content_schema
 from .serializers import (
     AmbassadorCreateSerializer,
@@ -19,6 +19,7 @@ from .serializers import (
 class AmbassadorViewSet(viewsets.ModelViewSet):
     queryset = Ambassador.objects.all()
     serializer_class = AmbassadorCreateSerializer
+    permission_classes = (IsAuthenticatedOrYandexForms,)
 
     def get_serializer_class(self):
         if self.request.headers.get('X-Source') == 'YandexForm':
