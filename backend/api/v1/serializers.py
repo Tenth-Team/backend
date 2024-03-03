@@ -200,7 +200,7 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_promo_code(self, obj):
-        promo_code = obj.promo_code.first()
+        promo_code = obj.promo_code.filter(status='active').first()
         if promo_code is not None:
             return ShortPromoCodeSerializer(promo_code).data
         return None
