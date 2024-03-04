@@ -1,5 +1,6 @@
 from django_filters import FilterSet
-from django_filters.filters import BaseInFilter, CharFilter, ChoiceFilter
+from django_filters.filters import BaseInFilter, CharFilter, ChoiceFilter, \
+    OrderingFilter
 from rest_framework.exceptions import ValidationError
 
 from ambassadors.choices import (
@@ -69,17 +70,33 @@ class ContentStatusFilter(BaseChoiceFilter):
 #         model = Content
 #         fields = []
 
+def filter_by_status_russian(queryset, name, value):
+    # Обратный словарь для сопоставления русских названий со значениями в базе данных
+    reverse_status_choices = {v: k for k, v in STATUS_CHOICES}
+    # Получаем соответствующее значение на английском
+    english_value = reverse_status_choices.get(value)
+    if english_value:
+        # Фильтруем queryset по соответствующему английскому значению
+        return queryset.filter(**{name: english_value})
+    return queryset
+
+
 
 class AmbassadorFilter(FilterSet):
     """
     Фильтры для амбассадоров.
     """
     ya_edu = BaseInFilter(field_name='ya_edu', lookup_expr='in')
-    amb_goals = BaseInFilter(field_name='amb_goals', lookup_expr='in')
     country = BaseInFilter(field_name='country', lookup_expr='in')
     city = BaseInFilter(field_name='city', lookup_expr='in')
     status = ChoiceFilter(choices=STATUS_CHOICES)
     gender = ChoiceFilter(choices=GENDER_CHOICES)
+    order = OrderingFilter(
+        fields=(
+            ('reg_date', 'date'),
+            ('full_name', 'name'),
+        ),
+    )
 
     class Meta:
         model = Ambassador

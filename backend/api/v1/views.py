@@ -1,9 +1,14 @@
+from django.db import models
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema_view
 from rest_framework import filters, viewsets
+from rest_framework.decorators import action
 from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.response import Response
 
-from ambassadors.models import Ambassador, Content, PromoCode
+from ambassadors.choices import STATUS_CHOICES, GENDER_CHOICES
+from ambassadors.models import Ambassador, Content, PromoCode, AmbassadorGoal, \
+    TrainingProgram, Country, City
 
 from .filters import AmbassadorFilter, ContentStatusFilter
 from .pagination import AmbassadorPagination
@@ -36,6 +41,37 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
         if self.action == 'list' or self.action == 'retrieve':
             return AmbassadorReadSerializer
         return super().get_serializer_class()
+
+    @action(detail=False, methods=['get'])
+    def filters(self, request):
+        """
+        Метод для получения списка фильтров.
+        """
+        ya_edu_options = [{'id': edu.id, 'name': edu.name} for edu in
+                          TrainingProgram.objects.all()]
+        country_options = [{'id': country.id, 'name': country.name} for country
+                           in Country.objects.all()]
+        city_options = [{'id': city.id, 'name': city.name} for city in
+                        City.objects.all()]
+
+        filters_data = {
+            'ya_edu': {'name': 'Программа обучения', 'values': ya_edu_options},
+            'country': {'name': 'Страна', 'values': country_options},
+            'city': {'name': 'Город', 'values': city_options},
+            'status': {'name': 'Статус амбассадора',
+                       'values': [{'id': choice[0], 'name': choice[1]} for
+                                  choice in STATUS_CHOICES]},
+            'gender': {'name': 'Пол',
+                       'values': [{'id': choice[0], 'name': choice[1]} for
+                                  choice in GENDER_CHOICES]},
+            'order': {'name': 'Сортировать',
+                      'values': [
+                          {'id': 'reg_date', 'name': 'По дате'},
+                          {'id': 'full_name', 'name': 'По алфавиту'},
+                      ]}
+        }
+
+        return Response(filters_data)
 
 
 class PromoCodeViewSet(viewsets.ModelViewSet):
