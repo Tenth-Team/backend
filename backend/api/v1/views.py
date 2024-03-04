@@ -6,6 +6,7 @@ from rest_framework.pagination import LimitOffsetPagination
 from ambassadors.models import Ambassador, Content, PromoCode
 
 from .filters import ContentStatusFilter
+from .pagination import AmbassadorPagination
 from .permissions import IsAuthenticatedOrYandexForms
 from .schemas import content_schema
 from .serializers import (
@@ -18,8 +19,12 @@ from .serializers import (
 
 
 class AmbassadorViewSet(viewsets.ModelViewSet):
+    """
+    Вьюсет для амбассадоров.
+    """
     queryset = Ambassador.objects.all()
     serializer_class = AmbassadorCreateSerializer
+    pagination_class = AmbassadorPagination
     permission_classes = (IsAuthenticatedOrYandexForms,)
 
     def get_serializer_class(self):
