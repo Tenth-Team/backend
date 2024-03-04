@@ -10,7 +10,6 @@ paths:
       - api
       security:
       - tokenAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -28,17 +27,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AmbassadorCreate'
+              $ref: '#/components/schemas/AmbassadorCreateRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/AmbassadorCreate'
+              $ref: '#/components/schemas/AmbassadorCreateRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/AmbassadorCreate'
+              $ref: '#/components/schemas/AmbassadorCreateRequest'
         required: true
       security:
       - tokenAuth: []
-      - {}
       responses:
         '201':
           content:
@@ -60,7 +58,6 @@ paths:
       - api
       security:
       - tokenAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -83,17 +80,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AmbassadorCreate'
+              $ref: '#/components/schemas/AmbassadorCreateRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/AmbassadorCreate'
+              $ref: '#/components/schemas/AmbassadorCreateRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/AmbassadorCreate'
+              $ref: '#/components/schemas/AmbassadorCreateRequest'
         required: true
       security:
       - tokenAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -116,16 +112,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedAmbassadorCreate'
+              $ref: '#/components/schemas/PatchedAmbassadorCreateRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedAmbassadorCreate'
+              $ref: '#/components/schemas/PatchedAmbassadorCreateRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedAmbassadorCreate'
+              $ref: '#/components/schemas/PatchedAmbassadorCreateRequest'
       security:
       - tokenAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -146,7 +141,6 @@ paths:
       - api
       security:
       - tokenAuth: []
-      - {}
       responses:
         '204':
           description: No response body
@@ -304,13 +298,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TokenCreate'
+              $ref: '#/components/schemas/TokenCreateRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TokenCreate'
+              $ref: '#/components/schemas/TokenCreateRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/TokenCreate'
+              $ref: '#/components/schemas/TokenCreateRequest'
       security:
       - tokenAuth: []
       - {}
@@ -340,6 +334,11 @@ paths:
       summary: Получение списка контента
       parameters:
       - in: query
+        name: full_name
+        schema:
+          type: string
+        description: Поиск по имени и фамилии
+      - in: query
         name: limit
         schema:
           type: integer
@@ -350,24 +349,20 @@ paths:
           type: integer
         description: Смещение от начала списка
       - in: query
-        name: search
-        schema:
-          type: string
-        description: Поиск по имени и фамилии
-      - in: query
         name: status
         schema:
           type: string
         description: Статус контента для фильтрации
         examples:
-          НоваяПубликация:
+          New:
             value: new
-            summary: Новая публикация
-          Одобрена:
+            summary: new
+          Approved:
             value: approved
-          НеОдобрена:
+            summary: approved
+          Rejected:
             value: rejected
-            summary: Не одобрена
+            summary: rejected
       tags:
       - api
       security:
@@ -390,7 +385,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Content'
+              $ref: '#/components/schemas/ContentRequest'
             examples:
               ПримерСозданияКонтента:
                 value:
@@ -401,10 +396,10 @@ paths:
                 summary: Пример запроса на создание контента
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Content'
+              $ref: '#/components/schemas/ContentRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Content'
+              $ref: '#/components/schemas/ContentRequest'
         required: true
       security:
       - tokenAuth: []
@@ -423,7 +418,7 @@ paths:
                     telegram: '@ivanivanov'
                     link: http://example.com/content
                     guide: true
-                    status: Новая публикация
+                    status: new
                     created_date: '2024-03-03'
                     ambassador: 1
                   summary: Пример ответа на создание контента
@@ -471,18 +466,18 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedContent'
+              $ref: '#/components/schemas/PatchedContentRequest'
             examples:
               ПримерОбновленияСтатусаКонтента:
                 value:
-                  status: Не одобрено
-                summary: Пример запроса на создание контента
+                  status: rejected
+                summary: Пример запроса на обновления статуса контента
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedContent'
+              $ref: '#/components/schemas/PatchedContentRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedContent'
+              $ref: '#/components/schemas/PatchedContentRequest'
       security:
       - tokenAuth: []
       - {}
@@ -500,11 +495,158 @@ paths:
                     telegram: '@ivanivanov'
                     link: http://example.com/content
                     guide: true
-                    status: Не одобрено
+                    status: rejected
                     created_date: '2024-03-03'
                     ambassador: 1
                   summary: Пример ответа на обновления статуса контента
           description: ''
+  /api/v1/promocodes/:
+    get:
+      operationId: api_v1_promocodes_list
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PromoCode'
+          description: ''
+    post:
+      operationId: api_v1_promocodes_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromoCodeRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PromoCodeRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PromoCodeRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoCode'
+          description: ''
+  /api/v1/promocodes/{id}/:
+    get:
+      operationId: api_v1_promocodes_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Промокод.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoCode'
+          description: ''
+    put:
+      operationId: api_v1_promocodes_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Промокод.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromoCodeRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PromoCodeRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PromoCodeRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoCode'
+          description: ''
+    patch:
+      operationId: api_v1_promocodes_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Промокод.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPromoCodeRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPromoCodeRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPromoCodeRequest'
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoCode'
+          description: ''
+    delete:
+      operationId: api_v1_promocodes_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Промокод.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
 components:
   schemas:
     AmbassadorCreate:
@@ -617,6 +759,118 @@ components:
       - study_goal
       - telegram
       - work
+    AmbassadorCreateRequest:
+      type: object
+      description: Сериализатор для создания амбассадоров.
+      properties:
+        full_name:
+          type: string
+          minLength: 1
+          title: Полное имя
+          maxLength: 255
+        gender:
+          allOf:
+          - $ref: '#/components/schemas/GenderEnum'
+          title: Пол
+        country:
+          type: string
+          minLength: 1
+          title: Страна
+          maxLength: 100
+        city:
+          type: string
+          minLength: 1
+          title: Город
+          maxLength: 100
+        address:
+          type: string
+          minLength: 1
+          title: Адрес проживания
+          maxLength: 255
+        postal_code:
+          type: string
+          minLength: 1
+          title: Индекс
+          maxLength: 20
+        email:
+          type: string
+          minLength: 1
+          title: Адрес проживания
+          maxLength: 255
+        phone_number:
+          type: string
+          minLength: 1
+          title: Номер телефона
+          maxLength: 20
+        telegram:
+          type: string
+          minLength: 1
+          title: Ник в телеграме
+          maxLength: 100
+        edu:
+          type: string
+          minLength: 1
+          title: Образование
+          maxLength: 1000
+        work:
+          type: string
+          minLength: 1
+          title: Место работы
+          maxLength: 1000
+        study_goal:
+          type: string
+          minLength: 1
+          title: Цель обучения
+          maxLength: 1000
+        blog_url:
+          type: string
+          nullable: true
+          title: Ссылка на блоги
+          maxLength: 255
+        clothing_size:
+          allOf:
+          - $ref: '#/components/schemas/ClothingSizeEnum'
+          title: Размер одежды
+        shoe_size:
+          type: string
+          minLength: 1
+          title: Размер обуви
+          maxLength: 50
+        additional_comments:
+          type: string
+          nullable: true
+          title: Дополнительная информация
+          maxLength: 2000
+        status:
+          allOf:
+          - $ref: '#/components/schemas/Status096Enum'
+          title: Статус амбассадора
+        ya_edu:
+          type: integer
+          nullable: true
+          title: Программа обучения
+        amb_goals:
+          type: array
+          items:
+            type: integer
+            title: Цель амбассадорства
+          title: Цель амбассадорства
+      required:
+      - address
+      - amb_goals
+      - city
+      - clothing_size
+      - country
+      - edu
+      - email
+      - full_name
+      - gender
+      - phone_number
+      - postal_code
+      - shoe_size
+      - study_goal
+      - telegram
+      - work
     AmbassadorGoal:
       type: object
       description: Сериализатор для целей амбассадорства.
@@ -644,6 +898,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AmbassadorGoal'
+        promo_code:
+          type: string
+          readOnly: true
         full_name:
           type: string
           title: Полное имя
@@ -732,6 +989,7 @@ components:
       - id
       - phone_number
       - postal_code
+      - promo_code
       - reg_date
       - shoe_size
       - study_goal
@@ -759,15 +1017,6 @@ components:
         id:
           type: integer
           readOnly: true
-        status:
-          allOf:
-          - $ref: '#/components/schemas/ContentStatusEnum'
-          description: |-
-            Статус контента. Возможные значения: Новая публикация, Одобрена, Не одобрена.
-
-            * `new` - Новая публикация
-            * `approved` - Одобрена
-            * `rejected` - Не одобрена
         full_name:
           type: string
           title: Имя и Фамилия
@@ -783,6 +1032,10 @@ components:
         guide:
           type: boolean
           title: В рамках Гайда?
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ContentStatusEnum'
+          title: Статус контента
         created_date:
           type: string
           format: date
@@ -796,6 +1049,40 @@ components:
       - full_name
       - guide
       - id
+      - link
+      - telegram
+    ContentRequest:
+      type: object
+      description: Сериализатор для модели Контента.
+      properties:
+        full_name:
+          type: string
+          minLength: 1
+          title: Имя и Фамилия
+          maxLength: 255
+        telegram:
+          type: string
+          minLength: 1
+          title: Ник в телеграме
+          maxLength: 100
+        link:
+          type: string
+          minLength: 1
+          title: Ссылка на контент
+          maxLength: 200
+        guide:
+          type: boolean
+          title: В рамках Гайда?
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ContentStatusEnum'
+          title: Статус контента
+        ambassador:
+          type: integer
+          nullable: true
+      required:
+      - full_name
+      - guide
       - link
       - telegram
     ContentStatusEnum:
@@ -836,15 +1123,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Content'
-    PatchedAmbassadorCreate:
+    PatchedAmbassadorCreateRequest:
       type: object
       description: Сериализатор для создания амбассадоров.
       properties:
-        id:
-          type: integer
-          readOnly: true
         full_name:
           type: string
+          minLength: 1
           title: Полное имя
           maxLength: 255
         gender:
@@ -853,42 +1138,52 @@ components:
           title: Пол
         country:
           type: string
+          minLength: 1
           title: Страна
           maxLength: 100
         city:
           type: string
+          minLength: 1
           title: Город
           maxLength: 100
         address:
           type: string
+          minLength: 1
           title: Адрес проживания
           maxLength: 255
         postal_code:
           type: string
+          minLength: 1
           title: Индекс
           maxLength: 20
         email:
           type: string
+          minLength: 1
           title: Адрес проживания
           maxLength: 255
         phone_number:
           type: string
+          minLength: 1
           title: Номер телефона
           maxLength: 20
         telegram:
           type: string
+          minLength: 1
           title: Ник в телеграме
           maxLength: 100
         edu:
           type: string
+          minLength: 1
           title: Образование
           maxLength: 1000
         work:
           type: string
+          minLength: 1
           title: Место работы
           maxLength: 1000
         study_goal:
           type: string
+          minLength: 1
           title: Цель обучения
           maxLength: 1000
         blog_url:
@@ -902,6 +1197,7 @@ components:
           title: Размер одежды
         shoe_size:
           type: string
+          minLength: 1
           title: Размер обуви
           maxLength: 50
         additional_comments:
@@ -913,11 +1209,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/Status096Enum'
           title: Статус амбассадора
-        reg_date:
-          type: string
-          format: date-time
-          readOnly: true
-          title: Дата регистрации
         ya_edu:
           type: integer
           nullable: true
@@ -928,45 +1219,100 @@ components:
             type: integer
             title: Цель амбассадорства
           title: Цель амбассадорства
-    PatchedContent:
+    PatchedContentRequest:
       type: object
       description: Сериализатор для модели Контента.
       properties:
-        id:
-          type: integer
-          readOnly: true
-        status:
-          allOf:
-          - $ref: '#/components/schemas/ContentStatusEnum'
-          description: |-
-            Статус контента. Возможные значения: Новая публикация, Одобрена, Не одобрена.
-
-            * `new` - Новая публикация
-            * `approved` - Одобрена
-            * `rejected` - Не одобрена
         full_name:
           type: string
+          minLength: 1
           title: Имя и Фамилия
           maxLength: 255
         telegram:
           type: string
+          minLength: 1
           title: Ник в телеграме
           maxLength: 100
         link:
           type: string
+          minLength: 1
           title: Ссылка на контент
           maxLength: 200
         guide:
           type: boolean
           title: В рамках Гайда?
-        created_date:
-          type: string
-          format: date
-          readOnly: true
-          title: Дата создания
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ContentStatusEnum'
+          title: Статус контента
         ambassador:
           type: integer
           nullable: true
+    PatchedPromoCodeRequest:
+      type: object
+      description: Сериализатор для модели промокода.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          title: Промокод
+          maxLength: 255
+        status:
+          allOf:
+          - $ref: '#/components/schemas/PromoCodeStatusEnum'
+          title: Статус промокода
+        ambassador:
+          type: integer
+          title: Амбассадор
+    PromoCode:
+      type: object
+      description: Сериализатор для модели промокода.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Промокод
+          maxLength: 255
+        status:
+          allOf:
+          - $ref: '#/components/schemas/PromoCodeStatusEnum'
+          title: Статус промокода
+        ambassador:
+          type: integer
+          title: Амбассадор
+      required:
+      - ambassador
+      - id
+      - name
+    PromoCodeRequest:
+      type: object
+      description: Сериализатор для модели промокода.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          title: Промокод
+          maxLength: 255
+        status:
+          allOf:
+          - $ref: '#/components/schemas/PromoCodeStatusEnum'
+          title: Статус промокода
+        ambassador:
+          type: integer
+          title: Амбассадор
+      required:
+      - ambassador
+      - name
+    PromoCodeStatusEnum:
+      enum:
+      - active
+      - inactive
+      type: string
+      description: |-
+        * `active` - Активный
+        * `inactive` - Неактивный
     Status096Enum:
       enum:
       - active
@@ -986,6 +1332,15 @@ components:
           type: string
         username:
           type: string
+    TokenCreateRequest:
+      type: object
+      properties:
+        password:
+          type: string
+          minLength: 1
+        username:
+          type: string
+          minLength: 1
     TrainingProgram:
       type: object
       description: Сериализатор для программ обучения.

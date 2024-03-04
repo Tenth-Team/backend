@@ -1,11 +1,11 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema_view
-from rest_framework import filters, viewsets
+from rest_framework import viewsets
 from rest_framework.pagination import LimitOffsetPagination
 
 from ambassadors.models import Ambassador, Content, PromoCode
 
-from .filters import ContentStatusFilter
+from .filters import ContentFilter
 from .permissions import IsAuthenticatedOrYandexForms
 from .schemas import content_schema
 from .serializers import (
@@ -45,9 +45,8 @@ class ContentViewSet(viewsets.ModelViewSet):
     queryset = Content.objects.all()
     serializer_class = ContentSerializer
     pagination_class = LimitOffsetPagination
-    filterset_class = ContentStatusFilter
-    filter_backends = (DjangoFilterBackend, filters.SearchFilter)
-    search_fields = ('full_name',)
+    filterset_class = ContentFilter
+    filter_backends = (DjangoFilterBackend,)
     http_method_names = (
         'get',
         'post',

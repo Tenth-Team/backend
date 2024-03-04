@@ -18,13 +18,13 @@ content_schema = {
                 required=False,
                 type=str,
                 examples=[
-                    OpenApiExample("Новая публикация", value="new"),
-                    OpenApiExample("Одобрена", value="approved"),
-                    OpenApiExample("Не одобрена", value="rejected"),
+                    OpenApiExample("new", value="new"),
+                    OpenApiExample("approved", value="approved"),
+                    OpenApiExample("rejected", value="rejected"),
                 ],
             ),
             OpenApiParameter(
-                name='search',
+                name='full_name',
                 description='Поиск по имени и фамилии',
                 required=False,
                 type=str,
@@ -70,7 +70,7 @@ content_schema = {
                     "telegram": "@ivanivanov",
                     "link": "http://example.com/content",
                     "guide": True,
-                    "status": "Новая публикация",
+                    "status": "new",
                     "created_date": "2024-03-03",
                     "ambassador": 1,
                 },
@@ -88,9 +88,9 @@ content_schema = {
         examples=[
             OpenApiExample(
                 'Пример обновления статуса контента',
-                summary='Пример запроса на создание контента',
+                summary='Пример запроса на обновления статуса контента',
                 value={
-                    'status': 'Не одобрено',
+                    'status': 'rejected',
                 },
                 request_only=True,
             ),
@@ -103,7 +103,7 @@ content_schema = {
                     "telegram": "@ivanivanov",
                     "link": "http://example.com/content",
                     "guide": True,
-                    "status": "Не одобрено",
+                    "status": "rejected",
                     "created_date": "2024-03-03",
                     "ambassador": 1,
                 },

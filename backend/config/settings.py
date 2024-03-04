@@ -104,3 +104,8 @@ REST_FRAMEWORK = {
 }
 
 YANDEX_KEY = os.getenv('YANDEX_KEY', 'insecure-yandex-key')
+
+SPECTACULAR_SETTINGS = {
+    'COMPONENT_SPLIT_REQUEST': True,
+    # ... другие настройки ...
+}

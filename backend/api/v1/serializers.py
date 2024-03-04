@@ -2,10 +2,6 @@ import re
 
 from rest_framework import serializers
 
-from ambassadors.choices import (
-    CONTENT_STATUS_CHOICES,
-    PROMO_CODE_STATUS_CHOICES,
-)
 from ambassadors.models import (
     Ambassador,
     AmbassadorGoal,
@@ -37,39 +33,10 @@ class AmbassadorGoalSerializer(serializers.ModelSerializer):
         fields = ('id', 'name')
 
 
-class ChoiceField(serializers.ChoiceField):
-    """
-    Поле для обработки выборочных данных,
-    позволяющее представление и ввод в человекочитаемом формате.
-    """
-
-    def to_representation(self, obj):
-        """
-        Преобразует значение поля в его человекочитаемый формат для вывода.
-        """
-        if obj == '' and self.allow_blank:
-            return obj
-        return self._choices[obj]
-
-    def to_internal_value(self, data):
-        """
-        Преобразует человекочитаемое значение
-        обратно во внутреннее представление.
-        """
-        if data == '' and self.allow_blank:
-            return ''
-
-        for key, val in self._choices.items():
-            if val == data:
-                return key
-        self.fail('invalid_choice', input=data)
-
-
 class PromoCodeSerializer(serializers.ModelSerializer):
     """
     Сериализатор для модели промокода.
     """
-    status = ChoiceField(choices=PROMO_CODE_STATUS_CHOICES)
 
     class Meta:
         model = PromoCode
@@ -80,13 +47,6 @@ class ContentSerializer(serializers.ModelSerializer):
     """
     Сериализатор для модели Контента.
     """
-
-    status = ChoiceField(
-        choices=CONTENT_STATUS_CHOICES,
-        required=False,
-        help_text='Статус контента. Возможные значения: '
-        'Новая публикация, Одобрена, Не одобрена.',
-    )
 
     class Meta:
         """
@@ -167,7 +127,8 @@ class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
         goals = []
         for goal in re.split(r', (?=[А-Я])', amb_goals):
             goal, created = AmbassadorGoal.objects.get_or_create(
-                name=goal.strip())
+                name=goal.strip()
+            )
             goals.append(goal)
 
         training_program, created = TrainingProgram.objects.get_or_create(
