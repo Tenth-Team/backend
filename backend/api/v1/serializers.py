@@ -9,7 +9,9 @@ from ambassadors.choices import (
 from ambassadors.models import (
     Ambassador,
     AmbassadorGoal,
+    City,
     Content,
+    Country,
     PromoCode,
     TrainingProgram,
 )
@@ -138,6 +140,8 @@ class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
 
     ya_edu = serializers.CharField()
     amb_goals = serializers.CharField()
+    city = serializers.CharField()
+    country = serializers.CharField()
 
     class Meta:
         model = Ambassador
@@ -146,7 +150,11 @@ class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         ya_edu = validated_data.pop('ya_edu')
         goals = validated_data.pop('amb_goals')
-        ambassador = Ambassador.objects.create(ya_edu=ya_edu, **validated_data)
+        country = validated_data.pop('country')
+        city = validated_data.pop('city')
+        ambassador = Ambassador.objects.create(
+            ya_edu=ya_edu, country=country, city=city, **validated_data
+        )
         ambassador.amb_goals.add(*goals)
         return ambassador
 
@@ -163,6 +171,8 @@ class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
         ya_edu_name = data.get('ya_edu')
         amb_goals = data.get('amb_goals')
         telegram = data.get('telegram')
+        country = data.get('country')
+        city = data.get('city')
 
         goals = []
         for goal in re.split(r', (?=[А-Я])', amb_goals):
@@ -173,7 +183,14 @@ class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
         training_program, created = TrainingProgram.objects.get_or_create(
             name=ya_edu_name
         )
-
+        country, created = Country.objects.get_or_create(
+            name=country
+        )
+        city, created = City.objects.get_or_create(
+            name=city
+        )
+        internal_value['country'] = country
+        internal_value['city'] = city
         internal_value['ya_edu'] = training_program
         internal_value['amb_goals'] = goals
         internal_value['telegram'] = format_telegram_username(telegram)
