@@ -1,4 +1,3 @@
-from django.db import models
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema_view
 from rest_framework import filters, viewsets
@@ -6,9 +5,15 @@ from rest_framework.decorators import action
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
 
-from ambassadors.choices import STATUS_CHOICES, GENDER_CHOICES
-from ambassadors.models import Ambassador, Content, PromoCode, AmbassadorGoal, \
-    TrainingProgram, Country, City
+from ambassadors.choices import GENDER_CHOICES, STATUS_CHOICES
+from ambassadors.models import (
+    Ambassador,
+    City,
+    Content,
+    Country,
+    PromoCode,
+    TrainingProgram,
+)
 
 from .filters import AmbassadorFilter, ContentStatusFilter
 from .pagination import AmbassadorPagination

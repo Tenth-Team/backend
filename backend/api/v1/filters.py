@@ -1,6 +1,10 @@
 from django_filters import FilterSet
-from django_filters.filters import BaseInFilter, CharFilter, ChoiceFilter, \
-    OrderingFilter
+from django_filters.filters import (
+    BaseInFilter,
+    CharFilter,
+    ChoiceFilter,
+    OrderingFilter,
+)
 from rest_framework.exceptions import ValidationError
 
 from ambassadors.choices import (
@@ -53,6 +57,7 @@ class ContentStatusFilter(BaseChoiceFilter):
         fields = ['status']
         status_choices = CONTENT_STATUS_CHOICES
 
+
 # class ContentFilter(filters.FilterSet):
 #     """Запасной вариант, если не использовать логику с базовым классом """
 #     status = CharFilter(method='filter_status')
@@ -69,17 +74,6 @@ class ContentStatusFilter(BaseChoiceFilter):
 #     class Meta:
 #         model = Content
 #         fields = []
-
-def filter_by_status_russian(queryset, name, value):
-    # Обратный словарь для сопоставления русских названий со значениями в базе данных
-    reverse_status_choices = {v: k for k, v in STATUS_CHOICES}
-    # Получаем соответствующее значение на английском
-    english_value = reverse_status_choices.get(value)
-    if english_value:
-        # Фильтруем queryset по соответствующему английскому значению
-        return queryset.filter(**{name: english_value})
-    return queryset
-
 
 
 class AmbassadorFilter(FilterSet):

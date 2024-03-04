@@ -9,9 +9,11 @@ from ambassadors.choices import (
 from ambassadors.models import (
     Ambassador,
     AmbassadorGoal,
+    City,
     Content,
+    Country,
     PromoCode,
-    TrainingProgram, Country, City,
+    TrainingProgram,
 )
 
 from .utils import format_telegram_username
