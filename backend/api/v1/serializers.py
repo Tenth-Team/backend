@@ -201,6 +201,41 @@ class AmbassadorCreateSerializer(serializers.ModelSerializer):
     """
     Сериализатор для создания амбассадоров.
     """
+    city = serializers.CharField()
+    country = serializers.CharField()
+
+    def create(self, validated_data):
+        amb_goals_data = validated_data.pop('amb_goals')
+        country_data = validated_data.pop('country')
+        city_data = validated_data.pop('city')
+
+        ambassador = super().create(validated_data)
+
+        country, _ = Country.objects.get_or_create(name=country_data)
+        ambassador.country = country
+        city, _ = City.objects.get_or_create(name=city_data)
+        ambassador.city = city
+
+        ambassador.save()
+        ambassador.amb_goals.set(amb_goals_data)
+        return ambassador
+
+    def to_internal_value(self, data):
+        internal_value = super().to_internal_value(data)
+        telegram = data.get('telegram')
+        country = data.get('country')
+        city = data.get('city')
+
+        country, _ = Country.objects.get_or_create(
+            name=country
+        )
+        city, _ = City.objects.get_or_create(
+            name=city
+        )
+        internal_value['country'] = country
+        internal_value['city'] = city
+        internal_value['telegram'] = format_telegram_username(telegram)
+        return internal_value
 
     class Meta:
         model = Ambassador
@@ -215,6 +250,7 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
     ya_edu = TrainingProgramSerializer()
     amb_goals = AmbassadorGoalSerializer(many=True)
     promo_code = serializers.SerializerMethodField()
+    content_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Ambassador
@@ -225,3 +261,6 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
         if promo_code is not None:
             return promo_code.name
         return None
+
+    def get_content_count(self, obj):
+        return obj.content.count()
