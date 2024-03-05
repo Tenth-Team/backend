@@ -1,9 +1,18 @@
 from django_filters import FilterSet
-from django_filters.filters import CharFilter
+from django_filters.filters import (
+    BaseInFilter,
+    CharFilter,
+    ChoiceFilter,
+    OrderingFilter,
+)
 from rest_framework.exceptions import ValidationError
 
-from ambassadors.choices import CONTENT_STATUS_CHOICES
-from ambassadors.models import Content
+from ambassadors.choices import (
+    CONTENT_STATUS_CHOICES,
+    GENDER_CHOICES,
+    STATUS_CHOICES,
+)
+from ambassadors.models import Ambassador, Content
 
 
 class UniversalChoiceFilter(CharFilter):
@@ -48,6 +57,7 @@ class ContentStatusFilter(BaseChoiceFilter):
         fields = ['status']
         status_choices = CONTENT_STATUS_CHOICES
 
+
 # class ContentFilter(filters.FilterSet):
 #     """Запасной вариант, если не использовать логику с базовым классом """
 #     status = CharFilter(method='filter_status')
@@ -64,3 +74,24 @@ class ContentStatusFilter(BaseChoiceFilter):
 #     class Meta:
 #         model = Content
 #         fields = []
+
+
+class AmbassadorFilter(FilterSet):
+    """
+    Фильтры для амбассадоров.
+    """
+    ya_edu = BaseInFilter(field_name='ya_edu', lookup_expr='in')
+    country = BaseInFilter(field_name='country', lookup_expr='in')
+    city = BaseInFilter(field_name='city', lookup_expr='in')
+    status = ChoiceFilter(choices=STATUS_CHOICES)
+    gender = ChoiceFilter(choices=GENDER_CHOICES)
+    order = OrderingFilter(
+        fields=(
+            ('reg_date', 'date'),
+            ('full_name', 'name'),
+        ),
+    )
+
+    class Meta:
+        model = Ambassador
+        fields = []
