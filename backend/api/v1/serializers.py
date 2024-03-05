@@ -250,13 +250,17 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
     ya_edu = TrainingProgramSerializer()
     amb_goals = AmbassadorGoalSerializer(many=True)
     promo_code = serializers.SerializerMethodField()
+    content_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Ambassador
-        fields = '__all__'
+        fields = ()
 
     def get_promo_code(self, obj):
         promo_code = obj.promo_code.first()
         if promo_code is not None:
             return promo_code.name
         return None
+
+    def get_content_count(self, obj):
+        return obj.content.count()

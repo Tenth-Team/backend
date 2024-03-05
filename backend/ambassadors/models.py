@@ -189,7 +189,12 @@ class Content(models.Model):
         verbose_name='Статус контента',
     )
     ambassador = models.ForeignKey(
-        Ambassador, on_delete=models.SET_NULL, null=True
+        Ambassador,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='content',
+        verbose_name='амбассадор'
     )
     created_date = models.DateField(
         auto_now_add=True, verbose_name='Дата создания'
