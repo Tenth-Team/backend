@@ -78,6 +78,16 @@ class PromoCodeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ShortPromoCodeSerializer(serializers.ModelSerializer):
+    """
+    Короткий сериализатор для модели промокода.
+    """
+
+    class Meta:
+        model = PromoCode
+        fields = ('name', 'status')
+
+
 class ContentSerializer(serializers.ModelSerializer):
     """
     Сериализатор для модели Контента.
@@ -257,9 +267,9 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_promo_code(self, obj):
-        promo_code = obj.promo_code.first()
+        promo_code = obj.promo_code.filter(status='active').first()
         if promo_code is not None:
-            return promo_code.name
+            return ShortPromoCodeSerializer(promo_code).data
         return None
 
     def get_content_count(self, obj):
