@@ -254,7 +254,7 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Ambassador
-        fields = ()
+        fields = '__all__'
 
     def get_promo_code(self, obj):
         promo_code = obj.promo_code.first()
