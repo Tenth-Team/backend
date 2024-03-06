@@ -73,8 +73,8 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
                                   choice in GENDER_CHOICES]},
             'order': {'name': 'Сортировать',
                       'values': [
-                          {'id': 'reg_date', 'name': 'По дате'},
-                          {'id': 'full_name', 'name': 'По алфавиту'},
+                          {'id': 'date', 'name': 'По дате'},
+                          {'id': 'name', 'name': 'По алфавиту'},
                       ]}
         }
 

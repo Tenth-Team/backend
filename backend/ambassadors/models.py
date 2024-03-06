@@ -228,6 +228,7 @@ class Merchandise(models.Model):
 
     class Meta:
         verbose_name = 'Мерч'
+        verbose_name_plural = 'Мерчи'
 
 
 class MerchandiseShippingRequest(models.Model):
