@@ -1,0 +1,2284 @@
+[
+    {
+        "model": "ambassadors.ambassadorgoal",
+        "pk": 1,
+        "fields": {
+            "name": "Вести блог"
+        }
+    },
+    {
+        "model": "ambassadors.ambassadorgoal",
+        "pk": 2,
+        "fields": {
+            "name": "Развивать локальное профессиональное сообщество в своем городе"
+        }
+    },
+    {
+        "model": "ambassadors.ambassadorgoal",
+        "pk": 3,
+        "fields": {
+            "name": "Писать статьи"
+        }
+    },
+    {
+        "model": "ambassadors.ambassadorgoal",
+        "pk": 4,
+        "fields": {
+            "name": "Снимать видео или сниматься в них, если продакшн будет на нашей стороне"
+        }
+    },
+    {
+        "model": "ambassadors.ambassadorgoal",
+        "pk": 5,
+        "fields": {
+            "name": "Знакомить коллег на работе с продуктом Практикума через различные форматы"
+        }
+    },
+    {
+        "model": "ambassadors.ambassadorgoal",
+        "pk": 6,
+        "fields": {
+            "name": "Давать консультации и рассказывать всем про Практикум"
+        }
+    },
+    {
+        "model": "ambassadors.ambassadorgoal",
+        "pk": 7,
+        "fields": {
+            "name": "Выступать на мероприятиях"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 1,
+        "fields": {
+            "name": "Аналитик данных"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 2,
+        "fields": {
+            "name": "Специалист по Data Science"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 3,
+        "fields": {
+            "name": "Python-разработчик"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 4,
+        "fields": {
+            "name": "Веб-разработчик"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 5,
+        "fields": {
+            "name": "Инженер по тестированию (QA)"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 6,
+        "fields": {
+            "name": "UX/UI-дизайнер"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 7,
+        "fields": {
+            "name": "Маркетинг"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 8,
+        "fields": {
+            "name": "Графический дизайнер"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 9,
+        "fields": {
+            "name": "Middle Python"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 10,
+        "fields": {
+            "name": "C++"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 11,
+        "fields": {
+            "name": "Инженер данных"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 12,
+        "fields": {
+            "name": "IT-рекрутер"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 13,
+        "fields": {
+            "name": "Управление"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 14,
+        "fields": {
+            "name": "Английский"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 15,
+        "fields": {
+            "name": "Критическое мышление"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 16,
+        "fields": {
+            "name": "Рабочая коммуникация"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 17,
+        "fields": {
+            "name": "Алгоритмы для разработчиков"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 18,
+        "fields": {
+            "name": "Продуктовый дизайн"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 19,
+        "fields": {
+            "name": "SQL для работы с данными и аналитики"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 20,
+        "fields": {
+            "name": "Java-разработчик"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 21,
+        "fields": {
+            "name": "Коммерческий иллюстратор"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 22,
+        "fields": {
+            "name": "Фулстек разработчик"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 23,
+        "fields": {
+            "name": "Продвинутый GO-разработчик"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 24,
+        "fields": {
+            "name": "DevOps для эксплуатации и разработки"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 25,
+        "fields": {
+            "name": "IOS-разработчик"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 26,
+        "fields": {
+            "name": "Бизнес-аналитик"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 27,
+        "fields": {
+            "name": "Продакт-менеджер для специалистов с опытом"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 28,
+        "fields": {
+            "name": "Android-разработчик"
+        }
+    },
+    {
+        "model": "ambassadors.TrainingProgram",
+        "pk": 29,
+        "fields": {
+            "name": "Менеджер проектов"
+        }
+    },
+    {
+        "model": "ambassadors.Country",
+        "pk": 1,
+        "fields": {
+            "name": "Россия"
+        }
+    },
+    {
+        "model": "ambassadors.Country",
+        "pk": 2,
+        "fields": {
+            "name": "Украина"
+        }
+    },
+    {
+        "model": "ambassadors.Country",
+        "pk": 3,
+        "fields": {
+            "name": "Беларусь"
+        }
+    },
+    {
+        "model": "ambassadors.Country",
+        "pk": 4,
+        "fields": {
+            "name": "Казахстан"
+        }
+    },
+    {
+        "model": "ambassadors.Country",
+        "pk": 5,
+        "fields": {
+            "name": "Узбекистан"
+        }
+    },
+    {
+        "model": "ambassadors.Country",
+        "pk": 6,
+        "fields": {
+            "name": "Таджикистан"
+        }
+    },
+    {
+        "model": "ambassadors.Country",
+        "pk": 7,
+        "fields": {
+            "name": "Туркменистан"
+        }
+    },
+    {
+        "model": "ambassadors.Country",
+        "pk": 8,
+        "fields": {
+            "name": "Азербайджан"
+        }
+    },
+    {
+        "model": "ambassadors.Country",
+        "pk": 9,
+        "fields": {
+            "name": "Армения"
+        }
+    },
+    {
+        "model": "ambassadors.Country",
+        "pk": 10,
+        "fields": {
+            "name": "Молдова"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 1,
+        "fields": {
+            "name": "Москва"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 2,
+        "fields": {
+            "name": "Санкт-Петербург"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 3,
+        "fields": {
+            "name": "Новосибирск"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 4,
+        "fields": {
+            "name": "Екатеринбург"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 5,
+        "fields": {
+            "name": "Нижний Новгород"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 6,
+        "fields": {
+            "name": "Казань"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 7,
+        "fields": {
+            "name": "Челябинск"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 8,
+        "fields": {
+            "name": "Омск"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 9,
+        "fields": {
+            "name": "Самара"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 10,
+        "fields": {
+            "name": "Ростов-на-Дону"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 11,
+        "fields": {
+            "name": "Уфа"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 12,
+        "fields": {
+            "name": "Красноярск"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 13,
+        "fields": {
+            "name": "Пермь"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 14,
+        "fields": {
+            "name": "Воронеж"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 15,
+        "fields": {
+            "name": "Волгоград"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 16,
+        "fields": {
+            "name": "Краснодар"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 17,
+        "fields": {
+            "name": "Саратов"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 18,
+        "fields": {
+            "name": "Тюмень"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 19,
+        "fields": {
+            "name": "Тольятти"
+        }
+    },
+    {
+        "model": "ambassadors.City",
+        "pk": 20,
+        "fields": {
+            "name": "Ижевск"
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 1,
+        "fields": {
+            "full_name": "Иванов Иван Иванович",
+            "gender": "М",
+            "ya_edu": 1,
+            "country": 1,
+            "city": 1,
+            "address": "ул. Главная, д. 123",
+            "postal_code": "123456",
+            "email": "ivan@example.com",
+            "phone_number": "+79101234567",
+            "telegram": "@ivanov",
+            "edu": "Высшее образование по специальности программист",
+            "work": "Инженер-программист в ООО Пример",
+            "study_goal": "Овладение навыками разработки на Django",
+            "blog_url": "https://example.com/blog",
+            "clothing_size": "M",
+            "shoe_size": "43",
+            "additional_comments": "Дополнительных комментариев нет",
+            "status": "pending",
+            "reg_date": "2023-01-01T00:00:00Z",
+            "amb_goals": [1, 2]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 2,
+        "fields": {
+            "full_name": "Петров Петр Петрович",
+            "gender": "М",
+            "ya_edu": 2,
+            "country": 2,
+            "city": 2,
+            "address": "ул. Вторая, д. 456",
+            "postal_code": "654321",
+            "email": "petr@example.com",
+            "phone_number": "+79109876543",
+            "telegram": "@petrov",
+            "edu": "Высшее образование по специальности инженер",
+            "work": "Инженер в ООО Инженерия",
+            "study_goal": "Изучение новых технологий",
+            "blog_url": "",
+            "clothing_size": "L",
+            "shoe_size": "45",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2023-02-01T00:00:00Z",
+            "amb_goals": [3]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 3,
+        "fields": {
+            "full_name": "Сидорова Мария Ивановна",
+            "gender": "Ж",
+            "ya_edu": 3,
+            "country": 3,
+            "city": 3,
+            "address": "ул. Третья, д. 789",
+            "postal_code": "987654",
+            "email": "maria@example.com",
+            "phone_number": "+79107654321",
+            "telegram": "@sidorova",
+            "edu": "Высшее образование по специальности дизайнер",
+            "work": "Дизайнер в ООО Дизайн",
+            "study_goal": "Развитие навыков в графическом дизайне",
+            "blog_url": "https://mariadesigns.com",
+            "clothing_size": "S",
+            "shoe_size": "38",
+            "additional_comments": "Люблю экспериментировать с цветами",
+            "status": "active",
+            "reg_date": "2023-03-01T00:00:00Z",
+            "amb_goals": [1, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 4,
+        "fields": {
+            "full_name": "Николаев Владимир Петрович",
+            "gender": "М",
+            "ya_edu": 1,
+            "country": 2,
+            "city": 5,
+            "address": "ул. Четвертая, д. 135",
+            "postal_code": "135790",
+            "email": "vladimir@example.com",
+            "phone_number": "+79104321654",
+            "telegram": "@vladimir",
+            "edu": "Высшее образование по специальности экономист",
+            "work": "Финансовый аналитик в ООО Финансы",
+            "study_goal": "Изучение финансового моделирования",
+            "blog_url": "",
+            "clothing_size": "M",
+            "shoe_size": "42",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2023-04-01T00:00:00Z",
+            "amb_goals": [2, 3]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 5,
+        "fields": {
+            "full_name": "Александрова Екатерина Александровна",
+            "gender": "Ж",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 7,
+            "address": "ул. Пятая, д. 246",
+            "postal_code": "246813",
+            "email": "ekaterina@example.com",
+            "phone_number": "+79106543210",
+            "telegram": "@ekaterina",
+            "edu": "Высшее образование по специальности психолог",
+            "work": "Психолог в Центре психологии",
+            "study_goal": "Изучение методов психотерапии",
+            "blog_url": "",
+            "clothing_size": "M",
+            "shoe_size": "39",
+            "additional_comments": "Хочу помогать людям находить гармонию",
+            "status": "active",
+            "reg_date": "2023-05-01T00:00:00Z",
+            "amb_goals": [4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 6,
+        "fields": {
+            "full_name": "Федоров Алексей Алексеевич",
+            "gender": "М",
+            "ya_edu": 1,
+            "country": 3,
+            "city": 6,
+            "address": "ул. Шестая, д. 357",
+            "postal_code": "357951",
+            "email": "aleksey@example.com",
+            "phone_number": "+79102345678",
+            "telegram": "@aleksey",
+            "edu": "Высшее образование по специальности маркетолог",
+            "work": "Маркетолог в Интернет-агентстве",
+            "study_goal": "Изучение цифрового маркетинга",
+            "blog_url": "https://alekseydigital.com",
+            "clothing_size": "L",
+            "shoe_size": "44",
+            "additional_comments": "",
+            "status": "paused",
+            "reg_date": "2023-06-01T00:00:00Z",
+            "amb_goals": [1, 3]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 7,
+        "fields": {
+            "full_name": "Кузнецова Анна Алексеевна",
+            "gender": "Ж",
+            "ya_edu": 3,
+            "country": 2,
+            "city": 4,
+            "address": "ул. Седьмая, д. 579",
+            "postal_code": "579246",
+            "email": "anna@example.com",
+            "phone_number": "+79103456789",
+            "telegram": "@anna",
+            "edu": "Высшее образование по специальности лингвист",
+            "work": "Переводчик в ООО Переводы",
+            "study_goal": "Изучение новых языков",
+            "blog_url": "",
+            "clothing_size": "M",
+            "shoe_size": "40",
+            "additional_comments": "",
+            "status": "not_ambassador",
+            "reg_date": "2023-07-01T00:00:00Z",
+            "amb_goals": [2, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 8,
+        "fields": {
+            "full_name": "Михайлов Игорь Сергеевич",
+            "gender": "М",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 3,
+            "address": "ул. Восьмая, д. 692",
+            "postal_code": "692537",
+            "email": "igor@example.com",
+            "phone_number": "+79104567891",
+            "telegram": "@igor",
+            "edu": "Высшее образование по специальности учитель",
+            "work": "Учитель математики в школе №123",
+            "study_goal": "Повышение квалификации",
+            "blog_url": "https://mathwithigor.com",
+            "clothing_size": "L",
+            "shoe_size": "41",
+            "additional_comments": "Люблю находить интересные методики обучения",
+            "status": "pending",
+            "reg_date": "2023-08-01T00:00:00Z",
+            "amb_goals": [1]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 9,
+        "fields": {
+            "full_name": "Васильева Елена Александровна",
+            "gender": "Ж",
+            "ya_edu": 3,
+            "country": 3,
+            "city": 2,
+            "address": "ул. Девятая, д. 824",
+            "postal_code": "824963",
+            "email": "elena@example.com",
+            "phone_number": "+79106789012",
+            "telegram": "@elena",
+            "edu": "Высшее образование по специальности врач",
+            "work": "Врач-терапевт в городской поликлинике",
+            "study_goal": "Получение дополнительного медицинского образования",
+            "blog_url": "",
+            "clothing_size": "S",
+            "shoe_size": "37",
+            "additional_comments": "",
+            "status": "not_ambassador",
+            "reg_date": "2023-09-01T00:00:00Z",
+            "amb_goals": [3, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 10,
+        "fields": {
+            "full_name": "Григорьев Денис Сергеевич",
+            "gender": "М",
+            "ya_edu": 1,
+            "country": 2,
+            "city": 6,
+            "address": "ул. Десятая, д. 185",
+            "postal_code": "185730",
+            "email": "denis@example.com",
+            "phone_number": "+79108901234",
+            "telegram": "@denis",
+            "edu": "Высшее образование по специальности журналист",
+            "work": "Журналист в газете",
+            "study_goal": "Изучение новых методов журналистики",
+            "blog_url": "https://denisjournalist.com",
+            "clothing_size": "M",
+            "shoe_size": "42",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2023-10-01T00:00:00Z",
+            "amb_goals": [2, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 11,
+        "fields": {
+            "full_name": "Смирнова Ольга Викторовна",
+            "gender": "Ж",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 5,
+            "address": "ул. Одиннадцатая, д. 721",
+            "postal_code": "721834",
+            "email": "olga@example.com",
+            "phone_number": "+79107654320",
+            "telegram": "@olga",
+            "edu": "Высшее образование по специальности биолог",
+            "work": "Биолог в институте",
+            "study_goal": "Исследование экосистемы",
+            "blog_url": "",
+            "clothing_size": "M",
+            "shoe_size": "39",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2023-11-01T00:00:00Z",
+            "amb_goals": [3, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 12,
+        "fields": {
+            "full_name": "Козлов Иван Павлович",
+            "gender": "М",
+            "ya_edu": 1,
+            "country": 2,
+            "city": 4,
+            "address": "ул. Двенадцатая, д. 531",
+            "postal_code": "531947",
+            "email": "ivan@example.com",
+            "phone_number": "+79109876541",
+            "telegram": "@ivan",
+            "edu": "Высшее образование по специальности химик",
+            "work": "Химик в научном центре",
+            "study_goal": "Изучение новых методов синтеза",
+            "blog_url": "",
+            "clothing_size": "L",
+            "shoe_size": "44",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2023-12-01T00:00:00Z",
+            "amb_goals": [1, 2]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 13,
+        "fields": {
+            "full_name": "Морозова Наталья Александровна",
+            "gender": "Ж",
+            "ya_edu": 3,
+            "country": 3,
+            "city": 3,
+            "address": "ул. Тринадцатая, д. 946",
+            "postal_code": "946278",
+            "email": "natalia@example.com",
+            "phone_number": "+79101234567",
+            "telegram": "@natalia",
+            "edu": "Высшее образование по специальности педагог",
+            "work": "Учитель начальных классов в школе",
+            "study_goal": "Изучение новых методов обучения",
+            "blog_url": "",
+            "clothing_size": "S",
+            "shoe_size": "38",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2024-01-01T00:00:00Z",
+            "amb_goals": [4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 14,
+        "fields": {
+            "full_name": "Попов Александр Валерьевич",
+            "gender": "М",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 7,
+            "address": "ул. Четырнадцатая, д. 358",
+            "postal_code": "358726",
+            "email": "alexander@example.com",
+            "phone_number": "+79102345678",
+            "telegram": "@alexander",
+            "edu": "Высшее образование по специальности архитектор",
+            "work": "Архитектор в архитектурном бюро",
+            "study_goal": "Развитие навыков в архитектурном проектировании",
+            "blog_url": "",
+            "clothing_size": "M",
+            "shoe_size": "43",
+            "additional_comments": "Люблю современную архитектуру",
+            "status": "pending",
+            "reg_date": "2024-02-01T00:00:00Z",
+            "amb_goals": [1, 3]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 15,
+        "fields": {
+            "full_name": "Волкова Евгения Дмитриевна",
+            "gender": "Ж",
+            "ya_edu": 1,
+            "country": 2,
+            "city": 6,
+            "address": "ул. Пятнадцатая, д. 279",
+            "postal_code": "279543",
+            "email": "evgenia@example.com",
+            "phone_number": "+79108901234",
+            "telegram": "@evgenia",
+            "edu": "Высшее образование по специальности финансист",
+            "work": "Финансовый аналитик в банке",
+            "study_goal": "Изучение финансового анализа",
+            "blog_url": "https://evgeniabanking.com",
+            "clothing_size": "L",
+            "shoe_size": "40",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2024-03-01T00:00:00Z",
+            "amb_goals": [2, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 16,
+        "fields": {
+            "full_name": "Антонов Владислав Алексеевич",
+            "gender": "М",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 3,
+            "address": "ул. Шестнадцатая, д. 741",
+            "postal_code": "741852",
+            "email": "vladislav@example.com",
+            "phone_number": "+79106789012",
+            "telegram": "@vladislav",
+            "edu": "Высшее образование по специальности юрист",
+            "work": "Юрист в адвокатской конторе",
+            "study_goal": "Расширение знаний в гражданском праве",
+            "blog_url": "",
+            "clothing_size": "M",
+            "shoe_size": "41",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2024-04-01T00:00:00Z",
+            "amb_goals": [1, 3]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 17,
+        "fields": {
+            "full_name": "Гришина Анастасия Сергеевна",
+            "gender": "Ж",
+            "ya_edu": 3,
+            "country": 3,
+            "city": 2,
+            "address": "ул. Семнадцатая, д. 694",
+            "postal_code": "694813",
+            "email": "anastasia@example.com",
+            "phone_number": "+79101234567",
+            "telegram": "@anastasia",
+            "edu": "Высшее образование по специальности медицинская сестра",
+            "work": "Медицинская сестра в больнице",
+            "study_goal": "Повышение квалификации",
+            "blog_url": "",
+            "clothing_size": "S",
+            "shoe_size": "37",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2024-05-01T00:00:00Z",
+            "amb_goals": [4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 18,
+        "fields": {
+            "full_name": "Кузьмина Дарья Васильевна",
+            "gender": "Ж",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 7,
+            "address": "ул. Восемнадцатая, д. 482",
+            "postal_code": "482579",
+            "email": "daria@example.com",
+            "phone_number": "+79103456789",
+            "telegram": "@daria",
+            "edu": "Высшее образование по специальности химик",
+            "work": "Исследователь в химической лаборатории",
+            "study_goal": "Изучение новых методов синтеза материалов",
+            "blog_url": "",
+            "clothing_size": "M",
+            "shoe_size": "42",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2024-06-01T00:00:00Z",
+            "amb_goals": [1, 3]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 19,
+        "fields": {
+            "full_name": "Фролов Игорь Андреевич",
+            "gender": "М",
+            "ya_edu": 1,
+            "country": 2,
+            "city": 6,
+            "address": "ул. Девятнадцатая, д. 357",
+            "postal_code": "357824",
+            "email": "igor@example.com",
+            "phone_number": "+79108901234",
+            "telegram": "@igor",
+            "edu": "Высшее образование по специальности филолог",
+            "work": "Редактор в издательстве",
+            "study_goal": "Изучение стилистики и редактирования",
+            "blog_url": "",
+            "clothing_size": "L",
+            "shoe_size": "43",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2024-07-01T00:00:00Z",
+            "amb_goals": [2, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 20,
+        "fields": {
+            "full_name": "Соколова Мария Игоревна",
+            "gender": "Ж",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 3,
+            "address": "ул. Двадцатая, д. 921",
+            "postal_code": "921637",
+            "email": "maria@example.com",
+            "phone_number": "+79106789012",
+            "telegram": "@maria",
+            "edu": "Высшее образование по специальности психолог",
+            "work": "Психолог в центре развития",
+            "study_goal": "Изучение новых методов психотерапии",
+            "blog_url": "",
+            "clothing_size": "S",
+            "shoe_size": "38",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2024-08-01T00:00:00Z",
+            "amb_goals": [1, 3]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 21,
+        "fields": {
+            "full_name": "Иванова Екатерина Андреевна",
+            "gender": "Ж",
+            "ya_edu": 1,
+            "country": 2,
+            "city": 6,
+            "address": "ул. Двадцать первая, д. 135",
+            "postal_code": "135729",
+            "email": "ekaterina@example.com",
+            "phone_number": "+79102345678",
+            "telegram": "@ekaterina",
+            "edu": "Высшее образование по специальности педагог",
+            "work": "Учитель русского языка и литературы в школе",
+            "study_goal": "Изучение методик преподавания литературы",
+            "blog_url": "",
+            "clothing_size": "M",
+            "shoe_size": "40",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2024-09-01T00:00:00Z",
+            "amb_goals": [3, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 22,
+        "fields": {
+            "full_name": "Петров Дмитрий Игоревич",
+            "gender": "М",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 3,
+            "address": "ул. Двадцать вторая, д. 849",
+            "postal_code": "849623",
+            "email": "dmitry@example.com",
+            "phone_number": "+79103456789",
+            "telegram": "@dmitry",
+            "edu": "Высшее образование по специальности программист",
+            "work": "Разработчик в IT-компании",
+            "study_goal": "Изучение новых технологий программирования",
+            "blog_url": "https://dmitryprogramming.com",
+            "clothing_size": "L",
+            "shoe_size": "43",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2024-10-01T00:00:00Z",
+            "amb_goals": [1, 2]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 23,
+        "fields": {
+            "full_name": "Сидорова Алена Васильевна",
+            "gender": "Ж",
+            "ya_edu": 3,
+            "country": 3,
+            "city": 2,
+            "address": "ул. Двадцать третья, д. 726",
+            "postal_code": "726548",
+            "email": "alena@example.com",
+            "phone_number": "+79104567891",
+            "telegram": "@alena",
+            "edu": "Высшее образование по специальности экономист",
+            "work": "Финансовый аналитик в банке",
+            "study_goal": "Изучение финансового анализа",
+            "blog_url": "",
+            "clothing_size": "S",
+            "shoe_size": "37",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2024-11-01T00:00:00Z",
+            "amb_goals": [4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 24,
+        "fields": {
+            "full_name": "Ковалев Павел Сергеевич",
+            "gender": "М",
+            "ya_edu": 1,
+            "country": 2,
+            "city": 6,
+            "address": "ул. Двадцать четвертая, д. 618",
+            "postal_code": "618357",
+            "email": "pavel@example.com",
+            "phone_number": "+79108901234",
+            "telegram": "@pavel",
+            "edu": "Высшее образование по специальности физик",
+            "work": "Научный сотрудник в институте",
+            "study_goal": "Исследование квантовых явлений",
+            "blog_url": "https://pavelphysics.com",
+            "clothing_size": "M",
+            "shoe_size": "42",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2024-12-01T00:00:00Z",
+            "amb_goals": [2, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 25,
+        "fields": {
+            "full_name": "Белова Мария Владимировна",
+            "gender": "Ж",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 3,
+            "address": "ул. Двадцать пятая, д. 984",
+            "postal_code": "984726",
+            "email": "maria@example.com",
+            "phone_number": "+79102345678",
+            "telegram": "@maria",
+            "edu": "Высшее образование по специальности психолог",
+            "work": "Клинический психолог",
+            "study_goal": "Изучение психотерапии",
+            "blog_url": "",
+            "clothing_size": "M",
+            "shoe_size": "40",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2025-01-01T00:00:00Z",
+            "amb_goals": [3, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 26,
+        "fields": {
+            "full_name": "Королев Артем Валерьевич",
+            "gender": "М",
+            "ya_edu": 1,
+            "country": 2,
+            "city": 6,
+            "address": "ул. Двадцать шестая, д. 275",
+            "postal_code": "275931",
+            "email": "artem@example.com",
+            "phone_number": "+79103456789",
+            "telegram": "@artem",
+            "edu": "Высшее образование по специальности инженер-строитель",
+            "work": "Инженер в строительной компании",
+            "study_goal": "Развитие навыков в проектировании",
+            "blog_url": "",
+            "clothing_size": "L",
+            "shoe_size": "44",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2025-02-01T00:00:00Z",
+            "amb_goals": [1, 2]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 27,
+        "fields": {
+            "full_name": "Новикова Анастасия Петровна",
+            "gender": "Ж",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 3,
+            "address": "ул. Двадцать седьмая, д. 632",
+            "postal_code": "632479",
+            "email": "anastasia@example.com",
+            "phone_number": "+79104567891",
+            "telegram": "@anastasia",
+            "edu": "Высшее образование по специальности биолог",
+            "work": "Научный сотрудник в институте",
+            "study_goal": "Исследование экологических систем",
+            "blog_url": "",
+            "clothing_size": "S",
+            "shoe_size": "37",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2025-03-01T00:00:00Z",
+            "amb_goals": [4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 28,
+        "fields": {
+            "full_name": "Максимов Андрей Сергеевич",
+            "gender": "М",
+            "ya_edu": 1,
+            "country": 2,
+            "city": 6,
+            "address": "ул. Двадцать восьмая, д. 594",
+            "postal_code": "594812",
+            "email": "andrey@example.com",
+            "phone_number": "+79108901234",
+            "telegram": "@andrey",
+            "edu": "Высшее образование по специальности физик",
+            "work": "Физик-теоретик в университете",
+            "study_goal": "Изучение квантовой механики",
+            "blog_url": "",
+            "clothing_size": "M",
+            "shoe_size": "42",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2025-04-01T00:00:00Z",
+            "amb_goals": [2, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 29,
+        "fields": {
+            "full_name": "Дмитриева Юлия Александровна",
+            "gender": "Ж",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 3,
+            "address": "ул. Двадцать девятая, д. 826",
+            "postal_code": "826375",
+            "email": "yulia@example.com",
+            "phone_number": "+79102345678",
+            "telegram": "@yulia",
+            "edu": "Высшее образование по специальности психолог",
+            "work": "Психолог в консультационном центре",
+            "study_goal": "Развитие навыков психотерапии",
+            "blog_url": "",
+            "clothing_size": "M",
+            "shoe_size": "40",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2025-05-01T00:00:00Z",
+            "amb_goals": [3, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 30,
+        "fields": {
+            "full_name": "Алексеев Алексей Павлович",
+            "gender": "М",
+            "ya_edu": 1,
+            "country": 2,
+            "city": 6,
+            "address": "ул. Тридцатая, д. 357",
+            "postal_code": "357924",
+            "email": "aleksey@example.com",
+            "phone_number": "+79103456789",
+            "telegram": "@aleksey",
+            "edu": "Высшее образование по специальности юрист",
+            "work": "Адвокат",
+            "study_goal": "Изучение гражданского права",
+            "blog_url": "",
+            "clothing_size": "L",
+            "shoe_size": "44",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2025-06-01T00:00:00Z",
+            "amb_goals": [1, 2]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 31,
+        "fields": {
+            "full_name": "Козлов Иван Петрович",
+            "gender": "М",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 3,
+            "address": "ул. Тридцать первая, д. 972",
+            "postal_code": "972518",
+            "email": "ivan@example.com",
+            "phone_number": "+79108901234",
+            "telegram": "@ivan",
+            "edu": "Высшее образование по специальности программист",
+            "work": "Разработчик в IT-компании",
+            "study_goal": "Изучение новых технологий программирования",
+            "blog_url": "https://ivanprogramming.com",
+            "clothing_size": "L",
+            "shoe_size": "43",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2025-07-01T00:00:00Z",
+            "amb_goals": [1, 2]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 32,
+        "fields": {
+            "full_name": "Миронова Елена Сергеевна",
+            "gender": "Ж",
+            "ya_edu": 3,
+            "country": 3,
+            "city": 2,
+            "address": "ул. Тридцать вторая, д. 683",
+            "postal_code": "683927",
+            "email": "elena@example.com",
+            "phone_number": "+79102345678",
+            "telegram": "@elena",
+            "edu": "Высшее образование по специальности медицинская сестра",
+            "work": "Медицинская сестра в больнице",
+            "study_goal": "Повышение квалификации",
+            "blog_url": "",
+            "clothing_size": "S",
+            "shoe_size": "37",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2025-08-01T00:00:00Z",
+            "amb_goals": [3, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 33,
+        "fields": {
+            "full_name": "Поляков Александр Иванович",
+            "gender": "М",
+            "ya_edu": 1,
+            "country": 2,
+            "city": 6,
+            "address": "ул. Тридцать третья, д. 529",
+            "postal_code": "529736",
+            "email": "alexander@example.com",
+            "phone_number": "+79103456789",
+            "telegram": "@alexander",
+            "edu": "Высшее образование по специальности экономист",
+            "work": "Финансовый аналитик в банке",
+            "study_goal": "Изучение финансового анализа",
+            "blog_url": "",
+            "clothing_size": "M",
+            "shoe_size": "42",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2025-09-01T00:00:00Z",
+            "amb_goals": [2, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 34,
+        "fields": {
+            "full_name": "Борисова Анна Алексеевна",
+            "gender": "Ж",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 3,
+            "address": "ул. Тридцать четвертая, д. 864",
+            "postal_code": "864327",
+            "email": "anna@example.com",
+            "phone_number": "+79108901234",
+            "telegram": "@anna",
+            "edu": "Высшее образование по специальности психолог",
+            "work": "Психолог в центре развития",
+            "study_goal": "Изучение новых методов психотерапии",
+            "blog_url": "",
+            "clothing_size": "S",
+            "shoe_size": "38",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2025-10-01T00:00:00Z",
+            "amb_goals": [3, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 35,
+        "fields": {
+            "full_name": "Григорьев Павел Александрович",
+            "gender": "М",
+            "ya_edu": 1,
+            "country": 2,
+            "city": 6,
+            "address": "ул. Тридцать пятая, д. 176",
+            "postal_code": "176495",
+            "email": "pavel@example.com",
+            "phone_number": "+79102345678",
+            "telegram": "@pavel",
+            "edu": "Высшее образование по специальности физик",
+            "work": "Научный сотрудник в институте",
+            "study_goal": "Исследование квантовых явлений",
+            "blog_url": "https://pavelphysics.com",
+            "clothing_size": "M",
+            "shoe_size": "40",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2025-11-01T00:00:00Z",
+            "amb_goals": [1, 2]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 36,
+        "fields": {
+            "full_name": "Маркова Виктория Дмитриевна",
+            "gender": "Ж",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 3,
+            "address": "ул. Тридцать шестая, д. 432",
+            "postal_code": "432918",
+            "email": "viktoria@example.com",
+            "phone_number": "+79103456789",
+            "telegram": "@viktoria",
+            "edu": "Высшее образование по специальности психолог",
+            "work": "Клинический психолог",
+            "study_goal": "Изучение психотерапии",
+            "blog_url": "",
+            "clothing_size": "M",
+            "shoe_size": "40",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2025-12-01T00:00:00Z",
+            "amb_goals": [3, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 37,
+        "fields": {
+            "full_name": "Семенов Денис Владимирович",
+            "gender": "М",
+            "ya_edu": 1,
+            "country": 2,
+            "city": 6,
+            "address": "ул. Тридцать седьмая, д. 735",
+            "postal_code": "735246",
+            "email": "denis@example.com",
+            "phone_number": "+79104567891",
+            "telegram": "@denis",
+            "edu": "Высшее образование по специальности инженер-строитель",
+            "work": "Инженер в строительной компании",
+            "study_goal": "Развитие навыков в проектировании",
+            "blog_url": "",
+            "clothing_size": "L",
+            "shoe_size": "44",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2026-01-01T00:00:00Z",
+            "amb_goals": [1, 2]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 38,
+        "fields": {
+            "full_name": "Никитина Екатерина Петровна",
+            "gender": "Ж",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 3,
+            "address": "ул. Тридцать восьмая, д. 874",
+            "postal_code": "874639",
+            "email": "ekaterina@example.com",
+            "phone_number": "+79108901234",
+            "telegram": "@ekaterina",
+            "edu": "Высшее образование по специальности филолог",
+            "work": "Редактор в издательстве",
+            "study_goal": "Изучение стилистики и редактирования",
+            "blog_url": "",
+            "clothing_size": "S",
+            "shoe_size": "38",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2026-02-01T00:00:00Z",
+            "amb_goals": [3, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 39,
+        "fields": {
+            "full_name": "Игнатов Артем Сергеевич",
+            "gender": "М",
+            "ya_edu": 1,
+            "country": 2,
+            "city": 6,
+            "address": "ул. Тридцать девятая, д. 683",
+            "postal_code": "683257",
+            "email": "artem@example.com",
+            "phone_number": "+79102345678",
+            "telegram": "@artem",
+            "edu": "Высшее образование по специальности программист",
+            "work": "Разработчик в IT-компании",
+            "study_goal": "Изучение новых технологий программирования",
+            "blog_url": "https://artemprogramming.com",
+            "clothing_size": "L",
+            "shoe_size": "43",
+            "additional_comments": "",
+            "status": "pending",
+            "reg_date": "2026-03-01T00:00:00Z",
+            "amb_goals": [1, 2]
+        }
+    },
+    {
+        "model": "ambassadors.Ambassador",
+        "pk": 40,
+        "fields": {
+            "full_name": "Соловьева Ольга Александровна",
+            "gender": "Ж",
+            "ya_edu": 2,
+            "country": 1,
+            "city": 3,
+            "address": "ул. Сороковая, д. 527",
+            "postal_code": "527836",
+            "email": "olga@example.com",
+            "phone_number": "+79103456789",
+            "telegram": "@olga",
+            "edu": "Высшее образование по специальности психолог",
+            "work": "Клинический психолог",
+            "study_goal": "Изучение психотерапии",
+            "blog_url": "",
+            "clothing_size": "M",
+            "shoe_size": "40",
+            "additional_comments": "",
+            "status": "active",
+            "reg_date": "2026-04-01T00:00:00Z",
+            "amb_goals": [3, 4]
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 1,
+        "fields": {
+            "full_name": "Петров Иван",
+            "telegram": "@ivan",
+            "link": "https://example.com/content1",
+            "guide": true,
+            "status": "new",
+            "ambassador": 12,
+            "created_date": "2024-12-01"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 2,
+        "fields": {
+            "full_name": "Сидорова Ольга",
+            "telegram": "@olga",
+            "link": "https://example.com/content2",
+            "guide": false,
+            "status": "approved",
+            "ambassador": 24,
+            "created_date": "2025-01-15"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 3,
+        "fields": {
+            "full_name": "Иванов Петр",
+            "telegram": "@petr",
+            "link": "https://example.com/content3",
+            "guide": true,
+            "status": "rejected",
+            "ambassador": 37,
+            "created_date": "2025-02-20"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 4,
+        "fields": {
+            "full_name": "Кузнецова Елена",
+            "telegram": "@elena",
+            "link": "https://example.com/content4",
+            "guide": false,
+            "status": "new",
+            "ambassador": 10,
+            "created_date": "2025-03-10"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 5,
+        "fields": {
+            "full_name": "Алексеев Максим",
+            "telegram": "@maxim",
+            "link": "https://example.com/content5",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 31,
+            "created_date": "2025-04-05"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 6,
+        "fields": {
+            "full_name": "Александрова Анна",
+            "telegram": "@anna",
+            "link": "https://example.com/content6",
+            "guide": false,
+            "status": "new",
+            "ambassador": 19,
+            "created_date": "2025-05-20"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 7,
+        "fields": {
+            "full_name": "Смирнов Сергей",
+            "telegram": "@sergey",
+            "link": "https://example.com/content7",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 5,
+            "created_date": "2025-06-15"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 8,
+        "fields": {
+            "full_name": "Федорова Екатерина",
+            "telegram": "@ekaterina",
+            "link": "https://example.com/content8",
+            "guide": false,
+            "status": "new",
+            "ambassador": 16,
+            "created_date": "2025-07-10"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 9,
+        "fields": {
+            "full_name": "Николаев Алексей",
+            "telegram": "@alexey",
+            "link": "https://example.com/content9",
+            "guide": true,
+            "status": "rejected",
+            "ambassador": 27,
+            "created_date": "2025-08-25"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 10,
+        "fields": {
+            "full_name": "Козлова Мария",
+            "telegram": "@maria",
+            "link": "https://example.com/content10",
+            "guide": false,
+            "status": "approved",
+            "ambassador": 8,
+            "created_date": "2025-09-30"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 11,
+        "fields": {
+            "full_name": "Ильин Иван",
+            "telegram": "@ivan",
+            "link": "https://example.com/content11",
+            "guide": true,
+            "status": "new",
+            "ambassador": 35,
+            "created_date": "2025-10-10"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 12,
+        "fields": {
+            "full_name": "Алексеева Татьяна",
+            "telegram": "@tatyana",
+            "link": "https://example.com/content12",
+            "guide": false,
+            "status": "approved",
+            "ambassador": 11,
+            "created_date": "2025-11-05"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 13,
+        "fields": {
+            "full_name": "Павлов Владимир",
+            "telegram": "@vladimir",
+            "link": "https://example.com/content13",
+            "guide": true,
+            "status": "new",
+            "ambassador": 23,
+            "created_date": "2025-12-20"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 14,
+        "fields": {
+            "full_name": "Кузнецов Артем",
+            "telegram": "@artem",
+            "link": "https://example.com/content14",
+            "guide": false,
+            "status": "approved",
+            "ambassador": 30,
+            "created_date": "2026-01-05"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 15,
+        "fields": {
+            "full_name": "Семенова Наталья",
+            "telegram": "@natalya",
+            "link": "https://example.com/content15",
+            "guide": true,
+            "status": "rejected",
+            "ambassador": 7,
+            "created_date": "2026-02-10"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 16,
+        "fields": {
+            "full_name": "Григорьев Игорь",
+            "telegram": "@igor",
+            "link": "https://example.com/content16",
+            "guide": false,
+            "status": "new",
+            "ambassador": 21,
+            "created_date": "2026-03-15"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 17,
+        "fields": {
+            "full_name": "Соловьева Анастасия",
+            "telegram": "@anastasia",
+            "link": "https://example.com/content17",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 2,
+            "created_date": "2026-04-20"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 18,
+        "fields": {
+            "full_name": "Миронов Дмитрий",
+            "telegram": "@dmitry",
+            "link": "https://example.com/content18",
+            "guide": false,
+            "status": "new",
+            "ambassador": 18,
+            "created_date": "2026-05-25"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 19,
+        "fields": {
+            "full_name": "Федоров Александр",
+            "telegram": "@alexander",
+            "link": "https://example.com/content19",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 36,
+            "created_date": "2026-06-30"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 20,
+        "fields": {
+            "full_name": "Новикова Елена",
+            "telegram": "@elena",
+            "link": "https://example.com/content20",
+            "guide": false,
+            "status": "new",
+            "ambassador": 25,
+            "created_date": "2026-07-05"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 21,
+        "fields": {
+            "full_name": "Петрова Анна",
+            "telegram": "@anna",
+            "link": "https://example.com/content21",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 3,
+            "created_date": "2026-08-10"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 22,
+        "fields": {
+            "full_name": "Смирнова София",
+            "telegram": "@sofia",
+            "link": "https://example.com/content22",
+            "guide": false,
+            "status": "new",
+            "ambassador": 29,
+            "created_date": "2026-09-15"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 23,
+        "fields": {
+            "full_name": "Иванов Игорь",
+            "telegram": "@igor",
+            "link": "https://example.com/content23",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 14,
+            "created_date": "2026-10-20"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 24,
+        "fields": {
+            "full_name": "Кузнецов Александр",
+            "telegram": "@alexander",
+            "link": "https://example.com/content24",
+            "guide": false,
+            "status": "new",
+            "ambassador": 20,
+            "created_date": "2026-11-25"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 25,
+        "fields": {
+            "full_name": "Алексеева Мария",
+            "telegram": "@maria",
+            "link": "https://example.com/content25",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 6,
+            "created_date": "2026-12-30"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 26,
+        "fields": {
+            "full_name": "Егоров Иван",
+            "telegram": "@ivan",
+            "link": "https://example.com/content26",
+            "guide": false,
+            "status": "new",
+            "ambassador": 32,
+            "created_date": "2027-01-05"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 27,
+        "fields": {
+            "full_name": "Тихонова Елена",
+            "telegram": "@elena",
+            "link": "https://example.com/content27",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 15,
+            "created_date": "2027-02-10"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 28,
+        "fields": {
+            "full_name": "Григорьева Александра",
+            "telegram": "@alexandra",
+            "link": "https://example.com/content28",
+            "guide": false,
+            "status": "new",
+            "ambassador": 33,
+            "created_date": "2027-03-15"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 29,
+        "fields": {
+            "full_name": "Сидоров Петр",
+            "telegram": "@petr",
+            "link": "https://example.com/content29",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 22,
+            "created_date": "2027-04-20"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 30,
+        "fields": {
+            "full_name": "Васильева Анна",
+            "telegram": "@anna",
+            "link": "https://example.com/content30",
+            "guide": false,
+            "status": "new",
+            "ambassador": 38,
+            "created_date": "2027-05-25"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 31,
+        "fields": {
+            "full_name": "Федотова Наталья",
+            "telegram": "@natalya",
+            "link": "https://example.com/content31",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 39,
+            "created_date": "2027-06-30"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 32,
+        "fields": {
+            "full_name": "Максимова Екатерина",
+            "telegram": "@ekaterina",
+            "link": "https://example.com/content32",
+            "guide": false,
+            "status": "new",
+            "ambassador": 28,
+            "created_date": "2027-07-05"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 33,
+        "fields": {
+            "full_name": "Назаров Дмитрий",
+            "telegram": "@dmitry",
+            "link": "https://example.com/content33",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 34,
+            "created_date": "2027-08-10"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 34,
+        "fields": {
+            "full_name": "Артемова Ирина",
+            "telegram": "@irina",
+            "link": "https://example.com/content34",
+            "guide": false,
+            "status": "new",
+            "ambassador": 40,
+            "created_date": "2027-09-15"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 35,
+        "fields": {
+            "full_name": "Павлова Ольга",
+            "telegram": "@olga",
+            "link": "https://example.com/content35",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 9,
+            "created_date": "2027-10-20"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 36,
+        "fields": {
+            "full_name": "Александров Владимир",
+            "telegram": "@vladimir",
+            "link": "https://example.com/content36",
+            "guide": false,
+            "status": "new",
+            "ambassador": 26,
+            "created_date": "2027-11-25"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 37,
+        "fields": {
+            "full_name": "Сергеева Елена",
+            "telegram": "@elena",
+            "link": "https://example.com/content37",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 17,
+            "created_date": "2027-12-30"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 38,
+        "fields": {
+            "full_name": "Владимирова Анастасия",
+            "telegram": "@anastasia",
+            "link": "https://example.com/content38",
+            "guide": false,
+            "status": "new",
+            "ambassador": 1,
+            "created_date": "2028-01-05"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 39,
+        "fields": {
+            "full_name": "Маркова Татьяна",
+            "telegram": "@tatyana",
+            "link": "https://example.com/content39",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 4,
+            "created_date": "2028-02-10"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 40,
+        "fields": {
+            "full_name": "Кузнецов Владислав",
+            "telegram": "@vladislav",
+            "link": "https://example.com/content40",
+            "guide": false,
+            "status": "new",
+            "ambassador": 12,
+            "created_date": "2028-03-15"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 41,
+        "fields": {
+            "full_name": "Соколов Алексей",
+            "telegram": "@alexey",
+            "link": "https://example.com/content41",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 24,
+            "created_date": "2028-04-20"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 42,
+        "fields": {
+            "full_name": "Козлов Илья",
+            "telegram": "@ilya",
+            "link": "https://example.com/content42",
+            "guide": false,
+            "status": "new",
+            "ambassador": 15,
+            "created_date": "2028-05-25"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 43,
+        "fields": {
+            "full_name": "Лебедева Ольга",
+            "telegram": "@olga",
+            "link": "https://example.com/content43",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 38,
+            "created_date": "2028-06-30"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 44,
+        "fields": {
+            "full_name": "Иванова Елена",
+            "telegram": "@elena",
+            "link": "https://example.com/content44",
+            "guide": false,
+            "status": "new",
+            "ambassador": 10,
+            "created_date": "2028-07-05"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 45,
+        "fields": {
+            "full_name": "Карпова Анастасия",
+            "telegram": "@anastasia",
+            "link": "https://example.com/content45",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 29,
+            "created_date": "2028-08-10"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 46,
+        "fields": {
+            "full_name": "Михайлова Наталья",
+            "telegram": "@natalya",
+            "link": "https://example.com/content46",
+            "guide": false,
+            "status": "new",
+            "ambassador": 8,
+            "created_date": "2028-09-15"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 47,
+        "fields": {
+            "full_name": "Егорова Александра",
+            "telegram": "@alexandra",
+            "link": "https://example.com/content47",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 36,
+            "created_date": "2028-10-20"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 48,
+        "fields": {
+            "full_name": "Матвеев Дмитрий",
+            "telegram": "@dmitry",
+            "link": "https://example.com/content48",
+            "guide": false,
+            "status": "new",
+            "ambassador": 19,
+            "created_date": "2028-11-25"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 49,
+        "fields": {
+            "full_name": "Александров Андрей",
+            "telegram": "@andrey",
+            "link": "https://example.com/content49",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 25,
+            "created_date": "2028-12-30"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 50,
+        "fields": {
+            "full_name": "Федорова Ирина",
+            "telegram": "@irina",
+            "link": "https://example.com/content50",
+            "guide": false,
+            "status": "new",
+            "ambassador": 6,
+            "created_date": "2029-01-05"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 51,
+        "fields": {
+            "full_name": "Марков Андрей",
+            "telegram": "@andrey",
+            "link": "https://example.com/content51",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 32,
+            "created_date": "2029-02-10"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 52,
+        "fields": {
+            "full_name": "Андреева Юлия",
+            "telegram": "@yulia",
+            "link": "https://example.com/content52",
+            "guide": false,
+            "status": "new",
+            "ambassador": 22,
+            "created_date": "2029-03-15"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 53,
+        "fields": {
+            "full_name": "Миронова Александра",
+            "telegram": "@alexandra",
+            "link": "https://example.com/content53",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 23,
+            "created_date": "2029-04-20"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 54,
+        "fields": {
+            "full_name": "Александров Сергей",
+            "telegram": "@sergey",
+            "link": "https://example.com/content54",
+            "guide": false,
+            "status": "new",
+            "ambassador": 2,
+            "created_date": "2029-05-25"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 55,
+        "fields": {
+            "full_name": "Николаева Юлия",
+            "telegram": "@yulia",
+            "link": "https://example.com/content55",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 35,
+            "created_date": "2029-06-30"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 56,
+        "fields": {
+            "full_name": "Кузнецов Иван",
+            "telegram": "@ivan",
+            "link": "https://example.com/content56",
+            "guide": false,
+            "status": "new",
+            "ambassador": 14,
+            "created_date": "2029-07-05"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 57,
+        "fields": {
+            "full_name": "Михайлов Сергей",
+            "telegram": "@sergey",
+            "link": "https://example.com/content57",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 40,
+            "created_date": "2029-08-10"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 58,
+        "fields": {
+            "full_name": "Семенова Анна",
+            "telegram": "@anna",
+            "link": "https://example.com/content58",
+            "guide": false,
+            "status": "new",
+            "ambassador": 9,
+            "created_date": "2029-09-15"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 59,
+        "fields": {
+            "full_name": "Антонова Наталья",
+            "telegram": "@natalya",
+            "link": "https://example.com/content59",
+            "guide": true,
+            "status": "approved",
+            "ambassador": 20,
+            "created_date": "2029-10-20"
+        }
+    },
+    {
+        "model": "ambassadors.Content",
+        "pk": 60,
+        "fields": {
+            "full_name": "Павлов Алексей",
+            "telegram": "@alexey",
+            "link": "https://example.com/content60",
+            "guide": false,
+            "status": "new",
+            "ambassador": 1,
+            "created_date": "2029-11-25"
+        }
+    }
+]
