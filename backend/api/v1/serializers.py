@@ -2,11 +2,6 @@ import re
 
 from rest_framework import serializers
 
-from ambassadors.choices import (
-    CONTENT_STATUS_CHOICES,
-    PROMO_CODE_STATUS_CHOICES,
-    STATUS_SEND_CHOICES,
-)
 from ambassadors.models import (
     Ambassador,
     AmbassadorGoal,
@@ -161,12 +156,8 @@ class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
         training_program, created = TrainingProgram.objects.get_or_create(
             name=ya_edu_name
         )
-        country, created = Country.objects.get_or_create(
-            name=country
-        )
-        city, created = City.objects.get_or_create(
-            name=city
-        )
+        country, created = Country.objects.get_or_create(name=country)
+        city, created = City.objects.get_or_create(name=city)
         internal_value['country'] = country
         internal_value['city'] = city
         internal_value['ya_edu'] = training_program
@@ -179,6 +170,7 @@ class AmbassadorCreateSerializer(serializers.ModelSerializer):
     """
     Сериализатор для создания амбассадоров.
     """
+
     city = serializers.CharField()
     country = serializers.CharField()
 
@@ -204,12 +196,8 @@ class AmbassadorCreateSerializer(serializers.ModelSerializer):
         country = data.get('country')
         city = data.get('city')
 
-        country, _ = Country.objects.get_or_create(
-            name=country
-        )
-        city, _ = City.objects.get_or_create(
-            name=city
-        )
+        country, _ = Country.objects.get_or_create(name=country)
+        city, _ = City.objects.get_or_create(name=city)
         internal_value['country'] = country
         internal_value['city'] = city
         internal_value['telegram'] = format_telegram_username(telegram)
@@ -239,11 +227,12 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
         if promo_code is not None:
             return ShortPromoCodeSerializer(promo_code).data
         return None
-     
+
     def get_content_count(self, obj):
         return obj.content.count()
 
-class MerchandiseShippingRequestReadSerializer(serializers.ModelSerializer):
+
+class LoyaltyMerchandiseShippingRequestSerializer(serializers.ModelSerializer):
     """Сериализатор для представления заявки на отправку мерча."""
 
     name_merch = serializers.SlugRelatedField(
@@ -273,7 +262,7 @@ class LoyaltyAmbassadorSerializer(serializers.ModelSerializer):
     def get_shipped_merch(self, ambassador):
         """Возвращает список заявок отправленного амбассадору мерча."""
         shipped_merch = ambassador.shipped_merch_prefetch
-        return MerchandiseShippingRequestSerializer(
+        return LoyaltyMerchandiseShippingRequestSerializer(
             shipped_merch, many=True
         ).data
 
@@ -292,8 +281,6 @@ class MerchandiseShippingRequestSerializer(serializers.ModelSerializer):
     """
     Сериализатор модели заявки на отправку мерча.
     """
-
-    status_send = ChoiceField(choices=STATUS_SEND_CHOICES)
 
     class Meta:
         model = MerchandiseShippingRequest

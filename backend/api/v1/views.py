@@ -1,17 +1,11 @@
 from django.db.models import Prefetch
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema_view
-from rest_framework import filters, permissions, viewsets
+from rest_framework import generics, permissions, viewsets
 from rest_framework.decorators import action
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
 
-from ambassadors.models import (
-    Ambassador,
-    Content,
-    MerchandiseShippingRequest,
-    PromoCode,
-)
 from ambassadors.choices import GENDER_CHOICES, STATUS_CHOICES
 from ambassadors.models import (
     Ambassador,
@@ -35,7 +29,6 @@ from .serializers import (
     MerchandiseShippingRequestSerializer,
     PromoCodeSerializer,
     YandexFormAmbassadorCreateSerializer,
-    MerchandiseShippingRequestReadSerializer,
 )
 
 
@@ -43,6 +36,7 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
     """
     Вьюсет для амбассадоров.
     """
+
     queryset = Ambassador.objects.all()
     serializer_class = AmbassadorCreateSerializer
     pagination_class = AmbassadorPagination
@@ -63,28 +57,43 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
         """
         Метод для получения списка фильтров.
         """
-        ya_edu_options = [{'id': edu.id, 'name': edu.name} for edu in
-                          TrainingProgram.objects.all()]
-        country_options = [{'id': country.id, 'name': country.name} for country
-                           in Country.objects.all()]
-        city_options = [{'id': city.id, 'name': city.name} for city in
-                        City.objects.all()]
+        ya_edu_options = [
+            {'id': edu.id, 'name': edu.name}
+            for edu in TrainingProgram.objects.all()
+        ]
+        country_options = [
+            {'id': country.id, 'name': country.name}
+            for country in Country.objects.all()
+        ]
+        city_options = [
+            {'id': city.id, 'name': city.name} for city in City.objects.all()
+        ]
 
         filters_data = {
             'ya_edu': {'name': 'Программа обучения', 'values': ya_edu_options},
             'country': {'name': 'Страна', 'values': country_options},
             'city': {'name': 'Город', 'values': city_options},
-            'status': {'name': 'Статус амбассадора',
-                       'values': [{'id': choice[0], 'name': choice[1]} for
-                                  choice in STATUS_CHOICES]},
-            'gender': {'name': 'Пол',
-                       'values': [{'id': choice[0], 'name': choice[1]} for
-                                  choice in GENDER_CHOICES]},
-            'order': {'name': 'Сортировать',
-                      'values': [
-                          {'id': 'date', 'name': 'По дате'},
-                          {'id': 'name', 'name': 'По алфавиту'},
-                      ]}
+            'status': {
+                'name': 'Статус амбассадора',
+                'values': [
+                    {'id': choice[0], 'name': choice[1]}
+                    for choice in STATUS_CHOICES
+                ],
+            },
+            'gender': {
+                'name': 'Пол',
+                'values': [
+                    {'id': choice[0], 'name': choice[1]}
+                    for choice in GENDER_CHOICES
+                ],
+            },
+            'order': {
+                'name': 'Сортировать',
+                'values': [
+                    {'id': 'date', 'name': 'По дате'},
+                    {'id': 'name', 'name': 'По алфавиту'},
+                ],
+            },
         }
 
         return Response(filters_data)
@@ -120,7 +129,7 @@ class AmbassadorLoyaltyViewSet(generics.ListAPIView):
 
     shipped_merch_prefetch = Prefetch(
         'merch_shipping_requests',
-        queryset=MerchandiseShippingRequestReadSerializer.objects.select_related(
+        queryset=MerchandiseShippingRequest.objects.select_related(
             'name_merch'
         ).filter(status_send='sent_to_logisticians'),
         to_attr='shipped_merch_prefetch',
@@ -140,7 +149,7 @@ class AmbassadorLoyaltyViewSet(generics.ListAPIView):
 class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
     queryset = MerchandiseShippingRequest.objects.all()
     serializer_class = MerchandiseShippingRequestSerializer
-    permission_classes = (permissions.IsAuthenticated, )
+    permission_classes = (permissions.IsAuthenticated,)
     http_method_names = (
         'get',
         'post',

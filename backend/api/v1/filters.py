@@ -5,7 +5,6 @@ from django_filters.filters import (
     ChoiceFilter,
     OrderingFilter,
 )
-from rest_framework.exceptions import ValidationError
 
 from ambassadors.choices import (
     CONTENT_STATUS_CHOICES,
@@ -31,6 +30,7 @@ class AmbassadorFilter(FilterSet):
     """
     Фильтры для амбассадоров.
     """
+
     ya_edu = BaseInFilter(field_name='ya_edu', lookup_expr='in')
     country = BaseInFilter(field_name='country', lookup_expr='in')
     city = BaseInFilter(field_name='city', lookup_expr='in')
