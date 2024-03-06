@@ -3,11 +3,9 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-key')
 
 DEBUG = os.environ.get('DEBUG', default='True').lower() == 'true'
-
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", '*').split()
 CSRF_TRUSTED_ORIGINS = ['https://crm.ragimov700.ru']
@@ -65,7 +63,6 @@ DATABASES = {
     }
 }
 
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -104,8 +101,3 @@ REST_FRAMEWORK = {
 }
 
 YANDEX_KEY = os.getenv('YANDEX_KEY', 'insecure-yandex-key')
-
-SPECTACULAR_SETTINGS = {
-    'COMPONENT_SPLIT_REQUEST': True,
-    # ... другие настройки ...
-}

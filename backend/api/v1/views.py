@@ -1,9 +1,15 @@
+from django.db.models import Prefetch
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema_view
-from rest_framework import viewsets
+from rest_framework import generics, viewsets
 from rest_framework.pagination import LimitOffsetPagination
 
-from ambassadors.models import Ambassador, Content, PromoCode
+from ambassadors.models import (
+    Ambassador,
+    Content,
+    MerchandiseShippingRequest,
+    PromoCode,
+)
 
 from .filters import ContentFilter
 from .permissions import IsAuthenticatedOrYandexForms
@@ -12,6 +18,7 @@ from .serializers import (
     AmbassadorCreateSerializer,
     AmbassadorReadSerializer,
     ContentSerializer,
+    LoyaltyAmbassadorSerializer,
     PromoCodeSerializer,
     YandexFormAmbassadorCreateSerializer,
 )
@@ -42,7 +49,7 @@ class ContentViewSet(viewsets.ModelViewSet):
     Позволяет фильтровать выборку по полям status и full_name.
     """
 
-    queryset = Content.objects.all()
+    queryset = Content.objects.select_related('ambassador')
     serializer_class = ContentSerializer
     pagination_class = LimitOffsetPagination
     filterset_class = ContentFilter
@@ -52,3 +59,22 @@ class ContentViewSet(viewsets.ModelViewSet):
         'post',
         'patch',
     )
+
+
+class AmbassadorLoyaltyViewSet(generics.ListAPIView):
+    shipped_merch_prefetch = Prefetch(
+        'merch_shipping_requests',
+        queryset=MerchandiseShippingRequest.objects.select_related(
+            'name_merch'
+        ).filter(status_send='sent_to_logisticians'),
+        to_attr='shipped_merch_prefetch',
+    )
+    content_prefetch = Prefetch(
+        'content',
+        queryset=Content.objects.filter(status='approved'),
+        to_attr='content_prefetch',
+    )
+    queryset = Ambassador.objects.prefetch_related(
+        content_prefetch, shipped_merch_prefetch
+    )
+    serializer_class = LoyaltyAmbassadorSerializer
