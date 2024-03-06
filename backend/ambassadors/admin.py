@@ -3,11 +3,23 @@ from django.contrib import admin
 from .models import (
     Ambassador,
     AmbassadorGoal,
+    City,
     Content,
+    Country,
     Merchandise,
     MerchandiseShippingRequest,
     TrainingProgram,
 )
+
+
+@admin.register(Country)
+class CountryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    list_display = ('name',)
 
 
 @admin.register(TrainingProgram)
@@ -60,4 +72,10 @@ class MerchandiseShippingRequestAdmin(admin.ModelAdmin):
 
 @admin.register(Merchandise)
 class MerchandiseAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price')
+    list_display = ('name', 'price',)
+
+
+@admin.register(MerchandiseShippingRequest)
+class MerchandiseShippingRequestAdmin(admin.ModelAdmin):
+    list_display = ('name_merch', 'ambassador', 'status_send',
+                    'created_date', 'comment',)

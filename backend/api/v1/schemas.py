@@ -4,7 +4,10 @@ from drf_spectacular.utils import (
     extend_schema,
 )
 
-from .serializers import ContentSerializer
+from .serializers import (
+    ContentSerializer,
+    MerchandiseShippingRequestSerializer,
+)
 
 content_schema = {
     'list': extend_schema(
@@ -111,5 +114,38 @@ content_schema = {
                 status_codes=['200'],
             ),
         ],
+    ),
+}
+
+merch_schema = {
+    'list': extend_schema(
+        summary='Получение списка заявок',
+        methods=['GET'],
+        parameters=[
+            OpenApiParameter(
+                name='id',
+                required=False,
+                type=int
+            ),
+        ],
+    ),
+    'partial_update': extend_schema(
+        summary='Обновление статуса заявки',
+        methods=['PATCH'],
+        request=MerchandiseShippingRequestSerializer,
+        responses={200: MerchandiseShippingRequestSerializer},
+        parameters=[
+            OpenApiParameter(
+                name='status_send',
+                required=False,
+                type=str,
+            ),
+        ],
+    ),
+    'create': extend_schema(
+        summary='Создание новой заявки',
+        methods=['POST'],
+        request=MerchandiseShippingRequestSerializer,
+        responses={200: MerchandiseShippingRequestSerializer},
     ),
 }

@@ -2,10 +2,18 @@ import re
 
 from rest_framework import serializers
 
+from ambassadors.choices import (
+    CONTENT_STATUS_CHOICES,
+    PROMO_CODE_STATUS_CHOICES,
+    STATUS_SEND_CHOICES,
+)
 from ambassadors.models import (
     Ambassador,
     AmbassadorGoal,
+    City,
     Content,
+    Country,
+    Merchandise,
     MerchandiseShippingRequest,
     PromoCode,
     TrainingProgram,
@@ -42,6 +50,16 @@ class PromoCodeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PromoCode
         fields = '__all__'
+
+
+class ShortPromoCodeSerializer(serializers.ModelSerializer):
+    """
+    Короткий сериализатор для модели промокода.
+    """
+
+    class Meta:
+        model = PromoCode
+        fields = ('name', 'status')
 
 
 class ContentSerializer(serializers.ModelSerializer):
@@ -99,6 +117,8 @@ class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
 
     ya_edu = serializers.CharField()
     amb_goals = serializers.CharField()
+    city = serializers.CharField()
+    country = serializers.CharField()
 
     class Meta:
         model = Ambassador
@@ -107,7 +127,11 @@ class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         ya_edu = validated_data.pop('ya_edu')
         goals = validated_data.pop('amb_goals')
-        ambassador = Ambassador.objects.create(ya_edu=ya_edu, **validated_data)
+        country = validated_data.pop('country')
+        city = validated_data.pop('city')
+        ambassador = Ambassador.objects.create(
+            ya_edu=ya_edu, country=country, city=city, **validated_data
+        )
         ambassador.amb_goals.add(*goals)
         return ambassador
 
@@ -124,6 +148,8 @@ class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
         ya_edu_name = data.get('ya_edu')
         amb_goals = data.get('amb_goals')
         telegram = data.get('telegram')
+        country = data.get('country')
+        city = data.get('city')
 
         goals = []
         for goal in re.split(r', (?=[А-Я])', amb_goals):
@@ -135,7 +161,14 @@ class YandexFormAmbassadorCreateSerializer(serializers.ModelSerializer):
         training_program, created = TrainingProgram.objects.get_or_create(
             name=ya_edu_name
         )
-
+        country, created = Country.objects.get_or_create(
+            name=country
+        )
+        city, created = City.objects.get_or_create(
+            name=city
+        )
+        internal_value['country'] = country
+        internal_value['city'] = city
         internal_value['ya_edu'] = training_program
         internal_value['amb_goals'] = goals
         internal_value['telegram'] = format_telegram_username(telegram)
@@ -146,6 +179,41 @@ class AmbassadorCreateSerializer(serializers.ModelSerializer):
     """
     Сериализатор для создания амбассадоров.
     """
+    city = serializers.CharField()
+    country = serializers.CharField()
+
+    def create(self, validated_data):
+        amb_goals_data = validated_data.pop('amb_goals')
+        country_data = validated_data.pop('country')
+        city_data = validated_data.pop('city')
+
+        ambassador = super().create(validated_data)
+
+        country, _ = Country.objects.get_or_create(name=country_data)
+        ambassador.country = country
+        city, _ = City.objects.get_or_create(name=city_data)
+        ambassador.city = city
+
+        ambassador.save()
+        ambassador.amb_goals.set(amb_goals_data)
+        return ambassador
+
+    def to_internal_value(self, data):
+        internal_value = super().to_internal_value(data)
+        telegram = data.get('telegram')
+        country = data.get('country')
+        city = data.get('city')
+
+        country, _ = Country.objects.get_or_create(
+            name=country
+        )
+        city, _ = City.objects.get_or_create(
+            name=city
+        )
+        internal_value['country'] = country
+        internal_value['city'] = city
+        internal_value['telegram'] = format_telegram_username(telegram)
+        return internal_value
 
     class Meta:
         model = Ambassador
@@ -160,19 +228,22 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
     ya_edu = TrainingProgramSerializer()
     amb_goals = AmbassadorGoalSerializer(many=True)
     promo_code = serializers.SerializerMethodField()
+    content_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Ambassador
         fields = '__all__'
 
     def get_promo_code(self, obj):
-        promo_code = obj.promo_code.first()
+        promo_code = obj.promo_code.filter(status='active').first()
         if promo_code is not None:
-            return promo_code.name
+            return ShortPromoCodeSerializer(promo_code).data
         return None
+     
+    def get_content_count(self, obj):
+        return obj.content.count()
 
-
-class MerchandiseShippingRequestSerializer(serializers.ModelSerializer):
+class MerchandiseShippingRequestReadSerializer(serializers.ModelSerializer):
     """Сериализатор для представления заявки на отправку мерча."""
 
     name_merch = serializers.SlugRelatedField(
@@ -205,3 +276,25 @@ class LoyaltyAmbassadorSerializer(serializers.ModelSerializer):
         return MerchandiseShippingRequestSerializer(
             shipped_merch, many=True
         ).data
+
+
+class MerchandiseSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для мерча.
+    """
+
+    class Meta:
+        model = Merchandise
+        fields = ('id', 'name')
+
+
+class MerchandiseShippingRequestSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор модели заявки на отправку мерча.
+    """
+
+    status_send = ChoiceField(choices=STATUS_SEND_CHOICES)
+
+    class Meta:
+        model = MerchandiseShippingRequest
+        fields = '__all__'

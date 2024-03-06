@@ -11,6 +11,34 @@ from .choices import (
 )
 
 
+class City(models.Model):
+    """
+    Модель для названий городов.
+    """
+    name = models.CharField(max_length=255, verbose_name='Название города')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'город'
+        verbose_name_plural = 'города'
+
+
+class Country(models.Model):
+    """
+    Модель для названий стран.
+    """
+    name = models.CharField(max_length=255, verbose_name='Название страны')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'страна'
+        verbose_name_plural = 'страны'
+
+
 class TrainingProgram(models.Model):
     """
     Модель названий программ обучения Яндекса.
@@ -56,10 +84,22 @@ class Ambassador(models.Model):
         TrainingProgram,
         on_delete=models.SET_NULL,
         null=True,
+        related_name='ambassadors',
         verbose_name='Программа обучения',
     )
-    country = models.CharField(max_length=100, verbose_name='Страна')
-    city = models.CharField(max_length=100, verbose_name='Город')
+    country = models.ForeignKey(
+        Country,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='ambassadors',
+        verbose_name='Страна'
+    )
+    city = models.ForeignKey(
+        City,
+        on_delete=models.SET_NULL,
+        null=True,
+        verbose_name='Город'
+    )
     address = models.CharField(max_length=255, verbose_name='Адрес проживания')
     postal_code = models.CharField(max_length=20, verbose_name='Индекс')
     email = models.CharField(max_length=255, verbose_name='Адрес проживания')
@@ -156,6 +196,7 @@ class Content(models.Model):
         null=True,
         blank=True,
         related_name='content',
+        verbose_name='амбассадор'
     )
     created_date = models.DateField(
         auto_now_add=True, verbose_name='Дата создания'

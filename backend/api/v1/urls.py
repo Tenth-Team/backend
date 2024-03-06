@@ -6,6 +6,7 @@ from .views import (
     AmbassadorLoyaltyViewSet,
     AmbassadorViewSet,
     ContentViewSet,
+    MerchandiseShippingRequestViewSet,
     PromoCodeViewSet,
 )
 
@@ -13,6 +14,7 @@ router = DefaultRouter()
 router.register(r'ambassadors', AmbassadorViewSet)
 router.register(r'content', ContentViewSet)
 router.register(r'promocodes', PromoCodeViewSet)
+router.register(r'merchandise', MerchandiseShippingRequestViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
