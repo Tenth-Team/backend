@@ -2,12 +2,18 @@ from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.routers import DefaultRouter
 
-from .views import AmbassadorViewSet, ContentViewSet, PromoCodeViewSet
+from .views import (
+    AmbassadorViewSet,
+    ContentViewSet,
+    MerchandiseShippingRequestViewSet,
+    PromoCodeViewSet,
+)
 
 router = DefaultRouter()
 router.register(r'ambassadors', AmbassadorViewSet)
 router.register(r'content', ContentViewSet)
 router.register(r'promocodes', PromoCodeViewSet)
+router.register(r'merchandise', MerchandiseShippingRequestViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

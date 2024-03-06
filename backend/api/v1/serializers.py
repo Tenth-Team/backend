@@ -5,6 +5,7 @@ from rest_framework import serializers
 from ambassadors.choices import (
     CONTENT_STATUS_CHOICES,
     PROMO_CODE_STATUS_CHOICES,
+    STATUS_SEND_CHOICES,
 )
 from ambassadors.models import (
     Ambassador,
@@ -12,6 +13,8 @@ from ambassadors.models import (
     City,
     Content,
     Country,
+    Merchandise,
+    MerchandiseShippingRequest,
     PromoCode,
     TrainingProgram,
 )
@@ -274,3 +277,25 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
 
     def get_content_count(self, obj):
         return obj.content.count()
+
+
+class MerchandiseSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для мерча.
+    """
+
+    class Meta:
+        model = Merchandise
+        fields = ('id', 'name')
+
+
+class MerchandiseShippingRequestSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор модели заявки на отправку мерча.
+    """
+
+    status_send = ChoiceField(choices=STATUS_SEND_CHOICES)
+
+    class Meta:
+        model = MerchandiseShippingRequest
+        fields = '__all__'

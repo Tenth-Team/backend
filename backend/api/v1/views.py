@@ -1,6 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema_view
-from rest_framework import filters, viewsets
+from rest_framework import filters, permissions, viewsets
 from rest_framework.decorators import action
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
@@ -11,6 +11,7 @@ from ambassadors.models import (
     City,
     Content,
     Country,
+    MerchandiseShippingRequest,
     PromoCode,
     TrainingProgram,
 )
@@ -18,11 +19,12 @@ from ambassadors.models import (
 from .filters import AmbassadorFilter, ContentStatusFilter
 from .pagination import AmbassadorPagination
 from .permissions import IsAuthenticatedOrYandexForms
-from .schemas import content_schema
+from .schemas import content_schema, merch_schema
 from .serializers import (
     AmbassadorCreateSerializer,
     AmbassadorReadSerializer,
     ContentSerializer,
+    MerchandiseShippingRequestSerializer,
     PromoCodeSerializer,
     YandexFormAmbassadorCreateSerializer,
 )
@@ -102,3 +104,18 @@ class ContentViewSet(viewsets.ModelViewSet):
         'post',
         'patch',
     )
+
+
+@extend_schema_view(**merch_schema)
+class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
+    queryset = MerchandiseShippingRequest.objects.all()
+    serializer_class = MerchandiseShippingRequestSerializer
+    permission_classes = (permissions.IsAuthenticated, )
+    http_method_names = (
+        'get',
+        'post',
+        'patch',
+    )
+
+    """def download(self, request):
+        return"""
