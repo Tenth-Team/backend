@@ -1,5 +1,5 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from drf_spectacular.utils import extend_schema_view
+from drf_spectacular.utils import extend_schema_view, extend_schema
 from rest_framework import filters, permissions, viewsets
 from rest_framework.decorators import action
 from rest_framework.pagination import LimitOffsetPagination
@@ -19,7 +19,7 @@ from ambassadors.models import (
 from .filters import AmbassadorFilter, ContentStatusFilter
 from .pagination import AmbassadorPagination
 from .permissions import IsAuthenticatedOrYandexForms
-from .schemas import content_schema, merch_schema
+from .schemas import content_schema, merch_schema, promo_code_schema
 from .serializers import (
     AmbassadorCreateSerializer,
     AmbassadorReadSerializer,
@@ -30,6 +30,7 @@ from .serializers import (
 )
 
 
+@extend_schema(tags=["Амбассадоры"])
 class AmbassadorViewSet(viewsets.ModelViewSet):
     """
     Вьюсет для амбассадоров.
@@ -65,27 +66,42 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
             'ya_edu': {'name': 'Программа обучения', 'values': ya_edu_options},
             'country': {'name': 'Страна', 'values': country_options},
             'city': {'name': 'Город', 'values': city_options},
-            'status': {'name': 'Статус амбассадора',
-                       'values': [{'id': choice[0], 'name': choice[1]} for
-                                  choice in STATUS_CHOICES]},
-            'gender': {'name': 'Пол',
-                       'values': [{'id': choice[0], 'name': choice[1]} for
-                                  choice in GENDER_CHOICES]},
-            'order': {'name': 'Сортировать',
-                      'values': [
-                          {'id': 'reg_date', 'name': 'По дате'},
-                          {'id': 'full_name', 'name': 'По алфавиту'},
-                      ]}
+            'status': {
+                'name': 'Статус амбассадора',
+                'values': [{'id': choice[0], 'name': choice[1]} for
+                           choice in STATUS_CHOICES]
+            },
+            'gender': {
+                'name': 'Пол',
+                'values': [{'id': choice[0], 'name': choice[1]} for
+                           choice in GENDER_CHOICES]
+            },
+            'order': {
+                'name': 'Сортировать',
+                'values': [
+                    {'id': 'reg_date', 'name': 'По дате'},
+                    {'id': 'full_name', 'name': 'По алфавиту'},
+                ]
+            }
         }
 
         return Response(filters_data)
 
 
+@extend_schema(tags=["Промокоды"])
+@extend_schema_view(**promo_code_schema)
 class PromoCodeViewSet(viewsets.ModelViewSet):
     queryset = PromoCode.objects.all()
     serializer_class = PromoCodeSerializer
+    http_method_names = (
+        'get',
+        'post',
+        'patch',
+        'delete'
+    )
 
 
+@extend_schema(tags=["Контент"])
 @extend_schema_view(**content_schema)
 class ContentViewSet(viewsets.ModelViewSet):
     """
@@ -106,11 +122,12 @@ class ContentViewSet(viewsets.ModelViewSet):
     )
 
 
+@extend_schema(tags=["Заявки"])
 @extend_schema_view(**merch_schema)
 class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
     queryset = MerchandiseShippingRequest.objects.all()
     serializer_class = MerchandiseShippingRequestSerializer
-    permission_classes = (permissions.IsAuthenticated, )
+    permission_classes = (permissions.IsAuthenticated,)
     http_method_names = (
         'get',
         'post',
