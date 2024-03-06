@@ -62,6 +62,9 @@ class ContentViewSet(viewsets.ModelViewSet):
 
 
 class AmbassadorLoyaltyViewSet(generics.ListAPIView):
+    """Viewset для получения данных для страницы лояльности.
+    Возвращает список амбассадоров."""
+
     shipped_merch_prefetch = Prefetch(
         'merch_shipping_requests',
         queryset=MerchandiseShippingRequest.objects.select_related(

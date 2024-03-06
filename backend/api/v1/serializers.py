@@ -173,6 +173,8 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
 
 
 class MerchandiseShippingRequestSerializer(serializers.ModelSerializer):
+    """Сериализатор для представления заявки на отправку мерча."""
+
     name_merch = serializers.SlugRelatedField(
         read_only=True, slug_field='name'
     )
@@ -183,6 +185,9 @@ class MerchandiseShippingRequestSerializer(serializers.ModelSerializer):
 
 
 class LoyaltyAmbassadorSerializer(serializers.ModelSerializer):
+    """Сериализатор для получения данных
+    амбассадора для страницы лояльности."""
+
     content_count = serializers.SerializerMethodField(read_only=True)
     shipped_merch = serializers.SerializerMethodField(read_only=True)
 
@@ -191,9 +196,11 @@ class LoyaltyAmbassadorSerializer(serializers.ModelSerializer):
         fields = ('id', 'full_name', 'content_count', 'shipped_merch')
 
     def get_content_count(self, ambassador):
+        """Возвращает количество одобренных публикаций амбассадора"""
         return len(ambassador.content_prefetch)
 
     def get_shipped_merch(self, ambassador):
+        """Возвращает список заявок отправленного амбассадору мерча."""
         shipped_merch = ambassador.shipped_merch_prefetch
         return MerchandiseShippingRequestSerializer(
             shipped_merch, many=True
