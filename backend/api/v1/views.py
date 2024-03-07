@@ -26,6 +26,7 @@ from .serializers import (
     AmbassadorCreateSerializer,
     AmbassadorGoalSerializer,
     AmbassadorReadSerializer,
+    AmbassadorUpdateSerializer,
     ContentSerializer,
     MerchandiseShippingRequestSerializer,
     PromoCodeSerializer,
@@ -51,6 +52,8 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
             return YandexFormAmbassadorCreateSerializer
         if self.action == 'list' or self.action == 'retrieve':
             return AmbassadorReadSerializer
+        if self.action == 'partial_update':
+            return AmbassadorUpdateSerializer
         return super().get_serializer_class()
 
     @action(detail=False, methods=['get'])
