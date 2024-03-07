@@ -76,11 +76,18 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
         ]
 
         filters_data = {
-            'ya_edu': {'name': 'Программа обучения', 'values': ya_edu_options},
-            'country': {'name': 'Страна', 'values': country_options},
-            'city': {'name': 'Город', 'values': city_options},
+            'ya_edu': {'name': 'Программа обучения',
+                       'type': 'checkbox',
+                       'values': ya_edu_options},
+            'country': {'name': 'Страна',
+                        'type': 'checkbox',
+                        'values': country_options},
+            'city': {'name': 'Город',
+                     'type': 'checkbox',
+                     'values': city_options},
             'status': {
                 'name': 'Статус амбассадора',
+                'type': 'select',
                 'values': [
                     {'id': choice[0], 'name': choice[1]}
                     for choice in STATUS_CHOICES
@@ -88,6 +95,7 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
             },
             'gender': {
                 'name': 'Пол',
+                'type': 'select',
                 'values': [
                     {'id': choice[0], 'name': choice[1]}
                     for choice in GENDER_CHOICES
@@ -95,6 +103,7 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
             },
             'order': {
                 'name': 'Сортировать',
+                'type': 'select',
                 'values': [
                     {'id': 'date', 'name': 'По дате'},
                     {'id': 'name', 'name': 'По алфавиту'},
