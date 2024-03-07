@@ -100,7 +100,7 @@ class ContentSerializer(serializers.ModelSerializer):
         choices=CONTENT_STATUS_CHOICES,
         required=False,
         help_text='Статус контента. Возможные значения: '
-        'Новая публикация, Одобрена, Не одобрена.',
+                  'Новая публикация, Одобрена, Не одобрена.',
     )
 
     class Meta:
@@ -248,6 +248,34 @@ class AmbassadorCreateSerializer(serializers.ModelSerializer):
         internal_value['country'] = country
         internal_value['city'] = city
         internal_value['telegram'] = format_telegram_username(telegram)
+        return internal_value
+
+    class Meta:
+        model = Ambassador
+        fields = '__all__'
+
+
+class AmbassadorUpdateSerializer(serializers.ModelSerializer):
+    city = serializers.CharField(required=False)
+    country = serializers.CharField(required=False)
+
+    def to_internal_value(self, data):
+        internal_value = super().to_internal_value(data)
+        telegram = data.get('telegram')
+        country = data.get('country')
+        city = data.get('city')
+        if country:
+            country, _ = Country.objects.get_or_create(
+                name=country
+            )
+            internal_value['country'] = country
+        if city:
+            city, _ = City.objects.get_or_create(
+                name=city
+            )
+            internal_value['city'] = city
+        if telegram:
+            internal_value['telegram'] = format_telegram_username(telegram)
         return internal_value
 
     class Meta:
