@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema_view
 from rest_framework import filters, permissions, viewsets
@@ -28,6 +29,7 @@ from .serializers import (
     PromoCodeSerializer,
     YandexFormAmbassadorCreateSerializer,
 )
+from .utils import ExcelRender
 
 
 class AmbassadorViewSet(viewsets.ModelViewSet):
@@ -117,5 +119,14 @@ class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
         'patch',
     )
 
-    """def download(self, request):
-        return"""
+    @action(detail=False, methods=["get"], renderer_classes=[ExcelRender])
+    def download(self, request):
+        queryset = self.get_queryset()
+        now = timezone.now()
+        file_name = f'merch_data_{now:%Y-%m-%d_%H-%M-%S}.{request.accepted_renderer.format}'
+        serializer = MerchandiseShippingRequestSerializer(queryset, many=True)
+        return Response(
+            serializer.data,
+            headers={"Content-Disposition":
+                     f'attachment; filename="{file_name}"'}
+        )
