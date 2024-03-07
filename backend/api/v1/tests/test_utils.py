@@ -1,4 +1,5 @@
 from django.test import TestCase
+
 from api.v1.utils import format_telegram_username
 
 
