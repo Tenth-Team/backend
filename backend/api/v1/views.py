@@ -19,7 +19,10 @@ from ambassadors.models import (
 from .filters import AmbassadorFilter, ContentStatusFilter
 from .pagination import AmbassadorPagination
 from .permissions import IsAuthenticatedOrYandexForms
-from .schemas import content_schema, merch_schema, promo_code_schema
+from .schemas import (
+    content_schema, merch_schema, promo_code_schema,
+    ambassador_schema, filters_schema,
+)
 from .serializers import (
     AmbassadorCreateSerializer,
     AmbassadorReadSerializer,
@@ -31,6 +34,7 @@ from .serializers import (
 
 
 @extend_schema(tags=["Амбассадоры"])
+@extend_schema_view(**ambassador_schema)
 class AmbassadorViewSet(viewsets.ModelViewSet):
     """
     Вьюсет для амбассадоров.
@@ -50,31 +54,37 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
             return AmbassadorReadSerializer
         return super().get_serializer_class()
 
+    @extend_schema(**filters_schema)
     @action(detail=False, methods=['get'])
     def filters(self, request):
         """
         Метод для получения списка фильтров.
         """
-        ya_edu_options = [{'id': edu.id, 'name': edu.name} for edu in
-                          TrainingProgram.objects.all()]
-        country_options = [{'id': country.id, 'name': country.name} for country
-                           in Country.objects.all()]
-        city_options = [{'id': city.id, 'name': city.name} for city in
-                        City.objects.all()]
-
         filters_data = {
-            'ya_edu': {'name': 'Программа обучения', 'values': ya_edu_options},
-            'country': {'name': 'Страна', 'values': country_options},
-            'city': {'name': 'Город', 'values': city_options},
+            'ya_edu': {
+                'name': 'Программа обучения',
+                'values': [{'id': edu.id, 'name': edu.name}
+                           for edu in TrainingProgram.objects.all()]
+            },
+            'country': {
+                'name': 'Страна',
+                'values': [{'id': country.id, 'name': country.name}
+                           for country in Country.objects.all()]
+            },
+            'city': {
+                'name': 'Город',
+                'values': [{'id': city.id, 'name': city.name}
+                           for city in City.objects.all()]
+            },
             'status': {
                 'name': 'Статус амбассадора',
-                'values': [{'id': choice[0], 'name': choice[1]} for
-                           choice in STATUS_CHOICES]
+                'values': [{'id': choice[0], 'name': choice[1]}
+                           for choice in STATUS_CHOICES]
             },
             'gender': {
                 'name': 'Пол',
-                'values': [{'id': choice[0], 'name': choice[1]} for
-                           choice in GENDER_CHOICES]
+                'values': [{'id': choice[0], 'name': choice[1]}
+                           for choice in GENDER_CHOICES]
             },
             'order': {
                 'name': 'Сортировать',
