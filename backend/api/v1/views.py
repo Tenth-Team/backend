@@ -1,3 +1,7 @@
+from ambassadors.choices import GENDER_CHOICES, STATUS_CHOICES
+from ambassadors.models import (Ambassador, AmbassadorGoal, City, Content,
+                                Country, MerchandiseShippingRequest, PromoCode,
+                                TrainingProgram)
 from django.db.models import Prefetch
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema_view
@@ -7,34 +11,16 @@ from rest_framework.generics import ListAPIView
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
 
-from ambassadors.choices import GENDER_CHOICES, STATUS_CHOICES
-from ambassadors.models import (
-    Ambassador,
-    AmbassadorGoal,
-    City,
-    Content,
-    Country,
-    MerchandiseShippingRequest,
-    PromoCode,
-    TrainingProgram,
-)
-
 from .filters import AmbassadorFilter, ContentFilter
 from .pagination import AmbassadorPagination
 from .permissions import IsAuthenticatedOrYandexForms
 from .schemas import content_schema, merch_schema
-from .serializers import (
-    AmbassadorCreateSerializer,
-    AmbassadorGoalSerializer,
-    AmbassadorReadSerializer,
-    AmbassadorUpdateSerializer,
-    ContentSerializer,
-    LoyaltyAmbassadorSerializer,
-    MerchandiseShippingRequestSerializer,
-    PromoCodeSerializer,
-    TrainingProgramSerializer,
-    YandexFormAmbassadorCreateSerializer,
-)
+from .serializers import (AmbassadorCreateSerializer, AmbassadorGoalSerializer,
+                          AmbassadorReadSerializer, AmbassadorUpdateSerializer,
+                          ContentSerializer, LoyaltyAmbassadorSerializer,
+                          MerchandiseShippingRequestSerializer,
+                          PromoCodeSerializer, TrainingProgramSerializer,
+                          YandexFormAmbassadorCreateSerializer)
 
 
 class AmbassadorViewSet(viewsets.ModelViewSet):

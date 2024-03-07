@@ -1,18 +1,11 @@
 import re
 
+from ambassadors.choices import CONTENT_STATUS_CHOICES
+from ambassadors.models import (Ambassador, AmbassadorGoal, City, Content,
+                                Country, Merchandise,
+                                MerchandiseShippingRequest, PromoCode,
+                                TrainingProgram)
 from rest_framework import serializers
-
-from ambassadors.models import (
-    Ambassador,
-    AmbassadorGoal,
-    City,
-    Content,
-    Country,
-    Merchandise,
-    MerchandiseShippingRequest,
-    PromoCode,
-    TrainingProgram,
-)
 
 from .utils import format_telegram_username
 
@@ -62,7 +55,7 @@ class ContentSerializer(serializers.ModelSerializer):
     Сериализатор для модели Контента.
     """
 
-    status = ChoiceField(
+    status = serializers.ChoiceField(
         choices=CONTENT_STATUS_CHOICES,
         required=False,
         help_text='Статус контента. Возможные значения: '

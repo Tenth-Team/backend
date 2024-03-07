@@ -2,15 +2,10 @@ from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.routers import DefaultRouter
 
-from .views import (
-    AmbassadorGoalView,
-    AmbassadorLoyaltyViewSet,
-    AmbassadorViewSet,
-    ContentViewSet,
-    MerchandiseShippingRequestViewSet,
-    PromoCodeViewSet,
-    TrainingProgramView,
-)
+from .views import (AmbassadorGoalView, AmbassadorLoyaltyViewSet,
+                    AmbassadorViewSet, ContentViewSet,
+                    MerchandiseShippingRequestViewSet, PromoCodeViewSet,
+                    TrainingProgramView)
 
 router = DefaultRouter()
 router.register(r'ambassadors', AmbassadorViewSet)

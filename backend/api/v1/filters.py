@@ -1,17 +1,9 @@
-from django_filters import FilterSet
-from django_filters.filters import (
-    BaseInFilter,
-    CharFilter,
-    ChoiceFilter,
-    OrderingFilter,
-)
-
-from ambassadors.choices import (
-    CONTENT_STATUS_CHOICES,
-    GENDER_CHOICES,
-    STATUS_CHOICES,
-)
+from ambassadors.choices import (CONTENT_STATUS_CHOICES, GENDER_CHOICES,
+                                 STATUS_CHOICES)
 from ambassadors.models import Ambassador, Content
+from django_filters import FilterSet
+from django_filters.filters import (BaseInFilter, CharFilter, ChoiceFilter,
+                                    OrderingFilter)
 
 
 class ContentFilter(FilterSet):

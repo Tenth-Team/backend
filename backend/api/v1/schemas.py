@@ -1,13 +1,8 @@
-from drf_spectacular.utils import (
-    OpenApiExample,
-    OpenApiParameter,
-    extend_schema,
-)
+from drf_spectacular.utils import (OpenApiExample, OpenApiParameter,
+                                   extend_schema)
 
-from .serializers import (
-    ContentSerializer,
-    MerchandiseShippingRequestSerializer,
-)
+from .serializers import (ContentSerializer,
+                          MerchandiseShippingRequestSerializer)
 
 content_schema = {
     'list': extend_schema(

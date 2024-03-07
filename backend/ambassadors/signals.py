@@ -1,7 +1,6 @@
+from ambassadors.models import PromoCode
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
-
-from ambassadors.models import PromoCode
 
 
 @receiver(pre_save, sender=PromoCode)
