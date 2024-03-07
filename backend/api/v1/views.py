@@ -2,12 +2,14 @@ from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema_view
 from rest_framework import filters, permissions, viewsets
 from rest_framework.decorators import action
+from rest_framework.generics import ListAPIView
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
 
 from ambassadors.choices import GENDER_CHOICES, STATUS_CHOICES
 from ambassadors.models import (
     Ambassador,
+    AmbassadorGoal,
     City,
     Content,
     Country,
@@ -22,10 +24,12 @@ from .permissions import IsAuthenticatedOrYandexForms
 from .schemas import content_schema, merch_schema
 from .serializers import (
     AmbassadorCreateSerializer,
+    AmbassadorGoalSerializer,
     AmbassadorReadSerializer,
     ContentSerializer,
     MerchandiseShippingRequestSerializer,
     PromoCodeSerializer,
+    TrainingProgramSerializer,
     YandexFormAmbassadorCreateSerializer,
 )
 
@@ -110,7 +114,7 @@ class ContentViewSet(viewsets.ModelViewSet):
 class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
     queryset = MerchandiseShippingRequest.objects.all()
     serializer_class = MerchandiseShippingRequestSerializer
-    permission_classes = (permissions.IsAuthenticated, )
+    permission_classes = (permissions.IsAuthenticated,)
     http_method_names = (
         'get',
         'post',
@@ -119,3 +123,19 @@ class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
 
     """def download(self, request):
         return"""
+
+
+class AmbassadorGoalView(ListAPIView):
+    """
+    View для просмотра списка целей амбассадорства.
+    """
+    queryset = AmbassadorGoal.objects.all()
+    serializer_class = AmbassadorGoalSerializer
+
+
+class TrainingProgramView(ListAPIView):
+    """
+    View для просмотра списка программ обучения.
+    """
+    queryset = TrainingProgram.objects.all()
+    serializer_class = TrainingProgramSerializer
