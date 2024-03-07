@@ -3,11 +3,9 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-key')
 
 DEBUG = os.environ.get('DEBUG', default='True').lower() == 'true'
-
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", '*').split()
 CSRF_TRUSTED_ORIGINS = ['https://crm.ragimov700.ru']
@@ -67,7 +65,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {

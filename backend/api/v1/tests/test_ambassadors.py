@@ -1,8 +1,3 @@
-from django.contrib.auth import get_user_model
-from django.urls import reverse
-from rest_framework import status
-from rest_framework.test import APITestCase
-
 from ambassadors.factories import (
     AmbassadorFactory,
     AmbassadorGoalFactory,
@@ -11,6 +6,10 @@ from ambassadors.factories import (
     TrainingProgramFactory,
 )
 from ambassadors.models import Ambassador
+from django.contrib.auth import get_user_model
+from django.urls import reverse
+from rest_framework import status
+from rest_framework.test import APITestCase
 
 User = get_user_model()
 
