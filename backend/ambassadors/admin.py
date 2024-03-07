@@ -1,7 +1,15 @@
 from django.contrib import admin
 
-from .models import (Ambassador, AmbassadorGoal, City, Content, Country,
-                     Merchandise, MerchandiseShippingRequest, TrainingProgram)
+from .models import (
+    Ambassador,
+    AmbassadorGoal,
+    City,
+    Content,
+    Country,
+    Merchandise,
+    MerchandiseShippingRequest,
+    TrainingProgram,
+)
 
 
 @admin.register(Country)

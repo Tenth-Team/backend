@@ -1,10 +1,17 @@
 import re
 
 from ambassadors.choices import CONTENT_STATUS_CHOICES
-from ambassadors.models import (Ambassador, AmbassadorGoal, City, Content,
-                                Country, Merchandise,
-                                MerchandiseShippingRequest, PromoCode,
-                                TrainingProgram)
+from ambassadors.models import (
+    Ambassador,
+    AmbassadorGoal,
+    City,
+    Content,
+    Country,
+    Merchandise,
+    MerchandiseShippingRequest,
+    PromoCode,
+    TrainingProgram,
+)
 from rest_framework import serializers
 
 from .utils import format_telegram_username

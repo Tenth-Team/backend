@@ -1,6 +1,10 @@
-from ambassadors.factories import (AmbassadorFactory, AmbassadorGoalFactory,
-                                   CityFactory, CountryFactory,
-                                   TrainingProgramFactory)
+from ambassadors.factories import (
+    AmbassadorFactory,
+    AmbassadorGoalFactory,
+    CityFactory,
+    CountryFactory,
+    TrainingProgramFactory,
+)
 from ambassadors.models import Ambassador
 from django.contrib.auth import get_user_model
 from django.urls import reverse
