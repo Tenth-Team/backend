@@ -254,11 +254,11 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
     content_count = serializers.SerializerMethodField()
     city = serializers.SlugRelatedField(
         read_only=True,
-        slug_field='name'  # предполагается, что в модели City есть поле name
+        slug_field='name'
     )
     country = serializers.SlugRelatedField(
         read_only=True,
-        slug_field='name'  # предполагается, что в модели City есть поле name
+        slug_field='name'
     )
 
     class Meta:
