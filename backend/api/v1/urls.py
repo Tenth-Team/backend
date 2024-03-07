@@ -3,11 +3,13 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.routers import DefaultRouter
 
 from .views import (
+    AmbassadorGoalView,
     AmbassadorLoyaltyViewSet,
     AmbassadorViewSet,
     ContentViewSet,
     MerchandiseShippingRequestViewSet,
     PromoCodeViewSet,
+    TrainingProgramView,
 )
 
 router = DefaultRouter()
@@ -26,4 +28,8 @@ urlpatterns = [
         SpectacularSwaggerView.as_view(url_name='schema'),
         name='swagger-ui',
     ),
+    path('ambassador_goals/', AmbassadorGoalView.as_view(),
+         name='ambassador_goals'),
+    path('training_programs', TrainingProgramView.as_view(),
+         name='training_programs')
 ]

@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'corsheaders',
+    'api.v1.apps.ApiConfig',
     'ambassadors.apps.AmbassadorsConfig',
     'users',
     'drf_spectacular',
