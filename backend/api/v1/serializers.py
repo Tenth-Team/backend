@@ -66,7 +66,7 @@ class ContentSerializer(serializers.ModelSerializer):
         choices=CONTENT_STATUS_CHOICES,
         required=False,
         help_text='Статус контента. Возможные значения: '
-                  'Новая публикация, Одобрена, Не одобрена.',
+        'new, approved, rejected.',
     )
 
     class Meta:
@@ -98,8 +98,10 @@ class ContentSerializer(serializers.ModelSerializer):
     def to_internal_value(self, instance):
         """
         Преобразует данные перед сохранением,
-        обрабатывает логическое поле 'guide'.
+        преобразовывает 'guide' в булевый тип.
         """
+
+        instance = instance.copy()
         guide = instance.get('guide')
         if guide is not None:
             instance['guide'] = bool(guide)
@@ -225,14 +227,10 @@ class AmbassadorUpdateSerializer(serializers.ModelSerializer):
         country = data.get('country')
         city = data.get('city')
         if country:
-            country, _ = Country.objects.get_or_create(
-                name=country
-            )
+            country, _ = Country.objects.get_or_create(name=country)
             internal_value['country'] = country
         if city:
-            city, _ = City.objects.get_or_create(
-                name=city
-            )
+            city, _ = City.objects.get_or_create(name=city)
             internal_value['city'] = city
         if telegram:
             internal_value['telegram'] = format_telegram_username(telegram)
@@ -252,14 +250,8 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
     amb_goals = AmbassadorGoalSerializer(many=True)
     promo_code = serializers.SerializerMethodField()
     content_count = serializers.SerializerMethodField()
-    city = serializers.SlugRelatedField(
-        read_only=True,
-        slug_field='name'
-    )
-    country = serializers.SlugRelatedField(
-        read_only=True,
-        slug_field='name'
-    )
+    city = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    country = serializers.SlugRelatedField(read_only=True, slug_field='name')
 
     class Meta:
         model = Ambassador
