@@ -266,9 +266,9 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_promo_code(self, obj):
-        promo_code = obj.promo_code.filter(status='active').first()
-        if promo_code is not None:
-            return ShortPromoCodeSerializer(promo_code).data
+        promo_code = obj.prefetched_promo_codes
+        if promo_code:
+            return promo_code[0].name
         return None
 
     def get_content_count(self, obj):
