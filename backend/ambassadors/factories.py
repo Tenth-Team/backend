@@ -4,17 +4,17 @@ from factory.django import DjangoModelFactory
 
 from .choices import (
     CLOTHING_SIZES_CHOICES,
+    CONTENT_STATUS_CHOICES,
     GENDER_CHOICES,
     STATUS_CHOICES,
-    CONTENT_STATUS_CHOICES,
 )
 from .models import (
     Ambassador,
     AmbassadorGoal,
     City,
+    Content,
     Country,
     TrainingProgram,
-    Content,
 )
 
 
