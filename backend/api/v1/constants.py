@@ -1,10 +1,10 @@
-SCHEMA_DATE = '2000-01-01'
+SCHEMA_DATE = "2000-01-01"
 
 CONTENT_REQ_EXAMPLE = {
-    'full_name': 'Иван Иванов',
-    'telegram': '@ivanivanov',
-    'link': 'http://example.com/content',
-    'guide': True,
+    "full_name": "Иван Иванов",
+    "telegram": "@ivanivanov",
+    "link": "http://example.com/content",
+    "guide": True,
 }
 
 CONTENT_RESP_EXAMPLE = {
@@ -14,7 +14,7 @@ CONTENT_RESP_EXAMPLE = {
     "ambassador": 1
 } | CONTENT_REQ_EXAMPLE
 
-CONTENT_PATCH_EXAMPLE = {'status': 'rejected'}
+CONTENT_PATCH_EXAMPLE = {"status": "rejected"}
 
 MERCH_REQ_EXAMPLE = {
     "status_send": "new",
@@ -62,20 +62,20 @@ AMBASSADOR_REQ_EXAMPLE = {
 }
 
 AMBASSADOR_RESP_EXAMPLE = AMBASSADOR_REQ_EXAMPLE | {
-      "id": 1,
-      "ya_edu": {
+    "id": 1,
+    "ya_edu": {
         "id": 1,
         "name": "Пример программы обучения"
-      },
-      "amb_goals": [
+    },
+    "amb_goals": [
         {
-          "id": 1,
-          "name": "Пример цели"
+            "id": 1,
+            "name": "Пример цели"
         }
-      ],
-      "promo_code": "promo_code_example",
-      "content_count": 0,
-      "reg_date": f"{SCHEMA_DATE}T20:00:00.000+03:00",
-      "country": 1,
-      "city": 1
+    ],
+    "promo_code": "promo_code_example",
+    "content_count": 0,
+    "reg_date": f"{SCHEMA_DATE}T20:00:00.000+03:00",
+    "country": 1,
+    "city": 1
 }

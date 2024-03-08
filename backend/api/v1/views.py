@@ -25,10 +25,10 @@ from .schemas import (
     ambassador_schema,
     content_schema,
     filters_schema,
+    goals_schema,
+    loyalty_schema,
     merch_schema,
     promo_code_schema,
-    loyalty_schema,
-    goals_schema,
     training_program_schema,
 )
 from .serializers import (
