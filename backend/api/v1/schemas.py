@@ -5,10 +5,14 @@ from drf_spectacular.utils import (
 )
 
 from .constants import (
-    CONTENT_REQ_EXAMPLE, CONTENT_RESP_EXAMPLE,
-    MERCH_REQ_EXAMPLE, MERCH_RESP_EXAMPLE,
-    PROMO_CODE_REQ_EXAMPLE, PROMO_CODE_RESP_EXAMPLE,
-    AMBASSADOR_RESP_EXAMPLE, AMBASSADOR_REQ_EXAMPLE,
+    AMBASSADOR_REQ_EXAMPLE,
+    AMBASSADOR_RESP_EXAMPLE,
+    CONTENT_REQ_EXAMPLE,
+    CONTENT_RESP_EXAMPLE,
+    MERCH_REQ_EXAMPLE,
+    MERCH_RESP_EXAMPLE,
+    PROMO_CODE_REQ_EXAMPLE,
+    PROMO_CODE_RESP_EXAMPLE, MERCH_PATCH_EXAMPLE, CONTENT_PATCH_EXAMPLE,
 )
 
 
@@ -43,6 +47,23 @@ ambassador_schema = {
                     'статусу и образовательной программе '
                     'с возможностью применения сортировки.',
         parameters=[
+            OpenApiParameter(
+                name='status',
+                description='Статус контента для фильтрации',
+                required=False,
+                type=str,
+                examples=[
+                    OpenApiExample("new", value="new"),
+                    OpenApiExample("approved", value="approved"),
+                    OpenApiExample("rejected", value="rejected"),
+                ],
+            ),
+            OpenApiParameter(
+                name='full_name',
+                description='Поиск по имени и фамилии',
+                required=False,
+                type=str,
+            ),
             OpenApiParameter(
                 name='limit',
                 description='Лимит объектов на странице',
@@ -234,7 +255,7 @@ content_schema = {
                 ],
             ),
             OpenApiParameter(
-                name='search',
+                name='full_name',
                 description='Поиск по имени и фамилии',
             ),
             OpenApiParameter(
@@ -283,7 +304,7 @@ content_schema = {
             OpenApiExample(
                 'patch_content_example',
                 summary='Пример запроса на изменение контента',
-                value={'status': 'Не одобрено'},
+                value=CONTENT_PATCH_EXAMPLE,
                 request_only=True,
             ),
             OpenApiExample(
@@ -403,7 +424,7 @@ merch_schema = {
             OpenApiExample(
                 'patch_merchandise_example',
                 summary='Пример запроса изменения заявки',
-                value=MERCH_REQ_EXAMPLE,
+                value=MERCH_PATCH_EXAMPLE,
                 request_only=True
             ),
             OpenApiExample(
@@ -434,4 +455,61 @@ merch_schema = {
             )
         ]
     ),
+}
+
+goals_schema = {
+    'summary': 'Получение списка целей',
+    'description': 'Возвращает список объектов целей амбассадоров',
+    'examples': [
+        OpenApiExample(
+            'list_goals_example',
+            summary='Пример ответа на получение целей',
+            value=[
+                {
+                    "id": 1,
+                    "name": "Пример цели"
+                }
+            ],
+            response_only=True
+        )
+    ]
+}
+
+loyalty_schema = {
+    'summary': 'Получение списка амбассадоров в программе лояльности',
+    'description': 'Возвращает список объектов амбассадоров '
+                   'в программе лояльности.',
+    'examples': [
+        OpenApiExample(
+            'list_loyalty_example',
+            summary='Пример ответа на получение амбассадоров',
+            value=[
+                {
+                    "id": 1,
+                    "full_name": "Иван Иванов",
+                    "content_count": 1,
+                    "shipped_merch": "Пример названия мерча"
+                }
+            ],
+            response_only=True,
+        )
+    ]
+}
+
+training_program_schema = {
+    'summary': 'Получение списка программ обучения',
+    'description': 'Возвращает список объектов программы обучения',
+    'examples': [
+        OpenApiExample(
+            'list_training_program_example',
+            summary='Пример ответа на получение программ обучения',
+            value=[
+                {
+                    "id": 1,
+                    "name": "Пример программы"
+                }
+            ],
+            response_only=True
+        )
+    ]
 }

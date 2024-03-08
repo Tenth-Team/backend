@@ -9,21 +9,28 @@ CONTENT_REQ_EXAMPLE = {
 
 CONTENT_RESP_EXAMPLE = {
     "id": 1,
-    "status": "Новая публикация",
+    "status": "new",
     "created_date": SCHEMA_DATE,
     "ambassador": 1
 } | CONTENT_REQ_EXAMPLE
 
+CONTENT_PATCH_EXAMPLE = {'status': 'rejected'}
+
 MERCH_REQ_EXAMPLE = {
-    "status_send": "Новая заявка",
+    "status_send": "new",
     "comment": "Комментарий",
     "name_merch": 1,
     "ambassador": 1
 }
 MERCH_RESP_EXAMPLE = {"id": 1, "created_date": SCHEMA_DATE} | MERCH_REQ_EXAMPLE
 
+MERCH_PATCH_EXAMPLE = {
+    "status_send": "new",
+    "comment": "Комментарий"
+}
+
 PROMO_CODE_REQ_EXAMPLE = {
-    "status": "Активный",
+    "status": "active",
     "name": "promo_code",
     "ambassador": 1
 }
