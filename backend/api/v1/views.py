@@ -11,8 +11,8 @@ from ambassadors.models import (
 )
 from django.db.models import Prefetch
 from django_filters.rest_framework import DjangoFilterBackend
-from drf_spectacular.utils import extend_schema_view
-from rest_framework import generics, viewsets
+from drf_spectacular.utils import extend_schema, extend_schema_view
+from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.generics import ListAPIView
 from rest_framework.pagination import LimitOffsetPagination
@@ -21,7 +21,16 @@ from rest_framework.response import Response
 from .filters import AmbassadorFilter, ContentFilter
 from .pagination import AmbassadorPagination
 from .permissions import IsAuthenticatedOrYandexForms
-from .schemas import content_schema, merch_schema
+from .schemas import (
+    ambassador_schema,
+    content_schema,
+    filters_schema,
+    goals_schema,
+    loyalty_schema,
+    merch_schema,
+    promo_code_schema,
+    training_program_schema,
+)
 from .serializers import (
     AmbassadorCreateSerializer,
     AmbassadorGoalSerializer,
@@ -36,6 +45,8 @@ from .serializers import (
 )
 
 
+@extend_schema(tags=["Амбассадоры"])
+@extend_schema_view(**ambassador_schema)
 class AmbassadorViewSet(viewsets.ModelViewSet):
     """
     Вьюсет для амбассадоров.
@@ -74,6 +85,7 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
             case _:
                 return Ambassador.objects.all()
 
+    @extend_schema(**filters_schema)
     @action(detail=False, methods=['get'])
     def filters(self, request):
         """
@@ -136,11 +148,23 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
         return Response(filters_data)
 
 
+@extend_schema(tags=["Промокоды"])
+@extend_schema_view(**promo_code_schema)
 class PromoCodeViewSet(viewsets.ModelViewSet):
+    """
+    Вьюсет для модели промокода.
+    """
     queryset = PromoCode.objects.all()
     serializer_class = PromoCodeSerializer
+    http_method_names = (
+        'get',
+        'post',
+        'patch',
+        'delete'
+    )
 
 
+@extend_schema(tags=["Контент"])
 @extend_schema_view(**content_schema)
 class ContentViewSet(viewsets.ModelViewSet):
     """
@@ -160,7 +184,23 @@ class ContentViewSet(viewsets.ModelViewSet):
     )
 
 
-class AmbassadorLoyaltyViewSet(generics.ListAPIView):
+@extend_schema(tags=["Заявки"])
+@extend_schema_view(**merch_schema)
+class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
+    queryset = MerchandiseShippingRequest.objects.all()
+    serializer_class = MerchandiseShippingRequestSerializer
+    http_method_names = (
+        'get',
+        'post',
+        'patch',
+    )
+
+    """def download(self, request):
+        return"""
+
+
+@extend_schema(tags=["Программы и цели"], **loyalty_schema)
+class AmbassadorLoyaltyViewSet(ListAPIView):
     """Viewset для получения данных для страницы лояльности.
     Возвращает список амбассадоров."""
 
@@ -182,20 +222,7 @@ class AmbassadorLoyaltyViewSet(generics.ListAPIView):
     serializer_class = LoyaltyAmbassadorSerializer
 
 
-@extend_schema_view(**merch_schema)
-class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
-    queryset = MerchandiseShippingRequest.objects.all()
-    serializer_class = MerchandiseShippingRequestSerializer
-    http_method_names = (
-        'get',
-        'post',
-        'patch',
-    )
-
-    """def download(self, request):
-        return"""
-
-
+@extend_schema(tags=["Программы и цели"], **goals_schema)
 class AmbassadorGoalView(ListAPIView):
     """
     View для просмотра списка целей амбассадорства.
@@ -204,6 +231,7 @@ class AmbassadorGoalView(ListAPIView):
     serializer_class = AmbassadorGoalSerializer
 
 
+@extend_schema(tags=["Программы и цели"], **training_program_schema)
 class TrainingProgramView(ListAPIView):
     """
     View для просмотра списка программ обучения.

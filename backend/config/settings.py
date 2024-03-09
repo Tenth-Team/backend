@@ -113,5 +113,17 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Ambassadors CRM API",
+    "DESCRIPTION": "API предназначенный для управления"
+                   " взаимоотношениями с амбассадорами",
+    "VERSION": "0.0.1",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SWAGGER_UI_SETTINGS": {
+        "filter": True,
+    },
+    "COMPONENT_SPLIT_REQUEST": True
+}
+
 YANDEX_KEY = os.getenv('YANDEX_KEY', 'insecure-yandex-key')
 CORS_ALLOW_ALL_ORIGINS = True
