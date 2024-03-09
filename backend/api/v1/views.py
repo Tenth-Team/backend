@@ -209,7 +209,6 @@ class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
                      f'attachment; filename="{file_name}"'}
         )
 
-
 @extend_schema(tags=["Программы и цели"], **loyalty_schema)
 class AmbassadorLoyaltyViewSet(ListAPIView):
     """Viewset для получения данных для страницы лояльности.
