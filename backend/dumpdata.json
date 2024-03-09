@@ -504,10 +504,10 @@
             "edu": "Высшее образование по специальности инженер",
             "work": "Инженер в ООО Инженерия",
             "study_goal": "Изучение новых технологий",
-            "blog_url": "",
+            "blog_url": "https://vk.com/blog",
             "clothing_size": "L",
             "shoe_size": "45",
-            "additional_comments": "",
+            "additional_comments": "Готов работать с командой на развитие проекта",
             "status": "active",
             "reg_date": "2023-02-01T00:00:00Z",
             "amb_goals": [3]
@@ -559,7 +559,7 @@
             "blog_url": "",
             "clothing_size": "M",
             "shoe_size": "42",
-            "additional_comments": "",
+            "additional_comments": "Интересуюсь различными культурами и искусством",
             "status": "pending",
             "reg_date": "2023-04-01T00:00:00Z",
             "amb_goals": [2, 3]
@@ -582,7 +582,7 @@
             "edu": "Высшее образование по специальности психолог",
             "work": "Психолог в Центре психологии",
             "study_goal": "Изучение методов психотерапии",
-            "blog_url": "",
+            "blog_url": "https://ekaterina.com/",
             "clothing_size": "M",
             "shoe_size": "39",
             "additional_comments": "Хочу помогать людям находить гармонию",
@@ -634,7 +634,7 @@
             "edu": "Высшее образование по специальности лингвист",
             "work": "Переводчик в ООО Переводы",
             "study_goal": "Изучение новых языков",
-            "blog_url": "",
+            "blog_url": "https://anna.com",
             "clothing_size": "M",
             "shoe_size": "40",
             "additional_comments": "",
@@ -689,7 +689,7 @@
             "blog_url": "",
             "clothing_size": "S",
             "shoe_size": "37",
-            "additional_comments": "",
+            "additional_comments": "Опыт проведения мероприятий и презентаций",
             "status": "not_ambassador",
             "reg_date": "2023-09-01T00:00:00Z",
             "amb_goals": [3, 4]
@@ -767,7 +767,7 @@
             "blog_url": "",
             "clothing_size": "L",
             "shoe_size": "44",
-            "additional_comments": "",
+            "additional_comments": "Хорошо владею английским и испанским языками",
             "status": "pending",
             "reg_date": "2023-12-01T00:00:00Z",
             "amb_goals": [1, 2]
@@ -816,7 +816,7 @@
             "edu": "Высшее образование по специальности архитектор",
             "work": "Архитектор в архитектурном бюро",
             "study_goal": "Развитие навыков в архитектурном проектировании",
-            "blog_url": "",
+            "blog_url": "https://sports-map.ru/",
             "clothing_size": "M",
             "shoe_size": "43",
             "additional_comments": "Люблю современную архитектуру",
@@ -845,7 +845,7 @@
             "blog_url": "https://evgeniabanking.com",
             "clothing_size": "L",
             "shoe_size": "40",
-            "additional_comments": "",
+            "additional_comments": "Стремлюсь к профессиональному росту и обучению",
             "status": "active",
             "reg_date": "2024-03-01T00:00:00Z",
             "amb_goals": [2, 4]
@@ -920,10 +920,10 @@
             "edu": "Высшее образование по специальности химик",
             "work": "Исследователь в химической лаборатории",
             "study_goal": "Изучение новых методов синтеза материалов",
-            "blog_url": "",
+            "blog_url": "https://example.com/blogpost1",
             "clothing_size": "M",
             "shoe_size": "42",
-            "additional_comments": "",
+            "additional_comments": "Имею опыт ведения социальных медиа-аккаунтов",
             "status": "pending",
             "reg_date": "2024-06-01T00:00:00Z",
             "amb_goals": [1, 3]
@@ -972,10 +972,10 @@
             "edu": "Высшее образование по специальности психолог",
             "work": "Психолог в центре развития",
             "study_goal": "Изучение новых методов психотерапии",
-            "blog_url": "",
+            "blog_url": "https://example.com/blogpost2",
             "clothing_size": "S",
             "shoe_size": "38",
-            "additional_comments": "",
+            "additional_comments": "Готов принимать участие в локальных мероприятиях и выставках",
             "status": "pending",
             "reg_date": "2024-08-01T00:00:00Z",
             "amb_goals": [1, 3]
@@ -1027,7 +1027,7 @@
             "blog_url": "https://dmitryprogramming.com",
             "clothing_size": "L",
             "shoe_size": "43",
-            "additional_comments": "",
+            "additional_comments": "Опыт работы в международных командных проектах",
             "status": "pending",
             "reg_date": "2024-10-01T00:00:00Z",
             "amb_goals": [1, 2]
@@ -1079,7 +1079,7 @@
             "blog_url": "https://pavelphysics.com",
             "clothing_size": "M",
             "shoe_size": "42",
-            "additional_comments": "",
+            "additional_comments": "Интерес к развитию сообщества и помощи начинающим",
             "status": "pending",
             "reg_date": "2024-12-01T00:00:00Z",
             "amb_goals": [2, 4]
@@ -1102,7 +1102,7 @@
             "edu": "Высшее образование по специальности психолог",
             "work": "Клинический психолог",
             "study_goal": "Изучение психотерапии",
-            "blog_url": "",
+            "blog_url": "https://example.com/blogpost3",
             "clothing_size": "M",
             "shoe_size": "40",
             "additional_comments": "",
@@ -1131,7 +1131,7 @@
             "blog_url": "",
             "clothing_size": "L",
             "shoe_size": "44",
-            "additional_comments": "",
+            "additional_comments": "Занимаюсь благотворительностью и волонтерством",
             "status": "pending",
             "reg_date": "2025-02-01T00:00:00Z",
             "amb_goals": [1, 2]
@@ -1154,7 +1154,7 @@
             "edu": "Высшее образование по специальности биолог",
             "work": "Научный сотрудник в институте",
             "study_goal": "Исследование экологических систем",
-            "blog_url": "",
+            "blog_url": "https://example.com/blogpost4",
             "clothing_size": "S",
             "shoe_size": "37",
             "additional_comments": "",
@@ -1183,7 +1183,7 @@
             "blog_url": "",
             "clothing_size": "M",
             "shoe_size": "42",
-            "additional_comments": "",
+            "additional_comments": "Увлекаюсь фотографией, могу провести мастер-классы по фотографии для участников программы.",
             "status": "pending",
             "reg_date": "2025-04-01T00:00:00Z",
             "amb_goals": [2, 4]
@@ -1209,7 +1209,7 @@
             "blog_url": "",
             "clothing_size": "M",
             "shoe_size": "40",
-            "additional_comments": "",
+            "additional_comments": "Интересуюсь спортом и кино. Готов поделиться опытом и советами!",
             "status": "active",
             "reg_date": "2025-05-01T00:00:00Z",
             "amb_goals": [3, 4]
@@ -1232,7 +1232,7 @@
             "edu": "Высшее образование по специальности юрист",
             "work": "Адвокат",
             "study_goal": "Изучение гражданского права",
-            "blog_url": "",
+            "blog_url": "https://example.com/blogpost5",
             "clothing_size": "L",
             "shoe_size": "44",
             "additional_comments": "",
@@ -1261,7 +1261,7 @@
             "blog_url": "https://ivanprogramming.com",
             "clothing_size": "L",
             "shoe_size": "43",
-            "additional_comments": "",
+            "additional_comments": "Моя цель - вдохновлять людей на достижение своих мечт. Давайте сделаем мир лучше вместе!",
             "status": "active",
             "reg_date": "2025-07-01T00:00:00Z",
             "amb_goals": [1, 2]
@@ -1287,7 +1287,7 @@
             "blog_url": "",
             "clothing_size": "S",
             "shoe_size": "37",
-            "additional_comments": "",
+            "additional_comments": "Я большой любитель музыки и искусства. Готов организовать ивенты и мастер-классы для вас!",
             "status": "active",
             "reg_date": "2025-08-01T00:00:00Z",
             "amb_goals": [3, 4]
@@ -1310,7 +1310,7 @@
             "edu": "Высшее образование по специальности экономист",
             "work": "Финансовый аналитик в банке",
             "study_goal": "Изучение финансового анализа",
-            "blog_url": "",
+            "blog_url": "https://example.com/blogpost6",
             "clothing_size": "M",
             "shoe_size": "42",
             "additional_comments": "",
@@ -1339,7 +1339,7 @@
             "blog_url": "",
             "clothing_size": "S",
             "shoe_size": "38",
-            "additional_comments": "",
+            "additional_comments": "У меня богатый опыт в области образования и науки. Помогу вам с учебой и научными проектами!",
             "status": "active",
             "reg_date": "2025-10-01T00:00:00Z",
             "amb_goals": [3, 4]
@@ -1365,7 +1365,7 @@
             "blog_url": "https://pavelphysics.com",
             "clothing_size": "M",
             "shoe_size": "40",
-            "additional_comments": "",
+            "additional_comments": "Я заинтересован в развитии сферы образования и готов поделиться своим опытом с другими.",
             "status": "pending",
             "reg_date": "2025-11-01T00:00:00Z",
             "amb_goals": [1, 2]
@@ -1388,7 +1388,7 @@
             "edu": "Высшее образование по специальности психолог",
             "work": "Клинический психолог",
             "study_goal": "Изучение психотерапии",
-            "blog_url": "",
+            "blog_url": "https://example.com/blogpost7",
             "clothing_size": "M",
             "shoe_size": "40",
             "additional_comments": "",
@@ -1414,10 +1414,10 @@
             "edu": "Высшее образование по специальности инженер-строитель",
             "work": "Инженер в строительной компании",
             "study_goal": "Развитие навыков в проектировании",
-            "blog_url": "",
+            "blog_url": "https://example.com/blogpost8",
             "clothing_size": "L",
             "shoe_size": "44",
-            "additional_comments": "",
+            "additional_comments": "Хочу стать частью сообщества амбассадоров, чтобы вместе работать над важными проектами.",
             "status": "pending",
             "reg_date": "2026-01-01T00:00:00Z",
             "amb_goals": [1, 2]
@@ -1469,7 +1469,7 @@
             "blog_url": "https://artemprogramming.com",
             "clothing_size": "L",
             "shoe_size": "43",
-            "additional_comments": "",
+            "additional_comments": "Готов участвовать в мероприятиях и организовывать встречи для обмена знаниями.",
             "status": "pending",
             "reg_date": "2026-03-01T00:00:00Z",
             "amb_goals": [1, 2]
@@ -1492,7 +1492,7 @@
             "edu": "Высшее образование по специальности психолог",
             "work": "Клинический психолог",
             "study_goal": "Изучение психотерапии",
-            "blog_url": "",
+            "blog_url": "https://example.com/blogpost10",
             "clothing_size": "M",
             "shoe_size": "40",
             "additional_comments": "",
@@ -2279,6 +2279,186 @@
             "status": "new",
             "ambassador": 1,
             "created_date": "2029-11-25"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 1,
+        "fields": {
+            "ambassador": 19,
+            "name": "PROMO001",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 2,
+        "fields": {
+            "ambassador": 12,
+            "name": "PROMO002",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 3,
+        "fields": {
+            "ambassador": 25,
+            "name": "PROMO003",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 4,
+        "fields": {
+            "ambassador": 8,
+            "name": "PROMO004",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 5,
+        "fields": {
+            "ambassador": 36,
+            "name": "PROMO005",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 6,
+        "fields": {
+            "ambassador": 29,
+            "name": "PROMO006",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 7,
+        "fields": {
+            "ambassador": 10,
+            "name": "PROMO007",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 8,
+        "fields": {
+            "ambassador": 15,
+            "name": "PROMO008",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 9,
+        "fields": {
+            "ambassador": 1,
+            "name": "PROMO009",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 10,
+        "fields": {
+            "ambassador": 22,
+            "name": "PROMO010",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 11,
+        "fields": {
+            "ambassador": 7,
+            "name": "PROMO011",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 12,
+        "fields": {
+            "ambassador": 20,
+            "name": "PROMO012",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 13,
+        "fields": {
+            "ambassador": 32,
+            "name": "PROMO013",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 14,
+        "fields": {
+            "ambassador": 9,
+            "name": "PROMO014",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 15,
+        "fields": {
+            "ambassador": 24,
+            "name": "PROMO015",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 16,
+        "fields": {
+            "ambassador": 14,
+            "name": "PROMO016",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 17,
+        "fields": {
+            "ambassador": 28,
+            "name": "PROMO017",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 18,
+        "fields": {
+            "ambassador": 2,
+            "name": "PROMO018",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 19,
+        "fields": {
+            "ambassador": 40,
+            "name": "PROMO019",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 20,
+        "fields": {
+            "ambassador": 17,
+            "name": "PROMO020",
+            "status": "active"
         }
     }
 ]
