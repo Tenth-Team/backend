@@ -2280,5 +2280,185 @@
             "ambassador": 1,
             "created_date": "2029-11-25"
         }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 1,
+        "fields": {
+            "ambassador": 19,
+            "name": "PROMO001",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 2,
+        "fields": {
+            "ambassador": 12,
+            "name": "PROMO002",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 3,
+        "fields": {
+            "ambassador": 25,
+            "name": "PROMO003",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 4,
+        "fields": {
+            "ambassador": 8,
+            "name": "PROMO004",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 5,
+        "fields": {
+            "ambassador": 36,
+            "name": "PROMO005",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 6,
+        "fields": {
+            "ambassador": 29,
+            "name": "PROMO006",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 7,
+        "fields": {
+            "ambassador": 10,
+            "name": "PROMO007",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 8,
+        "fields": {
+            "ambassador": 15,
+            "name": "PROMO008",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 9,
+        "fields": {
+            "ambassador": 1,
+            "name": "PROMO009",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 10,
+        "fields": {
+            "ambassador": 22,
+            "name": "PROMO010",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 11,
+        "fields": {
+            "ambassador": 7,
+            "name": "PROMO011",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 12,
+        "fields": {
+            "ambassador": 20,
+            "name": "PROMO012",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 13,
+        "fields": {
+            "ambassador": 32,
+            "name": "PROMO013",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 14,
+        "fields": {
+            "ambassador": 9,
+            "name": "PROMO014",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 15,
+        "fields": {
+            "ambassador": 24,
+            "name": "PROMO015",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 16,
+        "fields": {
+            "ambassador": 14,
+            "name": "PROMO016",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 17,
+        "fields": {
+            "ambassador": 28,
+            "name": "PROMO017",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 18,
+        "fields": {
+            "ambassador": 2,
+            "name": "PROMO018",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 19,
+        "fields": {
+            "ambassador": 40,
+            "name": "PROMO019",
+            "status": "active"
+        }
+    },
+    {
+        "model": "ambassadors.PromoCode",
+        "pk": 20,
+        "fields": {
+            "ambassador": 17,
+            "name": "PROMO020",
+            "status": "active"
+        }
     }
 ]
