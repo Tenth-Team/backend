@@ -63,7 +63,8 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
                 active_promocodes = PromoCode.objects.filter(status='active')
                 prefetch_active_promocodes = Prefetch(
                     'promo_code', queryset=active_promocodes,
-                    to_attr='prefetched_promo_codes')
+                    to_attr='prefetched_promo_codes'
+                )
 
                 return Ambassador.objects.select_related(
                     'ya_edu', 'country', 'city'
@@ -91,15 +92,21 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
         ]
 
         filters_data = {
-            'ya_edu': {'name': 'Программа обучения',
-                       'type': 'checkbox',
-                       'values': ya_edu_options},
-            'country': {'name': 'Страна',
-                        'type': 'checkbox',
-                        'values': country_options},
-            'city': {'name': 'Город',
-                     'type': 'checkbox',
-                     'values': city_options},
+            'ya_edu': {
+                'name': 'Программа обучения',
+                'type': 'checkbox',
+                'values': ya_edu_options
+            },
+            'country': {
+                'name': 'Страна',
+                'type': 'checkbox',
+                'values': country_options
+            },
+            'city': {
+                'name': 'Город',
+                'type': 'checkbox',
+                'values': city_options
+            },
             'status': {
                 'name': 'Статус амбассадора',
                 'type': 'select',

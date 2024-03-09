@@ -2,8 +2,20 @@ import factory
 from factory import Faker
 from factory.django import DjangoModelFactory
 
-from .choices import CLOTHING_SIZES_CHOICES, GENDER_CHOICES, STATUS_CHOICES
-from .models import Ambassador, AmbassadorGoal, City, Country, TrainingProgram
+from .choices import (
+    CLOTHING_SIZES_CHOICES,
+    GENDER_CHOICES,
+    PROMO_CODE_STATUS_CHOICES,
+    STATUS_CHOICES,
+)
+from .models import (
+    Ambassador,
+    AmbassadorGoal,
+    City,
+    Country,
+    PromoCode,
+    TrainingProgram,
+)
 
 
 class CityFactory(DjangoModelFactory):
@@ -39,8 +51,10 @@ class AmbassadorFactory(DjangoModelFactory):
         model = Ambassador
 
     full_name = Faker('name')
-    gender = Faker('random_element',
-                   elements=[choice[0] for choice in GENDER_CHOICES])
+    gender = Faker(
+        'random_element',
+        elements=[choice[0] for choice in GENDER_CHOICES]
+    )
     ya_edu = factory.SubFactory(TrainingProgramFactory)
     country = factory.SubFactory(CountryFactory)
     city = factory.SubFactory(CityFactory)
@@ -53,11 +67,29 @@ class AmbassadorFactory(DjangoModelFactory):
     work = Faker('company')
     study_goal = Faker('text', max_nb_chars=200)
     blog_url = Faker('url')
-    clothing_size = Faker('random_element', elements=[choice[0] for choice in
-                                                      CLOTHING_SIZES_CHOICES])
-    shoe_size = Faker('random_element',
-                      elements=['38', '39', '40', '41', '42', '43', '44',
-                                '45'])
+    clothing_size = Faker(
+        'random_element', elements=[choice[0] for choice in
+                                    CLOTHING_SIZES_CHOICES]
+    )
+    shoe_size = Faker(
+        'random_element',
+        elements=['38', '39', '40', '41', '42', '43', '44',
+                  '45']
+    )
     additional_comments = Faker('text', max_nb_chars=200)
-    status = Faker('random_element',
-                   elements=[choice[0] for choice in STATUS_CHOICES])
+    status = Faker(
+        'random_element',
+        elements=[choice[0] for choice in STATUS_CHOICES]
+    )
+
+
+class PromoCodeFactory(DjangoModelFactory):
+    class Meta:
+        model = PromoCode
+
+    ambassador = factory.SubFactory(AmbassadorFactory)
+    name = Faker('lexify', text='?' * 16)
+    status = Faker(
+        'random_element',
+        elements=[choice[0] for choice in PROMO_CODE_STATUS_CHOICES]
+    )
