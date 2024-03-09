@@ -39,7 +39,8 @@ class AmbassadorViewSetTestCase(APITestCase):
         """
         Тест на получение списка всех амбассадоров.
         """
-        response = self.client.get(self.list_url)
+        with self.assertNumQueries(5):
+            response = self.client.get(self.list_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data['results']), 1)
 
@@ -47,7 +48,8 @@ class AmbassadorViewSetTestCase(APITestCase):
         """
         Тест на получение данных одного амбассадора.
         """
-        response = self.client.get(self.detail_url)
+        with self.assertNumQueries(4):
+            response = self.client.get(self.detail_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['full_name'], self.ambassador.full_name)
 

@@ -8,6 +8,7 @@ from .models import (
     Country,
     Merchandise,
     MerchandiseShippingRequest,
+    PromoCode,
     TrainingProgram,
 )
 
@@ -73,3 +74,8 @@ class MerchandiseShippingRequestAdmin(admin.ModelAdmin):
 @admin.register(Merchandise)
 class MerchandiseAdmin(admin.ModelAdmin):
     list_display = ('name', 'price',)
+
+
+@admin.register(PromoCode)
+class PromocodeAdmin(admin.ModelAdmin):
+    pass

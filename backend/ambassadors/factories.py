@@ -6,6 +6,7 @@ from .choices import (
     CLOTHING_SIZES_CHOICES,
     CONTENT_STATUS_CHOICES,
     GENDER_CHOICES,
+    PROMO_CODE_STATUS_CHOICES,
     STATUS_CHOICES,
 )
 from .models import (
@@ -14,6 +15,7 @@ from .models import (
     City,
     Content,
     Country,
+    PromoCode,
     TrainingProgram,
 )
 
@@ -93,3 +95,15 @@ class ContentFactory(DjangoModelFactory):
         elements=[choice[0] for choice in CONTENT_STATUS_CHOICES],
     )
     ambassador = factory.SubFactory(AmbassadorFactory)
+
+
+class PromoCodeFactory(DjangoModelFactory):
+    class Meta:
+        model = PromoCode
+
+    ambassador = factory.SubFactory(AmbassadorFactory)
+    name = Faker('lexify', text='?' * 16)
+    status = Faker(
+        'random_element',
+        elements=[choice[0] for choice in PROMO_CODE_STATUS_CHOICES]
+    )

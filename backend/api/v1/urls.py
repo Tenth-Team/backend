@@ -13,7 +13,7 @@ from .views import (
 )
 
 router = DefaultRouter()
-router.register(r'ambassadors', AmbassadorViewSet)
+router.register(r'ambassadors', AmbassadorViewSet, basename='ambassador')
 router.register(r'content', ContentViewSet)
 router.register(r'promocodes', PromoCodeViewSet)
 router.register(r'merchandise', MerchandiseShippingRequestViewSet)
