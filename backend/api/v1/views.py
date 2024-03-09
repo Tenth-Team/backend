@@ -1,3 +1,4 @@
+from django.utils import timezone
 from ambassadors.choices import GENDER_CHOICES, STATUS_CHOICES
 from ambassadors.models import (
     Ambassador,
@@ -43,6 +44,7 @@ from .serializers import (
     TrainingProgramSerializer,
     YandexFormAmbassadorCreateSerializer,
 )
+from .utils import ExcelRender
 
 
 @extend_schema(tags=["Амбассадоры"])
@@ -195,8 +197,17 @@ class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
         'patch',
     )
 
-    """def download(self, request):
-        return"""
+    @action(detail=False, methods=["get"], renderer_classes=[ExcelRender])
+    def download(self, request):
+        queryset = self.get_queryset()
+        now = timezone.now()
+        file_name = f'merch_data_{now:%Y-%m-%d_%H-%M-%S}.{request.accepted_renderer.format}'
+        serializer = MerchandiseShippingRequestSerializer(queryset, many=True)
+        return Response(
+            serializer.data,
+            headers={"Content-Disposition":
+                     f'attachment; filename="{file_name}"'}
+        )
 
 
 @extend_schema(tags=["Программы и цели"], **loyalty_schema)
