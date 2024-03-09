@@ -42,7 +42,7 @@ from .serializers import (
     MerchandiseShippingRequestSerializer,
     PromoCodeSerializer,
     TrainingProgramSerializer,
-    YandexFormAmbassadorCreateSerializer,
+    YandexFormAmbassadorCreateSerializer
 )
 from .utils import ExcelRender
 
@@ -148,6 +148,26 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
         }
 
         return Response(filters_data)
+
+    @action(detail=True, methods=['get'])
+    def content(self, request, pk=None):
+        """
+        Метод для получения контента амбассадора.
+        """
+        ambassador = self.get_object()
+        queryset = Content.objects.filter(ambassador=ambassador)
+        serializer = ContentSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=True, methods=['get'])
+    def promocodes(self, request, pk=None):
+        """
+        Метод для получения промокодов амбассадора.
+        """
+        ambassador = self.get_object()
+        queryset = PromoCode.objects.filter(ambassador=ambassador)
+        serializer = PromoCodeSerializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 @extend_schema(tags=["Промокоды"])
