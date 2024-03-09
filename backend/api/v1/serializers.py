@@ -80,6 +80,7 @@ class ContentSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'ambassador': {'required': False},
             'status': {'required': False},
+            'comment': {'required': False},
         }
 
     def create(self, validated_data):

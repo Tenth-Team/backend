@@ -21,12 +21,14 @@ class ContentViewSetTestCase(APITestCase):
         self.client.force_authenticate(user=self.user)
 
     def test_get_all_content(self):
+        """Тест на получение списка всего контента амбассадоров."""
         self.content2 = ContentFactory()
         response = self.client.get(self.list_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 2)
 
     def test_create_content(self):
+        """Тест на создание контента."""
         new_content_data = {
             'full_name': self.ambassador.full_name,
             'telegram': self.ambassador.telegram,
@@ -42,6 +44,7 @@ class ContentViewSetTestCase(APITestCase):
         self.assertEqual(response.data['status'], 'new')
 
     def test_create_content_with_unexpected_telegram(self):
+        """Тест на создание контента с telegram несуществующего амбассадора."""
         new_content_data = {
             'full_name': self.ambassador.full_name,
             'telegram': '@wrongtestuser',
@@ -57,6 +60,7 @@ class ContentViewSetTestCase(APITestCase):
         self.assertEqual(response.data['status'], 'new')
 
     def test_update_content_status(self):
+        """Тест на обновление статуса контента."""
         new_status_request = {'status': 'rejected'}
         response = self.client.patch(self.detail_url, new_status_request)
         self.assertEqual(response.status_code, status.HTTP_200_OK)

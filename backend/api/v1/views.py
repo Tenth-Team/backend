@@ -19,7 +19,7 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
 
 from .filters import AmbassadorFilter, ContentFilter
-from .pagination import AmbassadorPagination
+from .pagination import AmbassadorPagination, ContentPagination
 from .permissions import IsAuthenticatedOrYandexForms
 from .schemas import (
     ambassador_schema,
@@ -73,8 +73,9 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
             case 'list' | 'retrieve':
                 active_promocodes = PromoCode.objects.filter(status='active')
                 prefetch_active_promocodes = Prefetch(
-                    'promo_code', queryset=active_promocodes,
-                    to_attr='prefetched_promo_codes'
+                    'promo_code',
+                    queryset=active_promocodes,
+                    to_attr='prefetched_promo_codes',
                 )
 
                 return Ambassador.objects.select_related(
@@ -107,17 +108,17 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
             'ya_edu': {
                 'name': 'Программа обучения',
                 'type': 'checkbox',
-                'values': ya_edu_options
+                'values': ya_edu_options,
             },
             'country': {
                 'name': 'Страна',
                 'type': 'checkbox',
-                'values': country_options
+                'values': country_options,
             },
             'city': {
                 'name': 'Город',
                 'type': 'checkbox',
-                'values': city_options
+                'values': city_options,
             },
             'status': {
                 'name': 'Статус амбассадора',
@@ -154,14 +155,10 @@ class PromoCodeViewSet(viewsets.ModelViewSet):
     """
     Вьюсет для модели промокода.
     """
+
     queryset = PromoCode.objects.all()
     serializer_class = PromoCodeSerializer
-    http_method_names = (
-        'get',
-        'post',
-        'patch',
-        'delete'
-    )
+    http_method_names = ('get', 'post', 'patch', 'delete')
 
 
 @extend_schema(tags=["Контент"])
@@ -219,6 +216,8 @@ class AmbassadorLoyaltyViewSet(ListAPIView):
     queryset = Ambassador.objects.prefetch_related(
         content_prefetch, shipped_merch_prefetch
     )
+    pagination_class = ContentPagination
+    permission_classes = (IsAuthenticatedOrYandexForms,)
     serializer_class = LoyaltyAmbassadorSerializer
 
 
@@ -227,6 +226,7 @@ class AmbassadorGoalView(ListAPIView):
     """
     View для просмотра списка целей амбассадорства.
     """
+
     queryset = AmbassadorGoal.objects.all()
     serializer_class = AmbassadorGoalSerializer
 
@@ -236,5 +236,6 @@ class TrainingProgramView(ListAPIView):
     """
     View для просмотра списка программ обучения.
     """
+
     queryset = TrainingProgram.objects.all()
     serializer_class = TrainingProgramSerializer
