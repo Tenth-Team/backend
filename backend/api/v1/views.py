@@ -1,4 +1,3 @@
-from django.utils import timezone
 from ambassadors.choices import GENDER_CHOICES, STATUS_CHOICES
 from ambassadors.models import (
     Ambassador,
@@ -12,6 +11,7 @@ from ambassadors.models import (
 )
 from django.db.models import Prefetch
 from django_filters.rest_framework import DjangoFilterBackend
+from django.utils import timezone
 from drf_spectacular.utils import extend_schema, extend_schema_view
 from rest_framework import viewsets
 from rest_framework.decorators import action
@@ -208,6 +208,7 @@ class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
             headers={"Content-Disposition":
                      f'attachment; filename="{file_name}"'}
         )
+
 
 @extend_schema(tags=["Программы и цели"], **loyalty_schema)
 class AmbassadorLoyaltyViewSet(ListAPIView):
