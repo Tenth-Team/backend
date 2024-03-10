@@ -10,6 +10,7 @@ from ambassadors.models import (
     TrainingProgram,
 )
 from django.db.models import Prefetch
+from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema, extend_schema_view
 from rest_framework import viewsets
@@ -43,6 +44,7 @@ from .serializers import (
     TrainingProgramSerializer,
     YandexFormAmbassadorCreateSerializer,
 )
+from .utils import ExcelRender
 
 
 @extend_schema(tags=["Амбассадоры"])
@@ -192,8 +194,17 @@ class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
         'patch',
     )
 
-    """def download(self, request):
-        return"""
+    @action(detail=False, methods=["get"], renderer_classes=[ExcelRender])
+    def download(self, request):
+        queryset = self.get_queryset()
+        now = timezone.now()
+        file_name = f'merch_data_{now:%Y-%m-%d_%H-%M-%S}.{request.accepted_renderer.format}'
+        serializer = MerchandiseShippingRequestSerializer(queryset, many=True)
+        return Response(
+            serializer.data,
+            headers={"Content-Disposition":
+                     f'attachment; filename="{file_name}"'}
+        )
 
 
 @extend_schema(tags=["Программы и цели"], **loyalty_schema)

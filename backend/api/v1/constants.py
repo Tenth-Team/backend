@@ -67,3 +67,34 @@ AMBASSADOR_RESP_EXAMPLE = AMBASSADOR_REQ_EXAMPLE | {
     "country": 1,
     "city": 1,
 }
+
+LOYALTY_RESP_EXAMPLE = [
+    {
+        "id": 1,
+        "full_name": "Тест Тестовый",
+        "content_count": 1,
+        "praktikum_friend": True,
+        "practicing_ambassador": False,
+        "shipped_merch": [
+            {"name": "hoody", "count": 1},
+            {"name": "coffee", "count": 1},
+            {"name": "stickers", "count": 1},
+        ],
+    },
+    {
+        "id": 2,
+        "full_name": "Тест2 Тестовый2",
+        "content_count": 3,
+        "praktikum_friend": True,
+        "practicing_ambassador": True,
+        "shipped_merch": [
+            {"name": "hoody", "count": 1},
+            {"name": "coffee", "count": 1},
+            {"name": "stickers", "count": 1},
+            {"name": "shopper", "count": 1},
+        ],
+    },
+]
+
+PRAKTIKUM_FRIEND_REWARD = ('hoody', 'coffee', 'stickers')
+PRACTICING_AMBASSADOR_REWARD = ('shopper',)
