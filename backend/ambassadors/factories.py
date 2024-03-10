@@ -59,10 +59,10 @@ class AmbassadorFactory(DjangoModelFactory):
     ya_edu = factory.SubFactory(TrainingProgramFactory)
     country = factory.SubFactory(CountryFactory)
     city = factory.SubFactory(CityFactory)
-    address = Faker('street_address')
+    address = str(Faker('street_address'))[:20]
     postal_code = Faker('postcode')
     email = Faker('email')
-    phone_number = Faker('phone_number')
+    phone_number = str(Faker('phone_number'))[:20]
     telegram = Faker('user_name')
     edu = Faker('text', max_nb_chars=200)
     work = Faker('company')
