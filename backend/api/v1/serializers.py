@@ -1,4 +1,5 @@
 import re
+from collections import defaultdict
 
 from ambassadors.choices import CONTENT_STATUS_CHOICES
 from ambassadors.models import (
@@ -14,6 +15,7 @@ from ambassadors.models import (
 )
 from rest_framework import serializers
 
+from .constants import PRACTICING_AMBASSADOR_REWARD, PRAKTIKUM_FRIEND_REWARD
 from .utils import format_telegram_username
 
 
@@ -285,10 +287,19 @@ class LoyaltyAmbassadorSerializer(serializers.ModelSerializer):
 
     content_count = serializers.SerializerMethodField(read_only=True)
     shipped_merch = serializers.SerializerMethodField(read_only=True)
+    praktikum_friend = serializers.SerializerMethodField(read_only=True)
+    practicing_ambassador = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Ambassador
-        fields = ('id', 'full_name', 'content_count', 'shipped_merch')
+        fields = (
+            'id',
+            'full_name',
+            'content_count',
+            'praktikum_friend',
+            'practicing_ambassador',
+            'shipped_merch',
+        )
 
     def get_content_count(self, ambassador):
         """Возвращает количество одобренных публикаций амбассадора"""
@@ -297,9 +308,29 @@ class LoyaltyAmbassadorSerializer(serializers.ModelSerializer):
     def get_shipped_merch(self, ambassador):
         """Возвращает список заявок отправленного амбассадору мерча."""
         shipped_merch = ambassador.shipped_merch_prefetch
-        return LoyaltyMerchandiseShippingRequestSerializer(
-            shipped_merch, many=True
-        ).data
+        repr_data = defaultdict(int)
+        for merch in shipped_merch:
+            repr_data[merch.name_merch.name] += 1
+        return [
+            {'name': name, 'count': count} for name, count in repr_data.items()
+        ]
+
+    def check_rewards(self, ambassador, rewards: tuple | list):
+        """Проверяет, получил ли амбассадор все награды."""
+        shipped_merch = ambassador.shipped_merch_prefetch
+        shipped_merch_names = [
+            merch.name_merch.name for merch in shipped_merch
+        ]
+        for merch in rewards:
+            if merch not in shipped_merch_names:
+                return False
+        return True
+
+    def get_praktikum_friend(self, ambassador):
+        return self.check_rewards(ambassador, PRAKTIKUM_FRIEND_REWARD)
+
+    def get_practicing_ambassador(self, ambassador):
+        return self.check_rewards(ambassador, PRACTICING_AMBASSADOR_REWARD)
 
 
 class MerchandiseSerializer(serializers.ModelSerializer):

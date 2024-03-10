@@ -10,6 +10,7 @@ from .constants import (
     CONTENT_PATCH_EXAMPLE,
     CONTENT_REQ_EXAMPLE,
     CONTENT_RESP_EXAMPLE,
+    LOYALTY_RESP_EXAMPLE,
     MERCH_PATCH_EXAMPLE,
     MERCH_REQ_EXAMPLE,
     MERCH_RESP_EXAMPLE,
@@ -485,14 +486,7 @@ loyalty_schema = {
         OpenApiExample(
             'list_loyalty_example',
             summary='Пример ответа на получение амбассадоров',
-            value=[
-                {
-                    "id": 1,
-                    "full_name": "Иван Иванов",
-                    "content_count": 1,
-                    "shipped_merch": "Пример названия мерча"
-                }
-            ],
+            value=LOYALTY_RESP_EXAMPLE,
             response_only=True,
         )
     ]
