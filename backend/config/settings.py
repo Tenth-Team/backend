@@ -8,7 +8,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-key')
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", '*').split()
-CSRF_TRUSTED_ORIGINS = ['https://crm.ragimov700.ru']
+CSRF_TRUSTED_ORIGINS = ['https://crm.ragimov700.ru', 'http://127.0.0.1:8000']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
