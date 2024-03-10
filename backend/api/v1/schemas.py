@@ -481,14 +481,7 @@ loyalty_schema = {
         OpenApiExample(
             'list_loyalty_example',
             summary='Пример ответа на получение амбассадоров',
-            value=[
-                {
-                    "id": 1,
-                    "full_name": "Иван Иванов",
-                    "content_count": 1,
-                    "shipped_merch": "Пример названия мерча",
-                }
-            ],
+            value=LOYALTY_RESP_EXAMPLE,
             response_only=True,
         )
     ],
