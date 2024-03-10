@@ -9,7 +9,7 @@ from ambassadors.models import (
     PromoCode,
     TrainingProgram,
 )
-from django.db.models import Prefetch
+from django.db.models import Prefetch, Count
 from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema, extend_schema_view
@@ -62,6 +62,7 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     filterset_class = AmbassadorFilter
 
+
     def get_serializer_class(self):
         if self.request.headers.get('X-Source') == 'YandexForm':
             return YandexFormAmbassadorCreateSerializer
@@ -74,10 +75,14 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         match self.action:
             case 'list' | 'retrieve':
-                return Ambassador.objects.select_related(
+                return Ambassador.objects.annotate(
+                    content_count=Count('content')
+                ).select_related(
                     'ya_edu', 'country', 'city'
                 ).prefetch_related(
                     'amb_goals', 'content', 'promo_code'
+                ).order_by(
+                    '-reg_date'
                 )
             case _:
                 return Ambassador.objects.all()
@@ -138,6 +143,8 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
                 'values': [
                     {'id': 'date', 'name': 'По дате'},
                     {'id': 'name', 'name': 'По алфавиту'},
+                    {'id': '', 'name': 'По умолчанию'},
+                    {'id': '-content', 'name': 'По количеству публикаций'}
                 ],
             },
         }

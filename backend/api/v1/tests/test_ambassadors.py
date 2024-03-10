@@ -4,6 +4,7 @@ from ambassadors.factories import (
     CityFactory,
     CountryFactory,
     TrainingProgramFactory,
+    ContentFactory
 )
 from ambassadors.models import Ambassador
 from django.contrib.auth import get_user_model
@@ -97,3 +98,103 @@ class AmbassadorViewSetTestCase(APITestCase):
         response = self.client.delete(detail_url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertFalse(Ambassador.objects.filter(pk=ambassador.pk).exists())
+
+
+class AmbassadorFilterTestCase(APITestCase):
+    """
+    Класс для тестирования фильтров амбассадоров.
+    """
+
+    def setUp(self):
+        """
+        Настройка начальных условий для тестов.
+        """
+        self.list_url = reverse('ambassador-list')
+        self.user = User.objects.create_user(username='testuser',
+                                             password='testpassword')
+        self.program1 = TrainingProgramFactory()
+        self.program2 = TrainingProgramFactory()
+        self.country1 = CountryFactory()
+        self.country2 = CountryFactory()
+        self.city1 = CityFactory()
+        self.city2 = CityFactory()
+        self.ambassador1 = AmbassadorFactory(
+            ya_edu=self.program1, country=self.country1,
+            city=self.city1, status='active', gender='М'
+        )
+        self.ambassador2 = AmbassadorFactory(
+            ya_edu=self.program2, country=self.country2,
+            city=self.city2, status='inactive', gender='Ж'
+        )
+        self.content = ContentFactory(ambassador=self.ambassador1)
+        self.client.force_authenticate(user=self.user)
+
+    def test_filter_by_ya_edu(self):
+        """
+        Тест фильтра по программе обучения амбассадора.
+        """
+        response = self.client.get(self.list_url, {'ya_edu': self.program1.id})
+        self.assertEqual(len(response.data['results']), 1)
+        self.assertEqual(response.data['results'][0]['id'],
+                         self.ambassador1.id)
+
+    def test_filter_by_country(self):
+        """
+        Тест фильтра по стране амбассадора.
+        """
+        response = self.client.get(self.list_url, {'country': self.country1.id})
+        self.assertEqual(len(response.data['results']), 1)
+        self.assertEqual(response.data['results'][0]['id'],
+                         self.ambassador1.id)
+
+    def test_filter_by_city(self):
+        """
+        Тест фильтра по городу амбассадора.
+        """
+        response = self.client.get(self.list_url, {'city': self.city1.id})
+        self.assertEqual(len(response.data['results']), 1)
+        self.assertEqual(response.data['results'][0]['id'],
+                         self.ambassador1.id)
+
+    def test_filter_by_status(self):
+        """
+        Тест фильтра по статусу амбассадора.
+        """
+        response = self.client.get(self.list_url, {'status': 'active'})
+        self.assertEqual(len(response.data['results']), 1)
+        self.assertEqual(response.data['results'][0]['id'],
+                         self.ambassador1.id)
+
+    def test_filter_by_gender(self):
+        """
+        Тест фильтра по полу амбассадора.
+        """
+        response = self.client.get(self.list_url, {'gender': 'М'})
+        self.assertEqual(len(response.data['results']), 1)
+        self.assertEqual(response.data['results'][0]['id'],
+                         self.ambassador1.id)
+
+    def test_ordering_by_reg_date(self):
+        """
+        Тест сортировки по дате регистрации амбассадора.
+        """
+        response = self.client.get(self.list_url, {'order': 'date'})
+        self.assertEqual(response.data['results'][0]['id'],
+                         self.ambassador1.id)
+        self.assertEqual(response.data['results'][1]['id'],
+                         self.ambassador2.id)
+
+    def test_ordering_by_full_name(self):
+        """
+        Тест сортировки по имени амбассадора.
+        """
+        response = self.client.get(self.list_url, {'order': 'name'})
+        names = [amb['full_name'] for amb in response.data['results']]
+        self.assertEqual(names, sorted(names))
+
+    def test_ordering_by_content(self):
+        """
+        Тест сортировки по кол-ву контента амбассадора.
+        """
+        response = self.client.get(self.list_url, {'order': '-content'})
+        self.assertEqual(response.data['results'][0]['content_count'], 1)
