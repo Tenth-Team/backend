@@ -18,6 +18,9 @@ class ContentFilter(FilterSet):
 
     status = ChoiceFilter(choices=CONTENT_STATUS_CHOICES)
     full_name = CharFilter(field_name='full_name', lookup_expr='icontains')
+    ya_edu = CharFilter(
+        field_name='ambassador__ya_edu__name', lookup_expr='icontains'
+    )
 
     class Meta:
         model = Content
