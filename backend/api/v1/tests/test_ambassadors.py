@@ -2,9 +2,9 @@ from ambassadors.factories import (
     AmbassadorFactory,
     AmbassadorGoalFactory,
     CityFactory,
+    ContentFactory,
     CountryFactory,
     TrainingProgramFactory,
-    ContentFactory
 )
 from ambassadors.models import Ambassador
 from django.contrib.auth import get_user_model

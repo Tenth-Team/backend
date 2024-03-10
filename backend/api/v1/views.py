@@ -9,7 +9,7 @@ from ambassadors.models import (
     PromoCode,
     TrainingProgram,
 )
-from django.db.models import Prefetch, Count
+from django.db.models import Count, Prefetch
 from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema, extend_schema_view
@@ -61,7 +61,6 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
     http_method_names = ('get', 'post', 'patch', 'delete')
     filter_backends = (DjangoFilterBackend,)
     filterset_class = AmbassadorFilter
-
 
     def get_serializer_class(self):
         if self.request.headers.get('X-Source') == 'YandexForm':
