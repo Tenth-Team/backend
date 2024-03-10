@@ -95,6 +95,7 @@ class ContentFactory(DjangoModelFactory):
         elements=[choice[0] for choice in CONTENT_STATUS_CHOICES],
     )
     ambassador = factory.SubFactory(AmbassadorFactory)
+    comment = Faker('text', max_nb_chars=200)
 
 
 class PromoCodeFactory(DjangoModelFactory):
@@ -105,5 +106,5 @@ class PromoCodeFactory(DjangoModelFactory):
     name = Faker('lexify', text='?' * 16)
     status = Faker(
         'random_element',
-        elements=[choice[0] for choice in PROMO_CODE_STATUS_CHOICES]
+        elements=[choice[0] for choice in PROMO_CODE_STATUS_CHOICES],
     )
