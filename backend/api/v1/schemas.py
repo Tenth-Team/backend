@@ -506,3 +506,27 @@ training_program_schema = {
         )
     ],
 }
+
+ambassador_content_schema = {
+    'summary': 'Получение контента конкретного амбассадора',
+    'description': 'Возвращает список контента амбассадора',
+    'examples': [
+        OpenApiExample(
+            'list_training_program_example',
+            summary='Пример ответа на получение списка контента',
+            value=[
+                {
+                    "id": 1,
+                    "status": "active",
+                    "full_name": "Владимирова Анастасия",
+                    "telegram": "@anastasia",
+                    "link": "https://example.com/content38",
+                    "guide": 'false',
+                    "created_date": "2028-01-05",
+                    "ambassador": 1
+                },
+            ],
+            response_only=True
+        )
+    ]
+}

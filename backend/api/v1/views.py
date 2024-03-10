@@ -9,7 +9,7 @@ from ambassadors.models import (
     PromoCode,
     TrainingProgram,
 )
-from django.db.models import Prefetch
+from django.db.models import Count, Prefetch
 from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_spectacular.utils import extend_schema, extend_schema_view
@@ -23,6 +23,7 @@ from .filters import AmbassadorFilter, ContentFilter
 from .pagination import AmbassadorPagination, ContentPagination
 from .permissions import IsAuthenticatedOrYandexForms
 from .schemas import (
+    ambassador_content_schema,
     ambassador_schema,
     content_schema,
     filters_schema,
@@ -73,17 +74,14 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         match self.action:
             case 'list' | 'retrieve':
-                active_promocodes = PromoCode.objects.filter(status='active')
-                prefetch_active_promocodes = Prefetch(
-                    'promo_code',
-                    queryset=active_promocodes,
-                    to_attr='prefetched_promo_codes',
-                )
-
-                return Ambassador.objects.select_related(
+                return Ambassador.objects.annotate(
+                    content_count=Count('content')
+                ).select_related(
                     'ya_edu', 'country', 'city'
                 ).prefetch_related(
-                    'amb_goals', 'content', prefetch_active_promocodes
+                    'amb_goals', 'content', 'promo_code'
+                ).order_by(
+                    '-reg_date'
                 )
             case _:
                 return Ambassador.objects.all()
@@ -144,11 +142,24 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
                 'values': [
                     {'id': 'date', 'name': 'По дате'},
                     {'id': 'name', 'name': 'По алфавиту'},
+                    {'id': '', 'name': 'По умолчанию'},
+                    {'id': '-content', 'name': 'По количеству публикаций'}
                 ],
             },
         }
 
         return Response(filters_data)
+
+    @extend_schema(**ambassador_content_schema)
+    @action(detail=True, methods=['get'])
+    def content(self, request, pk=None):
+        """
+        Метод для получения контента амбассадора.
+        """
+        ambassador = self.get_object()
+        queryset = Content.objects.filter(ambassador=ambassador)
+        serializer = ContentSerializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 @extend_schema(tags=["Промокоды"])
