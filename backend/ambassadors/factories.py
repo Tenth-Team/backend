@@ -6,8 +6,10 @@ from .choices import (
     CLOTHING_SIZES_CHOICES,
     CONTENT_STATUS_CHOICES,
     GENDER_CHOICES,
+    MERCH_CHOICES,
     PROMO_CODE_STATUS_CHOICES,
     STATUS_CHOICES,
+    STATUS_SEND_CHOICES,
 )
 from .models import (
     Ambassador,
@@ -15,9 +17,13 @@ from .models import (
     City,
     Content,
     Country,
+    Merchandise,
+    MerchandiseShippingRequest,
     PromoCode,
     TrainingProgram,
 )
+
+fake = Faker(['en-US', 'en_US', 'en_US', 'en-US'])
 
 
 class CityFactory(DjangoModelFactory):
@@ -107,3 +113,30 @@ class PromoCodeFactory(DjangoModelFactory):
         'random_element',
         elements=[choice[0] for choice in PROMO_CODE_STATUS_CHOICES]
     )
+
+
+class MerchandiseFactory(DjangoModelFactory):
+    class Meta:
+        model = Merchandise
+
+    name = Faker(
+        'random_element',
+        elements=[choice[0] for choice in MERCH_CHOICES]
+    )
+    price = Faker(
+        'random_element',
+        elements=[100, 1000]
+    )
+
+
+class MerchandiseShippingRequestFactory(DjangoModelFactory):
+    class Meta:
+        model = MerchandiseShippingRequest
+
+    name_merch = factory.SubFactory(MerchandiseFactory)
+    ambassador = factory.SubFactory(AmbassadorFactory)
+    status_send = Faker(
+        'random_element',
+        elements=[choice[0] for choice in STATUS_SEND_CHOICES]
+    )
+    comment = Faker('text')
