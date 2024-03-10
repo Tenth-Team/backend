@@ -23,10 +23,11 @@ from .models import (
     TrainingProgram,
 )
 
-fake = Faker(['en-US', 'en_US', 'en_US', 'en-US'])
-
 
 class CityFactory(DjangoModelFactory):
+    """
+    Фабрика для модели городов.
+    """
     class Meta:
         model = City
 
@@ -34,6 +35,9 @@ class CityFactory(DjangoModelFactory):
 
 
 class CountryFactory(DjangoModelFactory):
+    """
+    Фабрика для модели стран.
+    """
     class Meta:
         model = Country
 
@@ -41,6 +45,9 @@ class CountryFactory(DjangoModelFactory):
 
 
 class TrainingProgramFactory(DjangoModelFactory):
+    """
+    Фабрика для модели программ обучения.
+    """
     class Meta:
         model = TrainingProgram
 
@@ -48,6 +55,9 @@ class TrainingProgramFactory(DjangoModelFactory):
 
 
 class AmbassadorGoalFactory(DjangoModelFactory):
+    """
+    Фабрика для модели целей амбассадорства.
+    """
     class Meta:
         model = AmbassadorGoal
 
@@ -55,6 +65,9 @@ class AmbassadorGoalFactory(DjangoModelFactory):
 
 
 class AmbassadorFactory(DjangoModelFactory):
+    """
+    Фабрика для модели амбассадора.
+    """
     class Meta:
         model = Ambassador
 
@@ -89,6 +102,9 @@ class AmbassadorFactory(DjangoModelFactory):
 
 
 class ContentFactory(DjangoModelFactory):
+    """
+    Фабрика для модели контента.
+    """
     class Meta:
         model = Content
 
@@ -105,6 +121,9 @@ class ContentFactory(DjangoModelFactory):
 
 
 class PromoCodeFactory(DjangoModelFactory):
+    """
+    Фабрика для модели промокодов.
+    """
     class Meta:
         model = PromoCode
 
@@ -117,6 +136,9 @@ class PromoCodeFactory(DjangoModelFactory):
 
 
 class MerchandiseFactory(DjangoModelFactory):
+    """
+    Фабрика для модели мерча.
+    """
     class Meta:
         model = Merchandise
 
@@ -131,6 +153,9 @@ class MerchandiseFactory(DjangoModelFactory):
 
 
 class MerchandiseShippingRequestFactory(DjangoModelFactory):
+    """
+    Фабрика для модели заявок на мерч.
+    """
     class Meta:
         model = MerchandiseShippingRequest
 
