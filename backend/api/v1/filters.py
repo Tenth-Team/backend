@@ -36,9 +36,11 @@ class AmbassadorFilter(FilterSet):
     status = ChoiceFilter(choices=STATUS_CHOICES)
     gender = ChoiceFilter(choices=GENDER_CHOICES)
     order = OrderingFilter(
+
         fields=(
             ('reg_date', 'date'),
             ('full_name', 'name'),
+            ('content_count', 'content'),
         ),
     )
 
