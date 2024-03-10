@@ -14,8 +14,9 @@ from django_filters.filters import (
 
 
 class ContentFilter(FilterSet):
-    """Класс для фильтрации Контента."""
-
+    """
+    Фильтры для контента.
+    """
     status = ChoiceFilter(choices=CONTENT_STATUS_CHOICES)
     full_name = CharFilter(field_name='full_name', lookup_expr='icontains')
     ya_edu = CharFilter(
