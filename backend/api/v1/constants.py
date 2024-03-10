@@ -61,7 +61,14 @@ AMBASSADOR_RESP_EXAMPLE = AMBASSADOR_REQ_EXAMPLE | {
     "id": 1,
     "ya_edu": {"id": 1, "name": "Пример программы обучения"},
     "amb_goals": [{"id": 1, "name": "Пример цели"}],
-    "promo_code": "promo_code_example",
+    "promo_code": [
+                {
+                    "id": 1,
+                    "name": "PROMO019",
+                    "status": "active",
+                    "ambassador": 1
+                }
+            ],
     "content_count": 0,
     "reg_date": f"{SCHEMA_DATE}T20:00:00.000+03:00",
     "country": 1,
