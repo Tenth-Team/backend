@@ -252,16 +252,11 @@ class AmbassadorReadSerializer(serializers.ModelSerializer):
     content_count = serializers.SerializerMethodField()
     city = serializers.SlugRelatedField(read_only=True, slug_field='name')
     country = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    promo_code = PromoCodeSerializer(many=True)
 
     class Meta:
         model = Ambassador
         fields = '__all__'
-
-    def get_promo_code(self, obj):
-        promo_code = obj.prefetched_promo_codes
-        if promo_code:
-            return promo_code[0].name
-        return None
 
     def get_content_count(self, obj):
         return obj.content.count()

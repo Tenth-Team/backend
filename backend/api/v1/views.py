@@ -23,6 +23,7 @@ from .filters import AmbassadorFilter, ContentFilter
 from .pagination import AmbassadorPagination
 from .permissions import IsAuthenticatedOrYandexForms
 from .schemas import (
+    ambassador_content_schema,
     ambassador_schema,
     content_schema,
     filters_schema,
@@ -42,7 +43,7 @@ from .serializers import (
     MerchandiseShippingRequestSerializer,
     PromoCodeSerializer,
     TrainingProgramSerializer,
-    YandexFormAmbassadorCreateSerializer
+    YandexFormAmbassadorCreateSerializer,
 )
 from .utils import ExcelRender
 
@@ -73,16 +74,10 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         match self.action:
             case 'list' | 'retrieve':
-                active_promocodes = PromoCode.objects.filter(status='active')
-                prefetch_active_promocodes = Prefetch(
-                    'promo_code', queryset=active_promocodes,
-                    to_attr='prefetched_promo_codes'
-                )
-
                 return Ambassador.objects.select_related(
                     'ya_edu', 'country', 'city'
                 ).prefetch_related(
-                    'amb_goals', 'content', prefetch_active_promocodes
+                    'amb_goals', 'content', 'promo_code'
                 )
             case _:
                 return Ambassador.objects.all()
@@ -149,6 +144,7 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
 
         return Response(filters_data)
 
+    @extend_schema(**ambassador_content_schema)
     @action(detail=True, methods=['get'])
     def content(self, request, pk=None):
         """
@@ -157,16 +153,6 @@ class AmbassadorViewSet(viewsets.ModelViewSet):
         ambassador = self.get_object()
         queryset = Content.objects.filter(ambassador=ambassador)
         serializer = ContentSerializer(queryset, many=True)
-        return Response(serializer.data)
-
-    @action(detail=True, methods=['get'])
-    def promocodes(self, request, pk=None):
-        """
-        Метод для получения промокодов амбассадора.
-        """
-        ambassador = self.get_object()
-        queryset = PromoCode.objects.filter(ambassador=ambassador)
-        serializer = PromoCodeSerializer(queryset, many=True)
         return Response(serializer.data)
 
 
