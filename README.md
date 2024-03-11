@@ -45,10 +45,13 @@
    docker-compose up --build
    ```
 
-   После сборки и запуска контейнеров ваше приложение должно быть доступно на
-   ```
+   Теперь приложение должно быть доступно по адресу:
+
    http://localhost:8000
-   ```
+   
+   А документация доступна по адресу:
+   
+   http://localhost:8000/api/v1/swagger/
 
 </details>
 
@@ -84,14 +87,18 @@
    python manage.py runserver
    ```
 
-   Теперь ваше приложение должно быть доступно на 
-   ```
+   Теперь приложение должно быть доступно по адресу:
+
    http://localhost:8000
-   ```
+   
+   А документация доступна по адресу:
+   
+   http://localhost:8000/api/v1/swagger/
+   
 
 </details>
 
-### Ссылка на документацию
+### Ссылка на скриншот документации:
 
 [![Static Badge](https://img.shields.io/badge/Документация_Swagger-Google_Drive-blue?style=for-the-badge)](https://drive.google.com/file/d/1ySTNXQUQZt4djonFki1h1biCSBdJHsIO/view)
 
