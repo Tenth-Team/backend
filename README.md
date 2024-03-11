@@ -42,7 +42,7 @@
 
 2. Запустите контейнеры с помощью Docker Compose:
    ```
-   docker-compose up --build
+   docker compose -f docker-compose.local.yml up
    ```
 
    Теперь приложение должно быть доступно по адресу:
