@@ -3,6 +3,10 @@ from rest_framework import permissions
 
 
 class IsAuthenticatedOrYandexForms(permissions.BasePermission):
+    """
+    Пермишен, который разрешает действия только для авторизованных
+    пользователей или Яндекс формам.
+    """
     def has_permission(self, request, view):
         api_key = request.headers.get('Authorization')
         return (request.user.is_authenticated

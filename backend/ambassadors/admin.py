@@ -15,26 +15,41 @@ from .models import (
 
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
+    """
+    Конфигурация админки для модели стран.
+    """
     list_display = ('name',)
 
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
+    """
+    Конфигурация админки для модели города.
+    """
     list_display = ('name',)
 
 
 @admin.register(TrainingProgram)
 class TrainingProgramAdmin(admin.ModelAdmin):
+    """
+    Конфигурация админки для модели программ обучения.
+    """
     list_display = ('name',)
 
 
 @admin.register(AmbassadorGoal)
 class AmbassadorGoalAdmin(admin.ModelAdmin):
+    """
+    Конфигурация админки для модели цели амбассадорства.
+    """
     list_display = ('name',)
 
 
 @admin.register(Ambassador)
 class AmbassadorAdmin(admin.ModelAdmin):
+    """
+    Конфигурация админки для модели амбассадора.
+    """
     list_display = (
         'full_name',
         'gender',
@@ -50,6 +65,9 @@ class AmbassadorAdmin(admin.ModelAdmin):
 
 @admin.register(Content)
 class ContentAdmin(admin.ModelAdmin):
+    """
+    Конфигурация админки для модели контента.
+    """
     list_display = (
         'id',
         'full_name',

@@ -197,6 +197,9 @@ class ContentViewSet(viewsets.ModelViewSet):
 @extend_schema(tags=["Заявки"])
 @extend_schema_view(**merch_schema)
 class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
+    """
+    Viewset для модели заявки на мерч.
+    """
     queryset = MerchandiseShippingRequest.objects.all()
     serializer_class = MerchandiseShippingRequestSerializer
     http_method_names = (
@@ -220,8 +223,10 @@ class MerchandiseShippingRequestViewSet(viewsets.ModelViewSet):
 
 @extend_schema(tags=["Программы и цели"], **loyalty_schema)
 class AmbassadorLoyaltyViewSet(ListAPIView):
-    """Viewset для получения данных для страницы лояльности.
-    Возвращает список амбассадоров."""
+    """
+    Viewset для получения данных для страницы лояльности.
+    Возвращает список амбассадоров.
+    """
 
     shipped_merch_prefetch = Prefetch(
         'merch_shipping_requests',

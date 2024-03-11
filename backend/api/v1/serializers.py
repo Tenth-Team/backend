@@ -221,6 +221,9 @@ class AmbassadorCreateSerializer(serializers.ModelSerializer):
 
 
 class AmbassadorUpdateSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для изменения амбассадора.
+    """
     city = serializers.CharField(required=False)
     country = serializers.CharField(required=False)
 
